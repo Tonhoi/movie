@@ -22,8 +22,7 @@ const GetListMovie = async (slug, page, category = "danh-sach") => {
           slug,
         },
 
-        baseURL:
-          "https://project-movie-master.herokuapp.com/https://ophim.cc/_next/data/2uibqhufwNeudgKQPPGsA/",
+        baseURL: "https://ophim.cc/_next/data/2uibqhufwNeudgKQPPGsA/",
       }
     );
 
