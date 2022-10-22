@@ -8,8 +8,7 @@ const GetSearchMovie = async (value, page) => {
       // }`,
       `/tim-kiem.json?keyword=${value}&${page && `page=${page}`}`,
       {
-        baseURL:
-          "https://project-movie-master.herokuapp.com/https://ophim.cc/_next/data/2uibqhufwNeudgKQPPGsA/",
+        baseURL: "https://ophim.cc/_next/data/2uibqhufwNeudgKQPPGsA/",
       }
     );
     return res?.data?.pageProps;
