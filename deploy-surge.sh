@@ -1,5 +1,6 @@
 # Build reactjs app with production mode 
 npm run build
+# serve -s build
 
 # Move to build folder
 cd build

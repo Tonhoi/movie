@@ -9,11 +9,12 @@ import GlobalStyle from "./components/GlobalStyles";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <Provider store={store}>
     <GlobalStyle>
       <Router>
-        <App />
+        <App crossorigin />
       </Router>
     </GlobalStyle>
   </Provider>
