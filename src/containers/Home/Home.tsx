@@ -8,6 +8,9 @@ import SwiperItem from "@/containers/Home/components/SwiperItem";
 import { settings } from "./components/SwiperConfig";
 import { listMovie } from "@/types/listMovie";
 import useFetch from "@/hooks/useFetch";
+import BlogCard from "@/components/Cards/BlogCard";
+import MovieCard from "@/components/Cards/MovieCard";
+import HeadLine from "./components/HeadLine";
 
 const Home = () => {
   const { data: tredingMovies }: UseQueryResult = useQuery({
@@ -43,30 +46,34 @@ const Home = () => {
         {renderTrendingMovie}
       </Slider>
 
-      <p className="text-white">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita
-        reprehenderit nesciunt officia odio atque quidem similique cumque
-        accusantium, temporibus quibusdam iste minima corrupti, soluta,
-        explicabo architecto recusandae consequatur quia perferendis. Lorem
-        ipsum dolor sit amet, consectetur adipisicing elit. Harum tempora
-        repudiandae quos quas autem, fugiat atque neque aliquam temporibus
-        pariatur? Beatae commodi tenetur facilis quisquam laboriosam vero ad
-        excepturi ipsam! Lorem, ipsum dolor sit amet consectetur adipisicing
-        elit. Expedita reprehenderit nesciunt officia odio atque quidem
-        similique cumque accusantium, temporibus quibusdam iste minima corrupti,
-        soluta, explicabo architecto recusandae consequatur quia perferendis.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum tempora
-        repudiandae quos quas autem, fugiat atque neque aliquam temporibus
-        pariatur? Beatae commodi tenetur facilis quisquam laboriosam vero ad
-        excepturi ipsam! Lorem, ipsum dolor sit amet consectetur adipisicing
-        elit. Expedita reprehenderit nesciunt officia odio atque quidem
-        similique cumque accusantium, temporibus quibusdam iste minima corrupti,
-        soluta, explicabo architecto recusandae consequatur quia perferendis.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum tempora
-        repudiandae quos quas autem, fugiat atque neque aliquam temporibus
-        pariatur? Beatae commodi tenetur facilis quisquam laboriosam vero ad
-        excepturi ipsam!
-      </p>
+      <div className="max-w-[1300px] sm:mx-auto mt-10 px-8">
+        <HeadLine title="Phim lẻ mới cập nhật" isSeparate={false} />
+
+        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto no-scrollbar lg:grid lg:grid-cols-5">
+          {(tredingMovies as listMovie[])?.slice(0, 5).map((el, idx: number) => (
+            <div
+              key={idx}
+              className="snap-center w-[60%] sm:w-[35%] md:w-[25%] lg:w-full flex-shrink-0"
+            >
+              <MovieCard />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-[1300px] mx-auto mt-10 px-8">
+        <HeadLine title="Tin tức" />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-[1300px] gap-6">
+          {(tredingMovies as listMovie[])?.map((el) => (
+            <BlogCard
+              key={el.id}
+              poster_url={el.poster_url}
+              modified_time={el.modified_time}
+            />
+          ))}
+        </div>
+      </div>
     </Fragment>
   );
 };
