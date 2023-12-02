@@ -28,7 +28,7 @@ const SwiperCardItem = ({
     >
       <div className="absolute inset-0 -z-10 w-full bg-[rgba(0,0,0,0.6)]" />
 
-      <div className="flex max-w-[1300px] mx-auto">
+      <div className="flex wide px-0">
         <div className="text-white px-8 basis-full sm:basis-[80%] lg:basis-[45%]">
           <h2 className="text-4xl mb-5 font-extrabold !leading-[1.25] lg:mb-0 lg:text-6xl xl:text-7xl uppercase line-clamp-2">
             {name}

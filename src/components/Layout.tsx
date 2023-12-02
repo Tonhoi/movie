@@ -13,21 +13,19 @@ const Layout = ({ children }: { children: ReactNode }) => {
       top: 0,
       behavior: "smooth",
     });
-  }, [router]);
+  }, [router.asPath]);
 
   return (
     <Fragment>
       <LoadingScreen />
 
-      <div className="bg-[#2a2931]">
-        <div className="min-h-[100vh] flex flex-col justify-between">
-          <div className="sticky top-0 bg-transparent backdrop-blur z-50">
-            <Header />
-          </div>
+      <div className="bg-[#2a2931] min-h-[100vh] flex flex-col justify-between">
+        <header className="sticky top-0 bg-transparent backdrop-blur z-50">
+          <Header />
+        </header>
 
-          {children}
-          <Footer />
-        </div>
+        {children}
+        <Footer />
       </div>
     </Fragment>
   );

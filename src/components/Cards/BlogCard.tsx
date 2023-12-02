@@ -1,19 +1,18 @@
 import { ImageWithFallback } from "@/components";
-import Link from "next/link";
 
-interface BolgCardProps {
+interface BlogCardProps {
   poster_url: string;
   modified_time: string;
 }
 
-const BlogCard = ({ poster_url, modified_time }: BolgCardProps) => {
+const BlogCard = ({ poster_url, modified_time }: BlogCardProps) => {
   return (
-    <Link href={"/"} className="max-h-[450px] group cursor-pointer">
+    <article className="max-h-[450px] group cursor-pointer">
       <ImageWithFallback
         alt=""
+        src={poster_url}
         width={400}
         height={200}
-        src={poster_url}
         className="object-cover rounded-t-md w-full max-h-[230px]"
       />
 
@@ -33,7 +32,7 @@ const BlogCard = ({ poster_url, modified_time }: BolgCardProps) => {
           phimmoi liệt kê bên dưới nhé! Thầm
         </p>
       </div>
-    </Link>
+    </article>
   );
 };
 

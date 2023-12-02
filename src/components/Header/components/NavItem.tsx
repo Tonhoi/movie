@@ -1,48 +1,84 @@
-import { memo } from "react";
+import { MouseEvent, memo } from "react";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { useRouter } from "next/router";
 
 import { NAV_ITEMS } from "@/constants";
-import { NavItemProps } from "@/types/header";
-import MenuItem from "./MenuItem";
+import { MenuProps, NavItemProps } from "@/types/header";
 
 const NavItem = (props: NavItemProps) => {
-  const { listClassName, itemClassName, linkClassName } = props;
-  const { asPath } = useRouter();
+  const { listClassName, containerClassName } = props;
 
   return (
-    <ul
-      className={twMerge("menu text-text_color p-0 font-medium", listClassName)}
-    >
-      {NAV_ITEMS.map((el, idx: number) =>
-        el.children ? (
-          <MenuItem
+    <nav className={containerClassName}>
+      <ul
+        className={twMerge(
+          "menu text-text_color p-0 font-medium",
+          listClassName
+        )}
+      >
+        {NAV_ITEMS.map((el, idx: number) => (
+          <RenderNavItem
             key={idx}
             title={el.title}
+            href={el.href}
             children={el.children}
             {...props}
           />
-        ) : (
-          <li
-            key={idx}
-            className={twMerge(
-              "hover:text-primary transtion-base",
-              itemClassName
-            )}
-          >
-            <Link
-              href={el.href}
-              className={`${linkClassName} ${
-                el.href === asPath && "text-primary"
-              }`}
-            >
-              {el.title}
-            </Link>
-          </li>
-        )
+        ))}
+      </ul>
+    </nav>
+  );
+};
+
+const RenderNavItem = (props: MenuProps & NavItemProps) => {
+  const {title, children, summaryClassName, subListClassName, itemClassName, href} = props;
+  const { asPath } = useRouter();
+
+  const handleNavigation = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (children.length > 0) {
+      e.preventDefault();
+    }
+  };
+
+  return (
+    <li
+      className={twMerge(
+        "dropdown dropdown-hover hover:text-primary transtion-base group",
+        itemClassName
       )}
-    </ul>
+    >
+      <Link
+        href={href}
+        onClick={handleNavigation}
+        className={twMerge("focus:!text-primary", summaryClassName)}
+      >
+        {title}
+      </Link>
+
+      {children.length > 0 && (
+        <ul
+          className={twMerge(
+            "dropdown-content z-[1] rounded-md min-w-[400px] py-4 grid grid-cols-3 -translate-x-[70%] bg-[#2f2e35] group-hover:text-text_color",
+            subListClassName
+          )}
+        >
+          {children.map((el, idx: number) => (
+            <li key={idx} className="hover:text-primary transtion-base">
+              <Link
+                href={el.href}
+                className={twMerge(
+                  "focus:!text-primary",
+                  el.href === asPath && "text-primary"
+                )}
+              >
+                {el.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
   );
 };
 

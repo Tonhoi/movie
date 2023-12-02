@@ -4,12 +4,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
-import SwiperItem from "@/containers/Home/components/SwiperItem";
 import { settings } from "./components/SwiperConfig";
-import { listMovie } from "@/types/listMovie";
+import { MovieProps } from "@/types/movie";
+import SwiperItem from "@/containers/Home/components/SwiperItem";
 import useFetch from "@/hooks/useFetch";
 import BlogCard from "@/components/Cards/BlogCard";
-import MovieCard from "@/components/Cards/MovieCard";
+import HorizontalMovieCard from "@/components/Cards/HorizontalMovieCard";
+import ListMovie from "./components/ListMovie";
 import HeadLine from "./components/HeadLine";
 
 const Home = () => {
@@ -18,12 +19,27 @@ const Home = () => {
     queryFn: () => useFetch("movies/trending"),
   });
 
+  const { data: singleMovies } = useQuery({
+    queryKey: ["single_movie"],
+    queryFn: () => useFetch("/movies/new-updated/single"),
+  });
+
+  const { data: airTodayMoves } = useQuery({
+    queryKey: ["air_today_movie"],
+    queryFn: () => useFetch("/movies/to-watch-today"),
+  });
+
+  const { data: seriesMovies } = useQuery({
+    queryKey: ["series_movie"],
+    queryFn: () => useFetch("/movies/new-updated/series"),
+  });
+
   const renderTrendingMovie = useMemo(() => {
     if (tredingMovies == undefined) return null;
 
-    return (tredingMovies as listMovie[]).map((el: listMovie, idx: number) => (
+    return (tredingMovies as MovieProps[]).map((el: MovieProps) => (
       <SwiperItem
-        key={idx}
+        key={el.id}
         name={el.name}
         origin_name={el.origin_name}
         time={el.time}
@@ -42,30 +58,36 @@ const Home = () => {
 
   return (
     <Fragment>
+      {/* swiper */}
       <Slider {...settings} className="group">
         {renderTrendingMovie}
       </Slider>
 
-      <div className="max-w-[1300px] sm:mx-auto mt-10 px-8">
-        <HeadLine title="Phim lẻ mới cập nhật" isSeparate={false} />
+      {/* Danh sách phim */}
+      <ListMovie data={seriesMovies?.data} title={"Phim bộ mới cập nhật"} />
 
-        <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto no-scrollbar lg:grid lg:grid-cols-5">
-          {(tredingMovies as listMovie[])?.slice(0, 5).map((el, idx: number) => (
-            <div
-              key={idx}
-              className="snap-center w-[60%] sm:w-[35%] md:w-[25%] lg:w-full flex-shrink-0"
-            >
-              <MovieCard />
-            </div>
-          ))}
-        </div>
+      <ListMovie data={singleMovies?.data} title={"Phim lẻ mới cập nhật"} />
+
+      <ListMovie data={airTodayMoves?.data} title={"Hôm nay xem gì"} />
+
+      <div className="wide w-full grid grid-cols-1 mt-10 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-5">
+        {(tredingMovies as MovieProps[])?.map((el) => (
+          <HorizontalMovieCard
+            key={el.id}
+            name={el.name}
+            year={el.year}
+            poster_url={el.poster_url}
+            category={el.category}
+            sub_docquyen={el.sub_docquyen}
+          />
+        ))}
       </div>
 
-      <div className="max-w-[1300px] mx-auto mt-10 px-8">
+      <div className="wide mt-10">
         <HeadLine title="Tin tức" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-[1300px] gap-6">
-          {(tredingMovies as listMovie[])?.map((el) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {(tredingMovies as MovieProps[])?.map((el) => (
             <BlogCard
               key={el.id}
               poster_url={el.poster_url}
