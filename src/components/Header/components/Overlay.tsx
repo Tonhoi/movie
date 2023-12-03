@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface OverlayProps {
@@ -17,4 +18,4 @@ const Overlay = ({ closeNavMobile, showNavMobile }: OverlayProps) => {
   );
 };
 
-export default Overlay;
+export default memo(Overlay);

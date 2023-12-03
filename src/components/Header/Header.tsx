@@ -1,15 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, memo } from "react";
 import { useRouter } from "next/router";
+import { Portal } from "react-portal";
 
 import MenuIcon from "@/assets/Icons/MenuIcon";
 import useToggle from "@/hooks/useToggle";
-import {
-  HeaderOnMobile,
-  NavItem,
-  HeaderSearch,
-  Logo,
-  Overlay,
-} from "@/components/Header";
+import { HeaderOnMobile, Nav, Search, Logo, Overlay } from "@/components/Header";
 
 const Header = () => {
   const { on, toggleOff, toggleOn } = useToggle();
@@ -22,13 +17,13 @@ const Header = () => {
   }, [asPath]);
 
   return (
-    <div className="wide">
-      <Overlay closeNavMobile={toggleOff} showNavMobile={on} />
-
-      <div className="navbar py-4 px-0">
+    <div className="wide py-4">
+      <div className="flex-between">
         <Logo />
 
-        <HeaderSearch inputClassName="m-0 ml-5 max-w-[280px] hidden lg:block max-h-10" />
+        <Search inputClassName="ml-5 max-w-[280px] hidden lg:block max-h-10" />
+
+        <Nav containerClassName="hidden lg:flex ml-auto" />
 
         {/* block on table and moble */}
         <MenuIcon
@@ -36,15 +31,14 @@ const Header = () => {
           className="text-text_color w-8 h-8 flex-none lg:hidden ml-auto cursor-pointer"
         />
 
-        <NavItem
-          listClassName="menu-horizontal flex-nowrap"
-          containerClassName="hidden lg:flex ml-auto"
-        />
-      </div>
+        <Overlay closeNavMobile={toggleOff} showNavMobile={on} />
 
-      <HeaderOnMobile showNavMobile={on} />
+        <Portal>
+          <HeaderOnMobile showNavMobile={on} />
+        </Portal>
+      </div>
     </div>
   );
 };
 
-export default Header;
+export default memo(Header);

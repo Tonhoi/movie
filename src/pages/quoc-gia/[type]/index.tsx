@@ -1,5 +1,5 @@
 import { COUNTRIES_ITEMS } from "@/constants";
-import Country from "@/containers/Country";
+import Movies from "@/containers/Movies";
 import { NavItemProps } from "@/types/header";
 
 interface MovieContryProps {
@@ -7,7 +7,7 @@ interface MovieContryProps {
 }
 
 const index = () => {
-  return <Country />;
+  return <Movies />;
 };
 
 // export async function getStaticPaths() {

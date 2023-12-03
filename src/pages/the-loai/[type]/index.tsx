@@ -1,7 +1,7 @@
-import Category from "@/containers/Category";
+import Movies from "@/containers/Movies";
 
 const index = () => {
-  return <Category />;
+  return <Movies />;
 };
 
 export default index;

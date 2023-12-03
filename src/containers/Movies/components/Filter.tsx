@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { twMerge } from "tailwind-merge";
 
 import { GridIcon, ListIcon } from "@/assets/Icons";
-import { years } from "@/containers/Category/constants";
+import { years } from "@/containers/Movies/constants";
 
 interface FilterProps {
   toggleOff: () => void;
@@ -18,17 +18,18 @@ const Filter = ({ toggleOff, toggleOn, on }: FilterProps) => {
     (year: string) => {
       if(isNaN(+year)) replace(`/the-loai/${query.type}`, undefined, { shallow: true });
 
-      else push({pathname: `/the-loai/${query.type}`, query: { year }});
+      // else push({pathname: `/the-loai/${query.type}`, query: { year }});
+      else push({ pathname: `/the-loai/${query.type}`, query: { year } }, undefined, { shallow: true });
     },
     [query]
   );
 
   return (
     <Fragment>
-      <div className="flex-between">
-        <h2 className="text-4xl font-extrabold">LỌC PHIM THEO NĂM</h2>
+      <div className="flex-between flex-wrap gap-4">
+        <h2 className="text-3xl lg:text-4xl font-extrabold">LỌC PHIM THEO NĂM</h2>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ml-auto">
           <GridIcon
             onClick={toggleOff}
             className={twMerge(

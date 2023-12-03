@@ -1,13 +1,8 @@
-export interface NavItemProps {
-  listClassName?: string;
-  subListClassName?: string;
-  itemClassName?: string;
-  linkClassName?: string;
-  summaryClassName?: string;
+export interface NavProps {
   containerClassName?: string;
 }
 
-export interface MenuProps {
+export interface NavItemProps {
   title: string;
   href: string;
   children: Array<{

@@ -1,20 +1,21 @@
+import { memo } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface HeaderSearchProps {
+interface SearchProps {
   inputClassName?: string;
 }
 
-const HeaderSearch = ({ inputClassName }: HeaderSearchProps) => {
+const Search = ({ inputClassName }: SearchProps) => {
   return (
     <input
       type="text"
       placeholder="Tìm kiếm phim..."
       className={twMerge(
-        "input input-bordered input-info bg-transparent w-full ml-4 mb-5",
+        "input input-bordered input-info bg-transparent w-full",
         inputClassName
       )}
     />
   );
 };
 
-export default HeaderSearch;
+export default memo(Search);

@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState, memo } from "react";
 import { useIsFetching, useIsMutating } from "@tanstack/react-query";
+import { twMerge } from "tailwind-merge";
 
 const LoadingScreen = () => {
   const isFetching = useIsFetching({ queryKey: ["trending_movie"] });
@@ -21,9 +22,10 @@ const LoadingScreen = () => {
 
   return (
     <div
-      className={`fixed inset-0 z-[999] bg-white flex-center flex-col gap-6 transition-base pointer-events-none ${
+      className={twMerge(
+        "fixed inset-0 z-[999] bg-white flex-center flex-col gap-6 transition-base pointer-events-none",
         isFadeOut ? "opacity-0" : "opacity-100"
-      }`}
+      )}
     >
       <div className="flex items-center gap-3">
         <Image
@@ -40,4 +42,4 @@ const LoadingScreen = () => {
   );
 };
 
-export default LoadingScreen;
+export default memo(LoadingScreen);

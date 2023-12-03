@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -19,4 +20,4 @@ const Logo = () => {
   );
 };
 
-export default Logo;
+export default memo(Logo);
