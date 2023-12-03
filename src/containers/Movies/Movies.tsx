@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 import { useRouter } from "next/router";
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
 
-import { useToggle, useFetch } from "@/hooks";
+import { useToggle, useFetch as UseFetch } from "@/hooks";
 import { VerticalMovieCard, HorizontalMovieCard } from "@/components/Cards";
 import { Heading, Filter } from '@/containers/Movies'
 import { MovieProps } from "@/types/movie";
@@ -13,7 +13,7 @@ const Movies = () => {
 
   const { data: tredingMovies }: UseQueryResult = useQuery({
     queryKey: ["trending_movie", query.year],
-    queryFn: () => useFetch(`movies/trending?year=${query.year}`),
+    queryFn: () => UseFetch(`movies/trending?year=${query.year}`),
   });
 
   return (

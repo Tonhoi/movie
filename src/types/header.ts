@@ -5,7 +5,7 @@ export interface NavProps {
 export interface NavItemProps {
   title: string;
   href: string;
-  children: Array<{
+  child: Array<{
     title: string;
     href: string;
   }>;

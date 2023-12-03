@@ -14,7 +14,7 @@ const Header = () => {
     if (on) {
       toggleOff();
     }
-  }, [asPath]);
+  }, [asPath, on, toggleOff]);
 
   return (
     <div className="wide py-4">

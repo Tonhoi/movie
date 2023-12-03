@@ -7,7 +7,7 @@ import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { settings } from "./components/SwiperConfig";
 import { MovieProps } from "@/types/movie";
 import SwiperItem from "@/containers/Home/components/SwiperItem";
-import useFetch from "@/hooks/useFetch";
+import {useFetch as UseFetch} from "@/hooks";
 import BlogCard from "@/components/Cards/BlogCard";
 import HorizontalMovieCard from "@/components/Cards/HorizontalMovieCard";
 import ListMovie from "./components/ListMovie";
@@ -16,22 +16,22 @@ import HeadLine from "./components/HeadLine";
 const Home = () => {
   const { data: tredingMovies }: UseQueryResult = useQuery({
     queryKey: ["trending_movie"],
-    queryFn: () => useFetch("movies/trending"),
+    queryFn: () => UseFetch("movies/trending"),
   });
 
   const { data: singleMovies } = useQuery({
     queryKey: ["single_movie"],
-    queryFn: () => useFetch("/movies/new-updated/single"),
+    queryFn: () => UseFetch("/movies/new-updated/single"),
   });
 
   const { data: airTodayMoves } = useQuery({
     queryKey: ["air_today_movie"],
-    queryFn: () => useFetch("/movies/to-watch-today"),
+    queryFn: () => UseFetch("/movies/to-watch-today"),
   });
 
   const { data: seriesMovies } = useQuery({
     queryKey: ["series_movie"],
-    queryFn: () => useFetch("/movies/new-updated/series"),
+    queryFn: () => UseFetch("/movies/new-updated/series"),
   });
 
   const renderTrendingMovie = useMemo(() => {

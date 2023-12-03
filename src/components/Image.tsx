@@ -6,16 +6,17 @@ interface ImageWithFallbackProps extends ImageProps {
 }
 
 const ImageWithFallback = (props: ImageWithFallbackProps) => {
-  const { src, fallbackSrc = require('@/assets/images/no_poster_available.jpg'), ...rest } = props;
+  const { src, fallbackSrc = require('@/assets/images/no_poster_available.jpg'), alt, ...rest } = props;
   const [imgSrc, setImgSrc] = useState(src);
 
   return (
     <Image
-      {...rest}
-      src={imgSrc}
-      onError={() => {
-        setImgSrc(fallbackSrc);
-      }}
+    src={imgSrc}
+    alt={alt}
+    onError={() => {
+      setImgSrc(fallbackSrc);
+    }}
+    {...rest}
     />
   );
 };

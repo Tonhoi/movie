@@ -13,9 +13,9 @@ const Nav = ({ containerClassName }: NavProps) => {
         {NAV_ITEMS.map((el, idx: number) => (
           <RenderNavItem
             key={idx}
+            child={el.children}
             title={el.title}
             href={el.href}
-            children={el.children}
           />
         ))}
       </ul>
@@ -23,11 +23,11 @@ const Nav = ({ containerClassName }: NavProps) => {
   );
 };
 
-const RenderNavItem = ({ title, children, href }: NavItemProps) => {
+const RenderNavItem = ({ title, child, href }: NavItemProps) => {
   const { asPath } = useRouter();
 
   const handleNavigation = (e: MouseEvent<HTMLAnchorElement>) => {
-    if (children.length > 0) {
+    if (child.length > 0) {
       e.preventDefault();
     }
   };
@@ -42,9 +42,9 @@ const RenderNavItem = ({ title, children, href }: NavItemProps) => {
         {title}
       </Link>
 
-      {children.length > 0 && (
+      {child.length > 0 && (
         <ul className="dropdown-content rounded-md py-4 bg-[#2f2e35] min-w-0 lg:min-w-[400px] grid grid-cols-2 lg:grid-cols-3 translate-x-0 lg:-translate-x-[70%] w-[calc(100%-32px)] lg:w-full">
-          {children.map((el, idx: number) => (
+          {child.map((el, idx: number) => (
             <li
               key={idx}
               className="hover:text-primary transtion-base text-text_color"
