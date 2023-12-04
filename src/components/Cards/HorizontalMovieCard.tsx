@@ -1,18 +1,18 @@
 import { ImageWithFallback } from "@/components";
 import { Category, MovieProps } from "@/types/movie";
+import { useRouter } from "next/router";
 
-type PickMoveProps =
-  | "name"
-  | "year"
-  | "poster_url"
-  | "category"
-  | "sub_docquyen";
+type PickMoveProps = "name" | "year" | "poster_url" | "category" | "sub_docquyen" | "slug";
 
 const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
-  const { name, year, poster_url, category, sub_docquyen } = props;
+  const { name, year, poster_url, category, sub_docquyen, slug } = props;
+  const { push } = useRouter()
 
+  const handleNavigation = () => {
+    push(`/phim/${slug}`, undefined, { shallow: true })
+  }
   return (
-    <article className="group flex rounded-md overflow-hidden transition-base cursor-pointer text-white hover:bg-black bg-[#111111]">
+    <article className="group flex rounded-md overflow-hidden transition-base cursor-pointer text-white hover:bg-black bg-[#111111]" onClick={handleNavigation}>
       <ImageWithFallback
         alt={name}
         src={poster_url}

@@ -18,15 +18,15 @@ const BlogCard = ({ poster_url, modified_time }: BlogCardProps) => {
 
       <div className="bg-[#111111] py-7 px-5 rounded-b-2xl overflow-hidden">
         <div className="flex-between text-[#b4b4b4] mb-1">
-          <p>{modified_time}</p>
-          <p>Anime</p>
+          <p className="text-xs lg:text-base">{modified_time}</p>
+          <p className="text-xs lg:text-base">Anime</p>
         </div>
 
-        <h2 className="line-clamp-2 text-base lg:text-2xl font-extrabold text-white mb-1.5 lg:mb-4 group-hover:text-primary">
+        <h2 className="line-clamp-2 text-sm lg:text-2xl font-extrabold text-white mb-1.5 lg:mb-4 group-hover:text-primary">
           Tokyo Ghoul 2nd Season Review
         </h2>
 
-        <p className="line-clamp-3 text-[#b4b4b4] text-sm lg:text-base">
+        <p className="line-clamp-3 text-[#b4b4b4] text-xs lg:text-base">
           List những bộ phim ngôn tình Trung Quốc lãng mạn sẽ khiến tâm hồn bạn
           trở nên ngọt ngào. Tham khảo ngay top phim tình cảm Trung Quốc đã được
           phimmoi liệt kê bên dưới nhé! Thầm

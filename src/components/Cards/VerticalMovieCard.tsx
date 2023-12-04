@@ -4,40 +4,40 @@ import PlayCircleIcon from "@/assets/Icons/PlayCircleIcon";
 import { ImageWithFallback } from "@/components";
 import { MovieProps } from "@/types/movie";
 
-type PickMoveProps = "name" | "year" | "poster_url" | "time";
+type PickMoveProps = "name" | "year" | "poster_url" | "time" | 'slug';
 
 const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
-  const { name, year, poster_url, time } = props;
+  const { name, year, poster_url, time, slug } = props;
 
   return (
-    <article className="flex flex-col h-full">
-      <div className="relative cursor-pointer group flex-1">
+    <article className="flex flex-col h-full text-white">
+      <div className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden">
         <ImageWithFallback
           alt={name}
           src={poster_url}
-          className="rounded-lg object-cover h-full w-full"
+          className="object-cover h-full w-full"
           width={300}
           height={380}
         />
 
-        <span className="uppercase absolute bottom-1 left-1 py-[5px] px-[10px] bg-secondary rounded-sm text-xs font-medium text-white">
+        <span className="uppercase absolute bottom-1 left-1 py-[5px] px-[10px] bg-secondary rounded-sm text-[9px] lg:text-xs font-bold lg:font-medium">
           {time}
         </span>
 
         <Link
-          href={"/"}
-          className="absolute inset-0 w-full bg-[#000000b3] opacity-0 group-hover:opacity-100 transition-base flex-center text-white text-base lg:text-lg xl:text-2xl font-extrabold rounded-lg"
+          href={`/phim/${slug}`}
+          className="absolute inset-0 bg-[#000000b3] animate-fadeIn-have-group flex-center text-sm lg:text-lg xl:text-2xl font-extrabold"
         >
-          <PlayCircleIcon className="text-white w-10 h-10 mr-1" />
+          <PlayCircleIcon className="w-7 h-7 lg:w-10 lg:h-10 mr-1" />
           XEM NGAY
         </Link>
       </div>
 
-      <h3 className="text-white text:base xl:text-xl font-medium cursor-pointer hover:text-primary mt-4 line-clamp-1">
+      <h3 className="text-sm lg:text:base xl:text-xl font-medium cursor-pointer hover:text-primary mt-4 line-clamp-1">
         {name}
       </h3>
 
-      <span className="text-[#b4b4b4] text-sm xl:text-base">{year}</span>
+      <span className="text-[#b4b4b4] text-xs lg:text-sm xl:text-base">{year}</span>
     </article>
   );
 };

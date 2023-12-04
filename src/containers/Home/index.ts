@@ -1,3 +1,9 @@
 import Home from "@/containers/Home/Home";
 
 export default Home;
+
+// export name
+export { default as HeadLine } from "./components/HeadLine";
+export { default as ListMovie } from "./components/ListMovie";
+export { default as SwiperConfig } from "./components/SwiperConfig";
+export { default as SwiperItem } from "./components/SwiperItem";

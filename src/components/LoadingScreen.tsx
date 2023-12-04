@@ -1,14 +1,14 @@
 import Image from "next/image";
-import { useLayoutEffect, useState, memo } from "react";
+import { useState, memo, useEffect } from "react";
 import { useIsFetching, useIsMutating } from "@tanstack/react-query";
 import { twMerge } from "tailwind-merge";
 
 const LoadingScreen = () => {
-  const isFetching = useIsFetching({ queryKey: ["trending_movie"] });
+  const isFetching = useIsFetching();
   const isMutating = useIsMutating();
   const [fadeOut, setFadeOut] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const clear = setTimeout(() => {
       setFadeOut(true);
     }, 1000);

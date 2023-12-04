@@ -30,47 +30,47 @@ const SwiperCardItem = ({
 
       <div className="flex wide px-0">
         <div className="text-white px-8 basis-full sm:basis-[80%] lg:basis-[45%]">
-          <h2 className="text-4xl mb-5 font-extrabold !leading-[1.25] lg:mb-0 lg:text-6xl xl:text-7xl uppercase line-clamp-2">
+          <h2 className="text-3xl mb-5 font-extrabold !leading-[1.25] lg:mb-0 lg:text-6xl xl:text-7xl uppercase line-clamp-2">
             {name}
           </h2>
 
-          <span className="text-2xl lg:text-4xl line-clamp-1">
+          <span className="text-xl lg:text-4xl line-clamp-1">
             {origin_name}
           </span>
 
           <div className="flex items-center gap-3 my-5">
-            <span className="px-3 bg-primary rounded-md border-2 border-solid border-primary" />
-            <span className="px-3 rounded-md border-2 border-primary" />
+            <span className="px-3 text-xs lg:text-base bg-primary rounded-md border-2 border-solid border-primary" />
+            <span className="px-3 text-xs lg:text-base rounded-md border-2 border-primary" />
           </div>
 
           <div className="flex items-center gap-3 my-5 flex-wrap">
-            <span className="px-3 bg-priborder-primary rounded-md border-2 border-solid border-primary">
+            <span className="px-3 py-[2px] lg:py-0 text-xs lg:text-base bg-primary rounded-md border-2 border-solid border-primary">
               {lang}
             </span>
 
-            <span className="px-3 rounded-md border-2 border-primary">
+            <span className="px-3 py-[2px] lg:py-0 text-xs lg:text-base rounded-md border-2 border-primary">
               {quality}
             </span>
 
-            <span className="px-3 rounded-md border-2 border-primary">
+            <span className="px-3 py-[2px] lg:py-0 text-xs lg:text-base rounded-md border-2 border-primary">
               {status}
             </span>
 
-            <span className="px-3 rounded-md border-2 border-primary">
+            <span className="px-3 py-[2px] lg:py-0 text-xs lg:text-base rounded-md border-2 border-primary">
               {type === "series" ? "Phim Bộ" : "Phim Lẻ"}
             </span>
 
             <div className={`indicator ${!sub_docquyen && "hidden"}`}>
-              <span className="indicator-item badge badge-secondary bg-[#e20e01] border-none font-bold text-xs lg:text-sm">
+              <span className="indicator-item badge badge-secondary bg-[#e20e01] border-none font-bold text-[10px] lg:text-sm">
                 HOT
               </span>
-              <span className="px-3 rounded-md border-2 border-primary">
+              <span className="px-3 py-[2px] lg:py-0 text-xs lg:text-base rounded-md border-2 border-primary">
                 Sub Độc Quyền
               </span>
             </div>
           </div>
 
-          <p className="text-xl mb-5 lg:text-3xl">{time}</p>
+          <p className="text-base mb-5 lg:text-3xl">{time}</p>
 
           {description && (
             <div className="mb-3 text-[#d4d4d4] line-clamp-4">
@@ -80,7 +80,7 @@ const SwiperCardItem = ({
 
           <Link
             href={slug}
-            className="block mt-5 text-center hover:bg-[rgba(58,191,238,0.8)] rounded-xl border-2 border-solid border-primary py-1.5 text-2xl max-w-[320px] transition-base w-full lg:py-3 lg:text-4xl"
+            className="block mt-5 text-center hover:bg-[rgba(58,191,238,0.8)] rounded-xl border-2 border-solid border-primary py-1.5 text-xl font-medium max-w-[320px] transition-base w-full lg:py-3 lg:text-4xl"
           >
             XEM NGAY
           </Link>

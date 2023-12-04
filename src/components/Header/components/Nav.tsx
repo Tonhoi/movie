@@ -53,7 +53,7 @@ const RenderNavItem = ({ title, child, href }: NavItemProps) => {
                 href={el.href}
                 className={twMerge(
                   "focus:!text-primary",
-                  el.href === asPath && "text-primary"
+                  asPath.includes(el.href) && "text-primary"
                 )}
               >
                 {el.title}

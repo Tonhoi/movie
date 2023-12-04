@@ -12,14 +12,13 @@ interface FilterProps {
 }
 
 const Filter = ({ toggleOff, toggleOn, on }: FilterProps) => {
-  const { push, query, replace } = useRouter();
-
+  const { push, query, replace, pathname, asPath, ...rest } = useRouter();
+  
   const handleFilterMovieWithYear = useCallback(
     (year: string) => {
-      if(isNaN(+year)) replace(`/the-loai/${query.type}`, undefined, { shallow: true });
-
-      // else push({pathname: `/the-loai/${query.type}`, query: { year }});
-      else push({ pathname: `/the-loai/${query.type}`, query: { year } }, undefined, { shallow: true });
+      if(isNaN(+year)) replace({pathname: asPath.split('?')[0]}, undefined, { shallow: true });
+      
+      else push({ pathname: asPath.split('?')[0], query: { year } }, undefined, { shallow: true });
     },
     [query]
   );
@@ -27,13 +26,13 @@ const Filter = ({ toggleOff, toggleOn, on }: FilterProps) => {
   return (
     <Fragment>
       <div className="flex-between flex-wrap gap-4">
-        <h2 className="text-3xl lg:text-4xl font-extrabold">LỌC PHIM THEO NĂM</h2>
+        <h2 className="text-base lg:text-4xl font-extrabold">LỌC PHIM THEO NĂM</h2>
 
-        <div className="flex items-center gap-4 ml-auto">
+        <div className="flex items-center gap-2.5 lg:gap-4 ml-auto">
           <GridIcon
             onClick={toggleOff}
             className={twMerge(
-              "w-6 h-6 cursor-pointer hover:opacity-80 transition-base",
+              "w-4 h-4 lg:w-6 lg:h-6 cursor-pointer hover:opacity-80 transition-base",
               !on && "text-primary"
             )}
           />
@@ -41,7 +40,7 @@ const Filter = ({ toggleOff, toggleOn, on }: FilterProps) => {
           <ListIcon
             onClick={toggleOn}
             className={twMerge(
-              "w-8 h-8 cursor-pointer hover:opacity-80 transition-base",
+              "w-6 h-6 lg:w-8 lg:h-8 cursor-pointer hover:opacity-80 transition-base",
               on && "text-primary"
             )}
           />
@@ -55,7 +54,7 @@ const Filter = ({ toggleOff, toggleOn, on }: FilterProps) => {
               key={idx}
               onClick={() => handleFilterMovieWithYear(year)}
               className={twMerge(
-                "py-2 px-3 rounded-md bg-secondary text-center text-sm lg:text-base font-medium cursor-pointer hover:bg-primary transition-base",
+                "py-2 px-3 rounded-md bg-secondary text-center text-[10px] lg:text-base font-medium cursor-pointer hover:bg-primary transition-base",
                 query.year === year
                   ? "!bg-primary animate-pulse"
                   : !query.year

@@ -49,6 +49,14 @@
   .wide {
     @apply w-full block max-w-[1300px] mx-auto px-8;
   }
+
+  .animate-fadeIn-have-group {
+    @apply opacity-0 group-hover:opacity-100 transition-base;
+  }
+
+  .animate-fadeIn-without-group {
+    @apply opacity-0 hover:opacity-100 transition-base;
+  }
 }
 
 @layer utilities {

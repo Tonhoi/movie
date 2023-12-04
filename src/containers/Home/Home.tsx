@@ -1,43 +1,28 @@
 import { Fragment, useMemo } from "react";
+import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useQuery, UseQueryResult } from "@tanstack/react-query";
 
-import { settings } from "./components/SwiperConfig";
+import { SwiperItem, ListMovie, HeadLine, SwiperConfig } from "@/containers/Home";
+import { BlogCard } from "@/components/Cards";
 import { MovieProps } from "@/types/movie";
-import SwiperItem from "@/containers/Home/components/SwiperItem";
-import {useFetch as UseFetch} from "@/hooks";
-import BlogCard from "@/components/Cards/BlogCard";
-import HorizontalMovieCard from "@/components/Cards/HorizontalMovieCard";
-import ListMovie from "./components/ListMovie";
-import HeadLine from "./components/HeadLine";
+import { useFetch as UseFetch } from "@/hooks";
+import { apis, queryKeys } from "@/configs";
 
 const Home = () => {
-  const { data: tredingMovies }: UseQueryResult = useQuery({
-    queryKey: ["trending_movie"],
-    queryFn: () => UseFetch("movies/trending"),
-  });
-
-  const { data: singleMovies } = useQuery({
-    queryKey: ["single_movie"],
-    queryFn: () => UseFetch("/movies/new-updated/single"),
-  });
-
-  const { data: airTodayMoves } = useQuery({
-    queryKey: ["air_today_movie"],
-    queryFn: () => UseFetch("/movies/to-watch-today"),
-  });
-
-  const { data: seriesMovies } = useQuery({
-    queryKey: ["series_movie"],
-    queryFn: () => UseFetch("/movies/new-updated/series"),
-  });
+  const { data: tredingMovies } = useQuery({ queryKey: [queryKeys.trending_movie], queryFn: () => UseFetch(apis["trending_movie"]) });
+  
+  const { data: singleMovies } = useQuery({ queryKey: [queryKeys.single_movie], queryFn: () => UseFetch(apis["new-updated/single"], { params: { limit: 10 } }) });
+  
+  const { data: airTodayMoves } = useQuery({ queryKey: [queryKeys.air_today_movie], queryFn: () => UseFetch(apis["air_today"], { params: { limit: 10 } }) });
+  
+  const { data: seriesMovies } = useQuery({ queryKey: [queryKeys.series_movie], queryFn: () => UseFetch(apis["new-updated/series"], { params: { limit: 10 } }) });
 
   const renderTrendingMovie = useMemo(() => {
     if (tredingMovies == undefined) return null;
 
-    return (tredingMovies as MovieProps[]).map((el: MovieProps) => (
+    return tredingMovies.data.map((el: MovieProps) => (
       <SwiperItem
         key={el.id}
         name={el.name}
@@ -59,7 +44,7 @@ const Home = () => {
   return (
     <Fragment>
       {/* swiper */}
-      <Slider {...settings} className="group">
+      <Slider {...SwiperConfig} className="group">
         {renderTrendingMovie}
       </Slider>
 
@@ -70,20 +55,7 @@ const Home = () => {
 
       <ListMovie data={airTodayMoves?.data} title={"Hôm nay xem gì"} />
 
-      <div className="wide w-full grid grid-cols-1 mt-10 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-5">
-        {(tredingMovies as MovieProps[])?.map((el) => (
-          <HorizontalMovieCard
-            key={el.id}
-            name={el.name}
-            year={el.year}
-            poster_url={el.poster_url}
-            category={el.category}
-            sub_docquyen={el.sub_docquyen}
-          />
-        ))}
-      </div>
-
-      <div className="wide mt-10">
+      {/* <div className="wide mt-10">
         <HeadLine title="Tin tức" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -95,7 +67,7 @@ const Home = () => {
             />
           ))}
         </div>
-      </div>
+      </div> */}
     </Fragment>
   );
 };
