@@ -9,7 +9,7 @@ interface ListMovieProps {
 
 const ListMovie = ({ data, title }: ListMovieProps) => {
   return (
-    <div className="wide mt-10">
+    <div className="wide mt-20">
       <HeadLine title={title} isSeparate={false} />
 
       <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto no-scrollbar lg:grid lg:grid-cols-5">

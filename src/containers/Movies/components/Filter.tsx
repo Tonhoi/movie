@@ -54,7 +54,7 @@ const Filter = ({ toggleOff, toggleOn, on }: FilterProps) => {
               key={idx}
               onClick={() => handleFilterMovieWithYear(year)}
               className={twMerge(
-                "py-2 px-3 rounded-md bg-secondary text-center text-[10px] lg:text-base font-medium cursor-pointer hover:bg-primary transition-base",
+                "py-2 px-3 rounded-md bg-secondary text-center text-[10px] lg:text-sm cursor-pointer hover:bg-primary transition-base",
                 query.year === year
                   ? "!bg-primary animate-pulse"
                   : !query.year

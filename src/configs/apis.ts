@@ -1,7 +1,7 @@
 const apis = {
-  "trending_movie": "movies/xu-huong",
-  "new-updated/single": "/movies/moi-cap-nhat/phim-le",
-  "air_today": "/movies/hom-nay-xem-gi",
-  "new-updated/series": "/movies/moi-cap-nhat/phim-bo",
+  "trending_movie": "xu-huong",
+  "new-updated/single": "moi-cap-nhat/phim-le",
+  "air_today": "hom-nay-xem-gi",
+  "new-updated/series": "moi-cap-nhat/phim-bo",
 };
 export default apis;

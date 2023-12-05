@@ -32,7 +32,7 @@ const Heading = () => {
     return null;
   };
 
-  const result = findHrefInNavItems(NAV_ITEMS, query.type);
+  const result = findHrefInNavItems(NAV_ITEMS, query.type ?? query.category ?? query.country);
 
   return (
     <h1

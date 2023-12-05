@@ -1,21 +1,22 @@
-import { useState } from "react";
-import Image, { ImageProps } from "next/image";
+import Image, { ImageProps, ImageLoaderProps } from "next/image";
+import imageError from "@/assets/images/no_poster_available.jpg";
+import { twMerge } from "tailwind-merge";
 
 interface ImageWithFallbackProps extends ImageProps {
-  fallbackSrc?: string;
+  fallbackSrc?: ImageLoaderProps;
 }
 
 const ImageWithFallback = (props: ImageWithFallbackProps) => {
-  const { src, fallbackSrc = require('@/assets/images/no_poster_available.jpg'), alt, ...rest } = props;
-  const [imgSrc, setImgSrc] = useState(src);
+  const { fallbackSrc, alt, className, ...rest } = props;
 
   return (
     <Image
-      src={imgSrc}
       alt={alt}
-      onError={() => {
-        setImgSrc(fallbackSrc);
+      onError={({ currentTarget }) => {
+        currentTarget.onerror = null;
+        currentTarget.srcset = fallbackSrc?.src ?? imageError.src;
       }}
+      className={twMerge("relative z-[2]", className)}
       {...rest}
     />
   );

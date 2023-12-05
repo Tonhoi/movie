@@ -9,19 +9,16 @@ import { MovieProps } from "@/types/movie";
 
 const Movies = () => {
   const { toggleOff, toggleOn, on } = useToggle();
-  const { query, ...rest } = useRouter()
+  const { query, asPath, ...rest } = useRouter()
 
   const { data: tredingMovies } = useQuery({
     queryKey: ["movie_filter", query.year, query.country, query.category, query.type],
     queryFn: () => 
-      UseFetch(`movies/${query?.type}`, {
+      UseFetch(asPath, {
         params: { 
           year: query?.year,
-          country: query?.country,
-          category: query?.category,
         }
       }),
-    enabled: query.type !== undefined
   });
 
   return (

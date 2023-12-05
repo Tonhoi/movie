@@ -79,7 +79,7 @@ const SwiperCardItem = ({
           )}
 
           <Link
-            href={slug}
+            href={`/phim/${slug}`}
             className="block mt-5 text-center hover:bg-[rgba(58,191,238,0.8)] rounded-xl border-2 border-solid border-primary py-1.5 text-xl font-medium max-w-[320px] transition-base w-full lg:py-3 lg:text-4xl"
           >
             XEM NGAY

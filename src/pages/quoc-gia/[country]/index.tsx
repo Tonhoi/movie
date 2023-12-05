@@ -1,33 +1,9 @@
-import { COUNTRIES_ITEMS } from "@/constants";
-import Movies from "@/containers/Movies";
-import { NavItemProps } from "@/types/header";
-
-interface MovieContryProps {
-  params: { type: string };
-}
+import Movies from "@/containers/Movies"
 
 const index = () => {
-  return <Movies />;
-};
+  return (
+    <Movies />
+  )
+}
 
-// export async function getStaticPaths() {
-//   const types = COUNTRIES_ITEMS.map((el: any) => {
-//     return {
-//       params: { type: el.href.slice(10) },
-//     };
-//   });
-
-//   return {
-//     paths: types,
-//     fallback: false,
-//   };
-// }
-
-// export async function getStaticProps({ params }: MovieContryProps) {
-//   const { type } = params;
-//   return {
-//     props: {},
-//   };
-// }
-
-export default index;
+export default index
