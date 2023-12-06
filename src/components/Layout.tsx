@@ -3,6 +3,7 @@ import { Fragment, ReactNode, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 import LoadingScreen from "@/components/LoadingScreen";
+import { useLocalStorage } from "react-use";
 
 const DynamicHeader = dynamic(() => import("@/components/Header"), {
   ssr: false,
@@ -13,6 +14,7 @@ const DynamicFooter = dynamic(() => import("@/components/Footer"), {
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
+
 
   useEffect(() => {
     window.scrollTo({

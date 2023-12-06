@@ -99,3 +99,13 @@ export interface MovieDetail {
     server_data: Episode[];
   }[];
 }
+
+export interface BlogProps {
+  id: string;
+  title: string;
+  poster_url: string;
+  content: string;
+  movie_type: "series" | "single";
+  date: string;
+  slug: string;
+}

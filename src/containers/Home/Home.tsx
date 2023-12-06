@@ -11,18 +11,20 @@ import {
   SwiperConfig,
 } from "@/containers/Home";
 import { BlogCard } from "@/components/Cards";
-import { MovieProps } from "@/types/movie";
+import { BlogProps, MovieProps } from "@/types/movie";
+import Blogs from "./components/Blogs";
 
 const Home = (props: any) => {
-  const tredingMovies = get(props.initData, "0");
-  const singleMovies = get(props.initData, "1");
-  const airTodayMoves = get(props.initData, "2");
-  const seriesMovies = get(props.initData, "3");
+  const tredingMovies = get(props.initData, "[0].data");
+  const singleMovies = get(props.initData, "[1].data");
+  const airTodayMoves = get(props.initData, "[2].data");
+  const seriesMovies = get(props.initData, "[3].data");
+  const blogs = get(props.initData, "[4].data");
 
   const renderTrendingMovie = useMemo(() => {
     if (tredingMovies == undefined) return null;
 
-    return tredingMovies.data.map((el: MovieProps) => (
+    return tredingMovies.map((el: MovieProps) => (
       <SwiperItem
         key={el.id}
         name={el.name}
@@ -49,25 +51,13 @@ const Home = (props: any) => {
       </Slider>
 
       {/* Danh sách phim */}
-      <ListMovie data={seriesMovies?.data} title={"Phim bộ mới cập nhật"} />
+      <ListMovie data={seriesMovies} title={"Phim bộ mới cập nhật"} />
 
-      <ListMovie data={singleMovies?.data} title={"Phim lẻ mới cập nhật"} />
+      <ListMovie data={singleMovies} title={"Phim lẻ mới cập nhật"} />
 
-      <ListMovie data={airTodayMoves?.data} title={"Hôm nay xem gì"} />
+      <ListMovie data={airTodayMoves} title={"Hôm nay xem gì"} />
 
-      <div className="wide mt-20">
-        <HeadLine title="Tin tức" />
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tredingMovies?.data.map((el: any) => (
-            <BlogCard
-              key={el.id}
-              poster_url={el.poster_url}
-              modified_time={el.modified_time}
-            />
-          ))}
-        </div>
-      </div>
+      {/* <Blogs data={blogs} /> */}
     </Fragment>
   );
 };
