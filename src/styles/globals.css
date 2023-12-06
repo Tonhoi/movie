@@ -74,11 +74,18 @@
   }
 }
 
-/* config component dropdown of daisyui library on table && mobile */
+/* config component dropdown on header of daisyui library */
 @media (max-width: 1024px) {
   .dropdown.dropdown-open .dropdown-content,
   .dropdown:not(.dropdown-hover):focus .dropdown-content,
   .dropdown:focus-within .dropdown-content {
     @apply relative;
+  }
+}
+
+@media (min-width: 1024px) {
+  .dropdown:focus .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    @apply opacity-0 invisible
   }
 }

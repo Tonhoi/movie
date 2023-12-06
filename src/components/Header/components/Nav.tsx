@@ -10,14 +10,7 @@ const Nav = ({ containerClassName }: NavProps) => {
   return (
     <nav className={containerClassName}>
       <ul className="menu p-0 font-medium text-xs lg:text-sm lg:text-text_color lg:menu-horizontal">
-        {NAV_ITEMS.map((el, idx: number) => (
-          <RenderNavItem
-            key={idx}
-            child={el.children}
-            title={el.title}
-            href={el.href}
-          />
-        ))}
+        {NAV_ITEMS.map((el, idx: number) => <RenderNavItem key={idx} child={el.children} title={el.title} href={el.href} /> )}
       </ul>
     </nav>
   );
@@ -33,22 +26,15 @@ const RenderNavItem = ({ title, child, href }: NavItemProps) => {
   };
 
   return (
-    <li className="dropdown hover:text-primary transtion-base group w-full lg:w-auto lg:dropdown-hover">
-      <Link
-        href={href}
-        onClick={handleNavigation}
-        className="focus:!text-primary py-4 lg:py-2"
-      >
+    <li className="dropdown dropdown-end hover:text-primary transtion-base group w-full lg:w-auto lg:dropdown-hover">
+      <Link href={href} className="focus:!text-primary py-4 lg:py-2" onClick={handleNavigation} >
         {title}
       </Link>
 
       {child.length > 0 && (
-        <ul className="dropdown-content rounded-md py-4 bg-[#2f2e35] min-w-0 lg:min-w-[400px] grid grid-cols-2 lg:grid-cols-3 translate-x-0 lg:-translate-x-[70%] w-[calc(100%-32px)] lg:w-full">
+        <ul className="dropdown-content rounded-md py-4 bg-[#2f2e35] min-w-0 lg:min-w-[400px] grid grid-cols-2 lg:grid-cols-3 w-[calc(100%-32px)] lg:w-full">
           {child.map((el, idx: number) => (
-            <li
-              key={idx}
-              className="hover:text-primary transtion-base text-text_color"
-            >
+            <li key={idx} className="hover:text-primary transtion-base text-text_color">
               <Link
                 href={el.href}
                 className={twMerge(

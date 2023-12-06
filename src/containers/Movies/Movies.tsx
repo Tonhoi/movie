@@ -6,19 +6,15 @@ import { useToggle, useFetch as UseFetch } from "@/hooks";
 import { VerticalMovieCard, HorizontalMovieCard } from "@/components/Cards";
 import { Heading, Filter } from '@/containers/Movies'
 import { MovieProps } from "@/types/movie";
+import { queryKeys } from "@/configs";
 
 const Movies = () => {
   const { toggleOff, toggleOn, on } = useToggle();
-  const { query, asPath, ...rest } = useRouter()
+  const { query, asPath } = useRouter()
 
   const { data: tredingMovies } = useQuery({
-    queryKey: ["movie_filter", query.year, query.country, query.category, query.type],
-    queryFn: () => 
-      UseFetch(asPath, {
-        params: { 
-          year: query?.year,
-        }
-      }),
+    queryKey: [queryKeys["movies"], query.year, query.country, query.category, query.type],
+    queryFn: () => UseFetch(asPath, { params: { year: query?.year }}),
   });
 
   return (

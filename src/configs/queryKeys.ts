@@ -3,6 +3,7 @@ const queryKeys = {
   single_movie: "single_movie",
   air_today_movie: "air_today_movie",
   series_movie: "series_movie",
+  movies: "movies",
 };
 
 export default queryKeys;

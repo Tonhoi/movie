@@ -12,7 +12,7 @@ interface FilterProps {
 }
 
 const Filter = ({ toggleOff, toggleOn, on }: FilterProps) => {
-  const { push, query, replace, pathname, asPath, ...rest } = useRouter();
+  const { push, query, replace, asPath } = useRouter();
   
   const handleFilterMovieWithYear = useCallback(
     (year: string) => {
