@@ -71,7 +71,7 @@ const WatchMovie = ({ episodes, name, view }: any) => {
 
     if (server !== "" && server !== undefined) return server + episode.server_data[value - 1]?.link_m3u8;
     else return episode.server_data[value - 1]?.link_embed;
-  }, [server, value]);
+  }, [server, value, episodes]);
 
   const renderServer = useMemo(() => {
     return SERVERS.map((el, idx: number) => (
