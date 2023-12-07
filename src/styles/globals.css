@@ -58,8 +58,8 @@
     @apply opacity-0 hover:opacity-100 transition-base;
   }
 
-  .blog-content p {
-    @apply !leading-[23px] text-[#ffffff99] text-xs md:text-sm
+  .news-content p {
+    @apply !leading-[23px] text-[#ffffff99] text-xs md:text-sm;
   }
 }
 
@@ -78,6 +78,32 @@
   }
 }
 
+/* style for pagination */
+.rc-pagination-item {
+  @apply py-2 px-4 rounded-md border-[1px] border-secondary cursor-pointer hover:opacity-80 transition-base;
+}
+
+.rc-pagination-item a {
+  @apply max-lg:text-xs
+}
+
+.rc-pagination-item-active {
+  @apply bg-secondary cursor-default hover:opacity-100
+}
+
+.rc-pagination-prev,.rc-pagination-next {
+  @apply text-white p-2 rounded-md border-[1px] border-secondary cursor-pointer hover:opacity-80 transition-base
+}
+
+
+.rc-pagination-prev {
+  @apply rotate-180
+}
+
+.rc-pagination-disabled {
+  @apply opacity-25 hover:opacity-25 cursor-default
+}
+
 /* config component dropdown on header of daisyui library */
 @media (max-width: 1024px) {
   .dropdown.dropdown-open .dropdown-content,
@@ -90,6 +116,6 @@
 @media (min-width: 1024px) {
   .dropdown:focus .dropdown-content,
   .dropdown:focus-within .dropdown-content {
-    @apply opacity-0 invisible
+    @apply opacity-0 invisible;
   }
 }

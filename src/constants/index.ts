@@ -3,234 +3,234 @@ import routes from "@/configs/routes";
 export const CATEGORIES_ITEMS = [
   {
     title: "Hành Động",
-    href: routes.category.replace(":name", "hanh-dong"),
+    href: routes.category.replace("[category]", "hanh-dong"),
   },
   {
     title: "Tình Cảm",
-    href: routes.category.replace(":name", "tinh-cam"),
+    href: routes.category.replace("[category]", "tinh-cam"),
   },
   {
     title: "Hài Hước",
-    href: routes.category.replace(":name", "hai-huoc"),
+    href: routes.category.replace("[category]", "hai-huoc"),
   },
   {
     title: "Cổ Trang",
-    href: routes.category.replace(":name", "co-trang"),
+    href: routes.category.replace("[category]", "co-trang"),
   },
   {
     title: "Tâm lý",
-    href: routes.category.replace(":name", "tam-ly"),
+    href: routes.category.replace("[category]", "tam-ly"),
   },
   {
     title: "Hình Sự",
-    href: routes.category.replace(":name", "hinh-su"),
+    href: routes.category.replace("[category]", "hinh-su"),
   },
   {
     title: "Chiến Trang",
-    href: routes.category.replace(":name", "chien-tranh"),
+    href: routes.category.replace("[category]", "chien-tranh"),
   },
   {
     title: "Thể Thao",
-    href: routes.category.replace(":name", "the-thao"),
+    href: routes.category.replace("[category]", "the-thao"),
   },
   {
     title: "Võ Thuật",
-    href: routes.category.replace(":name", "vo-thuat"),
+    href: routes.category.replace("[category]", "vo-thuat"),
   },
   {
     title: "Viễn Tưởng",
-    href: routes.category.replace(":name", "vien-tuong"),
+    href: routes.category.replace("[category]", "vien-tuong"),
   },
   {
     title: "Phiêu Lưu",
-    href: routes.category.replace(":name", "phieu-luu"),
+    href: routes.category.replace("[category]", "phieu-luu"),
   },
   {
     title: "Khoa Học",
-    href: routes.category.replace(":name", "khoa-hoc"),
+    href: routes.category.replace("[category]", "khoa-hoc"),
   },
   {
     title: "Kinh Dị",
-    href: routes.category.replace(":name", "kinh-di"),
+    href: routes.category.replace("[category]", "kinh-di"),
   },
   {
     title: "Âm Nhạc",
-    href: routes.category.replace(":name", "am-nhac"),
+    href: routes.category.replace("[category]", "am-nhac"),
   },
   {
     title: "Thần Thoại",
-    href: routes.category.replace(":name", "than-thoai"),
+    href: routes.category.replace("[category]", "than-thoai"),
   },
   {
     title: "Tài Liệu",
-    href: routes.category.replace(":name", "tai-lieu"),
+    href: routes.category.replace("[category]", "tai-lieu"),
   },
   {
     title: "Gia Đình",
-    href: routes.category.replace(":name", "gia-dinh"),
+    href: routes.category.replace("[category]", "gia-dinh"),
   },
   {
     title: "Chính Kịch",
-    href: routes.category.replace(":name", "chinh-kich"),
+    href: routes.category.replace("[category]", "chinh-kich"),
   },
   {
     title: "Bí Ẩn",
-    href: routes.category.replace(":name", "bi-an"),
+    href: routes.category.replace("[category]", "bi-an"),
   },
   {
     title: "Học Đường",
-    href: routes.category.replace(":name", "hoc-duong"),
+    href: routes.category.replace("[category]", "hoc-duong"),
   },
   {
     title: "Kinh Điển",
-    href: routes.category.replace(":name", "kinh-dien"),
+    href: routes.category.replace("[category]", "kinh-dien"),
   },
   {
     title: "Phim 18+",
-    href: routes.category.replace(":name", "phim-18"),
+    href: routes.category.replace("[category]", "phim-18"),
   },
 ];
 
 export const COUNTRIES_ITEMS = [
   {
     title: "Trung Quốc",
-    href: routes.country.replace(":name", "trung-quoc"),
+    href: routes.country.replace("[country]", "trung-quoc"),
   },
   {
     title: "Hàn Quốc",
-    href: routes.country.replace(":name", "han-quoc"),
+    href: routes.country.replace("[country]", "han-quoc"),
   },
   {
     title: "Nhật Bản",
-    href: routes.country.replace(":name", "nhat-ban"),
+    href: routes.country.replace("[country]", "nhat-ban"),
   },
   {
     title: "Thái Lan",
-    href: routes.country.replace(":name", "thai-lan"),
+    href: routes.country.replace("[country]", "thai-lan"),
   },
   {
     title: "Âu Mỹ",
-    href: routes.country.replace(":name", "au-my"),
+    href: routes.country.replace("[country]", "au-my"),
   },
   {
     title: "Đài Loan",
-    href: routes.country.replace(":name", "dai-loan"),
+    href: routes.country.replace("[country]", "dai-loan"),
   },
   {
     title: "Hồng Kông",
-    href: routes.country.replace(":name", "hong-kong"),
+    href: routes.country.replace("[country]", "hong-kong"),
   },
   {
     title: "Ấn Độ",
-    href: routes.country.replace(":name", "an-do"),
+    href: routes.country.replace("[country]", "an-do"),
   },
   {
     title: "Anh",
-    href: routes.country.replace(":name", "anh"),
+    href: routes.country.replace("[country]", "anh"),
   },
   {
     title: "Pháp",
-    href: routes.country.replace(":name", "phap"),
+    href: routes.country.replace("[country]", "phap"),
   },
   {
     title: "Canada",
-    href: routes.country.replace(":name", "canada"),
+    href: routes.country.replace("[country]", "canada"),
   },
   {
     title: "Đức",
-    href: routes.country.replace(":name", "duc"),
+    href: routes.country.replace("[country]", "duc"),
   },
   {
     title: "Tây Ban Nha",
-    href: routes.country.replace(":name", "tay-ban-nha"),
+    href: routes.country.replace("[country]", "tay-ban-nha"),
   },
   {
     title: "Thổ Nhĩ Kỳ",
-    href: routes.country.replace(":name", "tho-nhi-ky"),
+    href: routes.country.replace("[country]", "tho-nhi-ky"),
   },
   {
     title: "Hà Lan",
-    href: routes.country.replace(":name", "ha-lan"),
+    href: routes.country.replace("[country]", "ha-lan"),
   },
   {
     title: "Indonesia",
-    href: routes.country.replace(":name", "indonesia"),
+    href: routes.country.replace("[country]", "indonesia"),
   },
   {
     title: "Nga",
-    href: routes.country.replace(":name", "nga"),
+    href: routes.country.replace("[country]", "nga"),
   },
   {
     title: "Mexico",
-    href: routes.country.replace(":name", "mexico"),
+    href: routes.country.replace("[country]", "mexico"),
   },
   {
     title: "Ba Lan",
-    href: routes.country.replace(":name", "ba-lan"),
+    href: routes.country.replace("[country]", "ba-lan"),
   },
   {
     title: "Úc",
-    href: routes.country.replace(":name", "uc"),
+    href: routes.country.replace("[country]", "uc"),
   },
   {
     title: "Thụy Điển",
-    href: routes.country.replace(":name", "thuy-dien"),
+    href: routes.country.replace("[country]", "thuy-dien"),
   },
   {
     title: "Malaysia",
-    href: routes.country.replace(":name", "malaysia"),
+    href: routes.country.replace("[country]", "malaysia"),
   },
   {
     title: "Brazil",
-    href: routes.country.replace(":name", "brazil"),
+    href: routes.country.replace("[country]", "brazil"),
   },
   {
     title: "Philippines",
-    href: routes.country.replace(":name", "philippines"),
+    href: routes.country.replace("[country]", "philippines"),
   },
   {
     title: "Bồ Đào Nha",
-    href: routes.country.replace(":name", "bo-dao-nha"),
+    href: routes.country.replace("[country]", "bo-dao-nha"),
   },
   {
     title: "Ý",
-    href: routes.country.replace(":name", "y"),
+    href: routes.country.replace("[country]", "y"),
   },
   {
     title: "Đan Mạch",
-    href: routes.country.replace(":name", "dan-mach"),
+    href: routes.country.replace("[country]", "dan-mach"),
   },
   {
     title: "UAE",
-    href: routes.country.replace(":name", "uae"),
+    href: routes.country.replace("[country]", "uae"),
   },
   {
     title: "Na Uy",
-    href: routes.country.replace(":name", "na-uy"),
+    href: routes.country.replace("[country]", "na-uy"),
   },
   {
     title: "Thụy Sĩ",
-    href: routes.country.replace(":name", "thuy-si"),
+    href: routes.country.replace("[country]", "thuy-si"),
   },
   {
     title: "Châu Phi",
-    href: routes.country.replace(":name", "chau-phi"),
+    href: routes.country.replace("[country]", "chau-phi"),
   },
   {
     title: "Nam Phi",
-    href: routes.country.replace(":name", "nam-phi"),
+    href: routes.country.replace("[country]", "nam-phi"),
   },
   {
     title: "Ukraina",
-    href: routes.country.replace(":name", "ukraina"),
+    href: routes.country.replace("[country]", "ukraina"),
   },
   {
     title: "Ả Rập Xê Út",
-    href: routes.country.replace(":name", "a-rap-xe-ut"),
+    href: routes.country.replace("[country]", "a-rap-xe-ut"),
   },
   {
     title: "Quốc Gia Khác",
-    href: routes.country.replace(":name", "quoc-gia-khac"),
+    href: routes.country.replace("[country]", "quoc-gia-khac"),
   },
 ];
 

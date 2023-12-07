@@ -1,7 +1,6 @@
 import { apis } from "@/configs";
 import Movie from "@/containers/Movie";
 import { useFetch as UseFetch } from "@/hooks";
-import httpRequest from "@/utils/httpRequest";
 
 const index = (props: any) => {
   return <Movie {...props} />;
@@ -12,30 +11,31 @@ export const getStaticPaths = async () => {
     const paths: any = [];
     const resTrendingMovies: any = await UseFetch(apis["trending_movie"]);
     const resSingleMovies: any = await UseFetch(apis["new-updated/single"], {
-      params: { limit: 10 },
+        params: { limit: 10 },
     });
     const resAirTodayMovies: any = await UseFetch(apis["air_today"], {
-      params: { limit: 10 },
+        params: { limit: 10 },
     });
     const resSeriesMovies: any = await UseFetch(apis["new-updated/series"], {
-      params: { limit: 10 },
+        params: { limit: 10 },
+    });
+    
+    resTrendingMovies.data.map((movie: any) => {
+        paths.push({ params: { slug: movie.slug } });
     });
 
-    resTrendingMovies.map((movie: any) => {
+    resSingleMovies.data.map((movie: any) => {
       paths.push({ params: { slug: movie.slug } });
     });
 
-    resSingleMovies.map((movie: any) => {
-      paths.push({ params: { slug: movie.slug } });
-    });
-
-    resAirTodayMovies.map((movie: any) => {
+    resAirTodayMovies.data.map((movie: any) => {
       paths.push({ params: { slug: movie.slug } });
     });
 
     resSeriesMovies.map((movie: any) => {
       paths.push({ params: { slug: movie.slug } });
     });
+
 
     return {
       paths,
@@ -51,11 +51,12 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: any) => {
   try {
-    const resMovie: any = await UseFetch(`phim/${params.slug}`);
+    const resMovie = await UseFetch(`phim/${params.slug}`);
+    const resAirTodayMovie = await UseFetch(apis["air_today"], { params: { limit: 10 } })
 
     return {
       props: {
-        initData: resMovie,
+        initData: [resMovie, resAirTodayMovie],
         revalidate: 60,
         fallback: true,
       },

@@ -29,7 +29,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
       </figure>
 
       <div className="py-4 pl-4 pr-10 lg:pr-12 relative w-full">
-        <h3 className="font-medium line-clamp-2 group-hover:text-primary transition-base text-xs lg:text-base">
+        <h3 className="font-medium line-clamp-2 group-hover:text-primary transition-base max-lg:text-xs">
           {name}
         </h3>
 

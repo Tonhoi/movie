@@ -12,8 +12,8 @@ export const getStaticProps = async () => {
     const resSingleMovie = await UseFetch(apis["new-updated/single"], { params: { limit: 10 } })
     const resAirTodayMovie = await UseFetch(apis["air_today"], { params: { limit: 10 } })
     const resSeriesMovie = await UseFetch(apis["new-updated/series"], { params: { limit: 10 } })
-    const resBlogs = await UseFetch(apis["blogs"])
-  
+    const resNews = await UseFetch(apis["news"])
+    
     return {
       props: {
         initData: [
@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
           resSingleMovie,
           resAirTodayMovie,
           resSeriesMovie,
-          resBlogs,
+          resNews,
         ],
         fallback: true,
         revalidate: 60,

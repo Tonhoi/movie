@@ -4,21 +4,27 @@ import { twMerge } from "tailwind-merge";
 
 import { GridIcon, ListIcon } from "@/assets/Icons";
 import { years } from "@/containers/Movies/constants";
+import { mergeParams } from "@/utils/mergeParams";
 
 interface FilterProps {
   toggleOff: () => void;
   toggleOn: () => void;
-  on: boolean;
+  isLayoutColumn: boolean;
 }
 
-const Filter = ({ toggleOff, toggleOn, on }: FilterProps) => {
-  const { push, query, replace, asPath } = useRouter();
-  
+const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
+  const {push,  query, asPath, pathname } = useRouter();
+
   const handleFilterMovieWithYear = useCallback(
     (year: string) => {
-      if(isNaN(+year)) replace({pathname: asPath.split('?')[0]}, undefined, { shallow: true });
-      
-      else push({ pathname: asPath.split('?')[0], query: { year } }, undefined, { shallow: true });
+      if (isNaN(+year))
+        push({ pathname: asPath.split("?")[0] }, undefined, {
+          shallow: true,
+        });
+      else
+        push({ pathname, query: { ...query, year } }, undefined, {
+          shallow: true,
+        });
     },
     [query]
   );
@@ -26,22 +32,22 @@ const Filter = ({ toggleOff, toggleOn, on }: FilterProps) => {
   return (
     <Fragment>
       <div className="flex-between flex-wrap gap-4">
-        <h2 className="text-base lg:text-4xl font-extrabold">LỌC PHIM THEO NĂM</h2>
+        <h2 className="lg:text-4xl font-extrabold">LỌC PHIM THEO NĂM</h2>
 
         <div className="flex items-center gap-2.5 lg:gap-4 ml-auto">
-          <GridIcon
-            onClick={toggleOff}
-            className={twMerge(
-              "w-4 h-4 lg:w-6 lg:h-6 cursor-pointer hover:opacity-80 transition-base",
-              !on && "text-primary"
-            )}
-          />
-
           <ListIcon
             onClick={toggleOn}
             className={twMerge(
               "w-6 h-6 lg:w-8 lg:h-8 cursor-pointer hover:opacity-80 transition-base",
-              on && "text-primary"
+              !isLayoutColumn && "text-primary"
+            )}
+          />
+          
+          <GridIcon
+            onClick={toggleOff}
+            className={twMerge(
+              "w-4 h-4 lg:w-6 lg:h-6 cursor-pointer hover:opacity-80 transition-base",
+              isLayoutColumn && "text-primary"
             )}
           />
         </div>

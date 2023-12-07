@@ -1,9 +1,9 @@
 import { memo } from "react";
 
 import { ImageWithFallback } from "@/components";
-import { Time } from "@/containers/Blog";
+import { Time } from "@/containers/News";
 
-const TrendingBlogCard = () => {
+const TrendingNewsCard = () => {
   return (
     <article className="flex gap-3 lg:gap-5 mb-3 group cursor-pointer">
       <figure className="flex-shrink-0">
@@ -26,4 +26,4 @@ const TrendingBlogCard = () => {
   );
 };
 
-export default memo(TrendingBlogCard);
+export default memo(TrendingNewsCard);

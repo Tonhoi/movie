@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 // });
 
 const index = () => {
-
   return <Movies />;
 };
 

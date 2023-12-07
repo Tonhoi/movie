@@ -41,7 +41,7 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
         {name}
       </h3>
 
-      <span className="text-[#b4b4b4] text-xs lg:text-sm xl:text-base">
+      <span className="text-[#b4b4b4] text-xs max-xl:text-sm">
         {year}
       </span>
     </article>

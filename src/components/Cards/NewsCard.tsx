@@ -1,18 +1,21 @@
 import { ImageWithFallback } from "@/components";
 import { routes } from "@/configs";
-import { BlogProps } from "@/types/movie";
 import { useRouter } from "next/router";
+import {NewsProps} from '@/types/movie'
 
-const BlogCard = (props: Omit<BlogProps, "id">) => {
+const NewsCard = (props: Omit<NewsProps, "id">) => {
   const { poster_url, date, content, title, movie_type, slug } = props;
-  const { push } = useRouter()
+  const { push } = useRouter();
 
   const handleNavigation = () => {
-    push(`${routes.news}${slug}`)
-  }
+    push(`${routes.news}${slug}`, undefined, { shallow: true });
+  };
 
   return (
-    <article className="max-h-[450px] group cursor-pointer" onClick={handleNavigation}>
+    <article
+      className="max-h-[450px] group cursor-pointer"
+      onClick={handleNavigation}
+    >
       <ImageWithFallback
         alt=""
         src={poster_url}
@@ -23,8 +26,8 @@ const BlogCard = (props: Omit<BlogProps, "id">) => {
 
       <div className="bg-[#111111] py-7 px-5 rounded-b-2xl overflow-hidden">
         <div className="flex-between text-[#b4b4b4] mb-1">
-          <p className="text-xs lg:text-base">{date}</p>
-          <p className="text-xs lg:text-base">
+          <p className="max-lg:text-xs">{date}</p>
+          <p className="max-lg:text-xs">
             {movie_type === "series" ? "Phim bộ" : "Phim lẻ"}
           </p>
         </div>
@@ -33,12 +36,10 @@ const BlogCard = (props: Omit<BlogProps, "id">) => {
           {title}
         </h2>
 
-        <p className="line-clamp-3 text-[#b4b4b4] text-xs lg:text-base">
-          {content}
-        </p>
+        <p className="line-clamp-3 text-[#b4b4b4] max-lg:text-xs">{content}</p>
       </div>
     </article>
   );
 };
 
-export default BlogCard;
+export default NewsCard;

@@ -7,4 +7,5 @@ export default Movie;
 export { default as Intro } from "./components/Intro";
 export { default as Comments } from "./components/Comments";
 export { default as WatchMovie } from "./components/WatchMovie";
-export * from './constants'
+export { default as AiringToday } from "./components/AiringToday";
+export * from "./constants";

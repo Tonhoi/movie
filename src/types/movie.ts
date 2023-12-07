@@ -18,26 +18,11 @@ export interface MovieProps {
   year: string;
 }
 
-export interface link {
-  first: string;
-  last: string;
-  next: string;
-  prev: string;
-}
-
-export interface meta {
-  current_page: number;
-  from: number;
-  last_page: number;
-  links: {
-    active: boolean;
-    label: string;
-    url: string;
-  }[];
-  path: string;
-  per_page: number;
-  to: number;
-  total: number;
+export interface PaginationProps {
+  totalItems: string;
+  totalItemsPerPage: string;
+  currentPage: string;
+  totalPages: string;
 }
 
 export interface Category {
@@ -100,7 +85,7 @@ export interface MovieDetail {
   }[];
 }
 
-export interface BlogProps {
+export interface NewsProps {
   id: string;
   title: string;
   poster_url: string;

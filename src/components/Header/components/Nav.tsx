@@ -5,6 +5,7 @@ import { MouseEvent, memo } from "react";
 
 import { NAV_ITEMS } from "@/constants";
 import { NavProps, NavItemProps } from "@/types/header";
+import { routes } from "@/configs";
 
 const Nav = ({ containerClassName }: NavProps) => {
   return (

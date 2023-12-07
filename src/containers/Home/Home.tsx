@@ -4,22 +4,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import {
-  SwiperItem,
-  ListMovie,
-  HeadLine,
-  SwiperConfig,
-} from "@/containers/Home";
-import { BlogCard } from "@/components/Cards";
-import { BlogProps, MovieProps } from "@/types/movie";
-import Blogs from "./components/Blogs";
+import { SwiperItem, ListMovie, SwiperConfig, News } from "@/containers/Home";
+import { MovieProps } from "@/types/movie";
 
-const Home = (props: any) => {
-  const tredingMovies = get(props.initData, "[0].data");
-  const singleMovies = get(props.initData, "[1].data");
-  const airTodayMoves = get(props.initData, "[2].data");
-  const seriesMovies = get(props.initData, "[3].data");
-  const blogs = get(props.initData, "[4].data");
+const Home = ({ initData }: any) => {
+  const tredingMovies = get(initData, "[0].data");
+  const singleMovies = get(initData, "[1].data");
+  const airTodayMoves = get(initData, "[2].data");
+  const seriesMovies = get(initData, "[3].data");
+  const news = get(initData, "[4].data");
 
   const renderTrendingMovie = useMemo(() => {
     if (tredingMovies == undefined) return null;
@@ -57,7 +50,7 @@ const Home = (props: any) => {
 
       <ListMovie data={airTodayMoves} title={"Hôm nay xem gì"} />
 
-      {/* <Blogs data={blogs} /> */}
+      <News data={news} />
     </Fragment>
   );
 };

@@ -39,24 +39,24 @@ const SwiperCardItem = ({
           </span>
 
           <div className="flex items-center gap-3 my-5">
-            <span className="px-3 text-xs lg:text-base bg-primary rounded-md border-2 border-solid border-primary" />
-            <span className="px-3 text-xs lg:text-base rounded-md border-2 border-primary" />
+            <span className="px-3 max-lg:text-xs bg-primary rounded-md border-2 border-solid border-primary" />
+            <span className="px-3 max-lg:text-xs rounded-md border-2 border-primary" />
           </div>
 
           <div className="flex items-center gap-3 my-5 flex-wrap">
-            <span className="px-3 py-[2px] lg:py-0 text-xs lg:text-base bg-primary rounded-md border-2 border-solid border-primary">
+            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs bg-primary rounded-md border-2 border-solid border-primary">
               {lang}
             </span>
 
-            <span className="px-3 py-[2px] lg:py-0 text-xs lg:text-base rounded-md border-2 border-primary">
+            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-2 border-primary">
               {quality}
             </span>
 
-            <span className="px-3 py-[2px] lg:py-0 text-xs lg:text-base rounded-md border-2 border-primary">
+            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-2 border-primary">
               {status}
             </span>
 
-            <span className="px-3 py-[2px] lg:py-0 text-xs lg:text-base rounded-md border-2 border-primary">
+            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-2 border-primary">
               {type === "series" ? "Phim Bộ" : "Phim Lẻ"}
             </span>
 
@@ -64,13 +64,13 @@ const SwiperCardItem = ({
               <span className="indicator-item badge badge-secondary bg-[#e20e01] border-none font-bold text-[10px] lg:text-sm">
                 HOT
               </span>
-              <span className="px-3 py-[2px] lg:py-0 text-xs lg:text-base rounded-md border-2 border-primary">
+              <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-2 border-primary">
                 Sub Độc Quyền
               </span>
             </div>
           </div>
 
-          <p className="text-base mb-5 lg:text-3xl">{time}</p>
+          <p className="mb-5 lg:text-3xl">{time}</p>
 
           {description && (
             <div className="mb-3 text-[#d4d4d4] line-clamp-4">

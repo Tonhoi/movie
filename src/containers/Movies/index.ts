@@ -6,3 +6,4 @@ export default Movies;
 
 export { default as Filter } from "./components/Filter";
 export { default as Heading } from "./components/Heading";
+export { default as Pagination } from "./components/Pagination";
