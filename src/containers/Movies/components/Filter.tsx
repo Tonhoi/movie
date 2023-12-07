@@ -36,7 +36,7 @@ const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
 
         <div className="flex items-center gap-2.5 lg:gap-4 ml-auto">
           <ListIcon
-            onClick={toggleOn}
+            onClick={toggleOff}
             className={twMerge(
               "w-6 h-6 lg:w-8 lg:h-8 cursor-pointer hover:opacity-80 transition-base",
               !isLayoutColumn && "text-primary"
@@ -44,7 +44,7 @@ const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
           />
           
           <GridIcon
-            onClick={toggleOff}
+            onClick={toggleOn}
             className={twMerge(
               "w-4 h-4 lg:w-6 lg:h-6 cursor-pointer hover:opacity-80 transition-base",
               isLayoutColumn && "text-primary"

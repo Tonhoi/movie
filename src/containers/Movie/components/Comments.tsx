@@ -4,7 +4,7 @@ import Script from "next/script";
 const Comments = () => {
   return (
     <Fragment>
-      {/* <div id="disqus_thread" className="lg:w-[65%] mt-16 text-white" />
+      <div id="disqus_thread" className="lg:w-[65%] mt-16 text-white" />
       <Script id="my-script">
         {`
     (function() { // DON'T EDIT BELOW THIS LINE
@@ -13,7 +13,7 @@ const Comments = () => {
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();`}
-      </Script> */}
+      </Script>
       
     </Fragment>
   );
