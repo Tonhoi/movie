@@ -10,7 +10,7 @@ export const getStaticPaths = async () => {
   try {
     const resNews = await UseFetch(apis["news"]);
 
-    const paths = resNews.map((el: any) => ({
+    const paths = resNews.data.map((el: any) => ({
       params: {
         slug: el.slug,
       },
