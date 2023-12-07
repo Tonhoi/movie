@@ -20,15 +20,15 @@ export const getStaticPaths = async () => {
         params: { limit: 10 },
     });
     
-    resTrendingMovies.data.map((movie: any) => {
+    resTrendingMovies.map((movie: any) => {
         paths.push({ params: { slug: movie.slug } });
     });
 
-    resSingleMovies.data.map((movie: any) => {
+    resSingleMovies.map((movie: any) => {
       paths.push({ params: { slug: movie.slug } });
     });
 
-    resAirTodayMovies.data.map((movie: any) => {
+    resAirTodayMovies.map((movie: any) => {
       paths.push({ params: { slug: movie.slug } });
     });
 
