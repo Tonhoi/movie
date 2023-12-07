@@ -26,7 +26,7 @@ const Movie = ({ initData }: any) => {
       />
 
       {/* <Comments /> */}
-      {/* <AiringToday data={airingToday} /> */}
+      <AiringToday data={airingToday} />
     </div>
   );
 };

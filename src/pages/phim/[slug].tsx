@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
     });
     
     resTrendingMovies.map((movie: any) => {
-        paths.push({ params: { slug: movie.slug } });
+      paths.push({ params: { slug: movie.slug } });
     });
 
     resSingleMovies.map((movie: any) => {
@@ -52,11 +52,11 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }: any) => {
   try {
     const resMovie = await UseFetch(`phim/${params.slug}`);
-    // const resAirTodayMovie = await UseFetch(apis["air_today"], { params: { limit: 10 } })
+    const resAirTodayMovie = await UseFetch(apis["air_today"], { params: { limit: 10 } })
 
     return {
       props: {
-        initData: [resMovie],
+        initData: [resMovie, resAirTodayMovie],
         revalidate: 60,
         fallback: true,
       },
