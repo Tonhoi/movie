@@ -30,8 +30,8 @@ const WatchMovie = ({ episodes, name, view }: any) => {
     };
   }, [router]);
 
-  const handleChangeEpisode = useCallback((slug: number) => {
-    setValue(slug);
+  const handleChangeEpisode = useCallback((idx: number) => {
+    setValue(idx);
   }, []);
 
   const handleChangeServer = useCallback((base_url: string) => {
@@ -45,7 +45,7 @@ const WatchMovie = ({ episodes, name, view }: any) => {
       return (
         <button
           disabled
-          className="py-1.5 px-2 text-center bg-primary transition-base rounded-sm font-light text-xs lg:text-sm"
+          className="py-1.5 px-2 text-center bg-secondary transition-base rounded-sm font-light text-xs lg:text-sm"
         >
           Tập Full
         </button>
@@ -54,13 +54,13 @@ const WatchMovie = ({ episodes, name, view }: any) => {
       return episode.server_data.map((el: any, idx: number) => (
         <button
           key={idx}
-          onClick={() => handleChangeEpisode(el.slug)}
+          onClick={() => handleChangeEpisode(idx + 1)}
           className={twMerge(
-            "py-1.5 px-2 bg-secondary text-center cursor-pointer hover:bg-primary transition-base rounded-sm font-light text-xs lg:text-sm",
-            el.slug == value && "bg-primary"
+            "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white border-[1px] text-[#b4b4b4] border-secondary transition-base rounded-md max-lg:font-bold text-xs lg:text-sm",
+            el.slug == value && "bg-secondary text-white"
           )}
         >
-          Tập {el.name}
+          Tập {idx + 1}
         </button>
       ));
     }
@@ -126,7 +126,10 @@ const WatchMovie = ({ episodes, name, view }: any) => {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 mt-3 flex-wrap px-3">
+        {/* <div className="flex items-center gap-3 mt-3 flex-wrap px-3">
+          {renderEpisode}
+        </div> */}
+        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5 gap-3 mt-3 px-3">
           {renderEpisode}
         </div>
       </div>

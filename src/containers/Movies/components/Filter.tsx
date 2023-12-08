@@ -4,7 +4,6 @@ import { twMerge } from "tailwind-merge";
 
 import { GridIcon, ListIcon } from "@/assets/Icons";
 import { years } from "@/containers/Movies/constants";
-import { mergeParams } from "@/utils/mergeParams";
 
 interface FilterProps {
   toggleOff: () => void;
@@ -17,17 +16,13 @@ const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
 
   const handleFilterMovieWithYear = useCallback(
     (year: string) => {
-      if (isNaN(+year))
-        push({ pathname: asPath.split("?")[0] }, undefined, {
-          shallow: true,
-        });
-      else
-        push({ pathname, query: { ...query, year } }, undefined, {
-          shallow: true,
-        });
+      if (isNaN(+year)) push({ pathname: asPath.split("?")[0] }, undefined, { shallow: true });
+      else push({ pathname, query: { ...query, year } }, undefined, { shallow: true });
     },
     [query]
   );
+
+  console.log(query.year)
 
   return (
     <Fragment>
@@ -60,11 +55,11 @@ const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
               key={idx}
               onClick={() => handleFilterMovieWithYear(year)}
               className={twMerge(
-                "py-2 px-3 rounded-md bg-secondary text-center text-[10px] lg:text-sm cursor-pointer hover:bg-primary transition-base",
-                query.year === year
-                  ? "!bg-primary animate-pulse"
-                  : !query.year
-                  ? "first:!bg-primary first:animate-pulse"
+                "py-2 px-3 border-[1px] border-secondary rounded-md text-[#b4b4b4] text-center text-[10px] lg:text-sm cursor-pointer hover:bg-secondary hover:text-white transition-base",
+                (query.year === year)
+                  ? "bg-secondary animate-pulse text-white"
+                  : query.year === undefined 
+                  ? "first:bg-secondary first:animate-pulse first:text-white"
                   : ""
               )}
             >

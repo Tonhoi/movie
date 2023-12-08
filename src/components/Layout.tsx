@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { Fragment, ReactNode, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import LoadingScreen from "@/components/LoadingScreen";
-import { useLocalStorage } from "react-use";
 
 const DynamicHeader = dynamic(() => import("@/components/Header"), {
   ssr: false,
@@ -27,13 +27,16 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <Fragment>
       <LoadingScreen />
 
-      <div className="bg-[#2a2931] min-h-[100vh] flex flex-col justify-between">
+      <div className="bg-[#151414] min-h-[100vh] flex flex-col justify-between">
         <DynamicHeader />
 
         <div className="flex-1">{children}</div>
 
         <DynamicFooter />
       </div>
+
+      <SpeedInsights />
+
     </Fragment>
   );
 };

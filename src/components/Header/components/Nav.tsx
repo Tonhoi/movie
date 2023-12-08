@@ -33,7 +33,7 @@ const RenderNavItem = ({ title, child, href }: NavItemProps) => {
       </Link>
 
       {child.length > 0 && (
-        <ul className="dropdown-content rounded-md py-4 bg-[#2f2e35] min-w-0 lg:min-w-[400px] grid grid-cols-2 lg:grid-cols-3 w-[calc(100%-32px)] lg:w-full">
+        <ul className="dropdown-content rounded-md py-4 bg-[rgba(0,0,0,.98)] shadow-[0,5px,10px,0,rgba(0,0,0,2)] min-w-0 lg:min-w-[400px] grid grid-cols-2 lg:grid-cols-3 w-[calc(100%-32px)] lg:w-full">
           {child.map((el, idx: number) => (
             <li key={idx} className="hover:text-primary transtion-base text-text_color">
               <Link

@@ -15,7 +15,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
   }
 
   return (
-    <article className="group flex rounded-md overflow-hidden transition-base cursor-pointer text-white hover:bg-black bg-[#111111]" onClick={handleNavigation}>
+    <article className="group flex rounded-md overflow-hidden transition-base cursor-pointer text-white hover:bg-black bg-[#0000004d] shadow-lg" onClick={handleNavigation}>
       <figure className="relative overflow-hidden flex-shrink-0">
         <ImageWithFallback
           alt={name}
@@ -29,7 +29,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
       </figure>
 
       <div className="py-4 pl-4 pr-10 lg:pr-12 relative w-full">
-        <h3 className="font-medium line-clamp-2 group-hover:text-primary transition-base max-lg:text-xs">
+        <h3 className="line-clamp-2 group-hover:text-primary transition-base max-lg:text-xs font-bold">
           {name}
         </h3>
 
@@ -39,7 +39,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
 
         <div className="flex items-center flex-wrap gap-1.5 overflow-hidden pt-2 max-h-14 sm:max-h-full">
           {sub_docquyen && (
-            <span className="capitalize py-0.5 px-2 bg-red-600 animate-bounce text-[10px] lg:text-xs rounded-sm">
+            <span className="capitalize py-0.5 px-2 bg-red-600 animate-bounce text-[10px] lg:text-xs rounded-sm max-lg:font-bold lg:font-medium">
               Sub độc quyền
             </span>
           )}
@@ -47,7 +47,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
           {category.map((category: Category, idx: number) => (
             <span
               key={idx}
-              className="capitalize py-0.5 px-2 border-[1px] lg:border-[1px] border-primary text-[10px] lg:text-xs rounded-sm"
+              className="capitalize py-0.5 px-2 border-[1px] lg:border-[1px] border-primary text-[10px] lg:text-xs rounded-sm text-[#b4b4b4] max-lg:font-bold lg:font-medium"
             >
               {category.name}
             </span>

@@ -33,7 +33,7 @@ const Movies = () => {
       {/* show list movie */}
       <div
         className={twMerge(
-          "grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mt-10 lg:mt-20 gap-x-6 gap-y-8",
+          "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mt-10 lg:mt-20 gap-x-6 gap-y-8",
           !isLayoutColumn && "grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3"
         )}
       >

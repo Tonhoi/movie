@@ -24,7 +24,7 @@ const NewsCard = (props: Omit<NewsProps, "id">) => {
         className="object-cover rounded-t-md w-full max-h-[230px]"
       />
 
-      <div className="bg-[#111111] py-7 px-5 rounded-b-2xl overflow-hidden">
+      <div className="bg-[#0000004d] py-7 px-5 rounded-b-2xl overflow-hidden shadow-lg">
         <div className="flex-between text-[#b4b4b4] mb-1">
           <p className="max-lg:text-xs">{date}</p>
           <p className="max-lg:text-xs">
