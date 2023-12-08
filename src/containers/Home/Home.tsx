@@ -6,13 +6,14 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { SwiperItem, ListMovie, SwiperConfig, News } from "@/containers/Home";
 import { MovieProps } from "@/types/movie";
+import { HomeType } from "@/pages";
 
-const Home = ({ initData }: any) => {
-  const tredingMovies = get(initData, "[0].data");
-  const singleMovies = get(initData, "[1].data");
-  const airTodayMoves = get(initData, "[2].data");
-  const seriesMovies = get(initData, "[3].data");
-  const news = get(initData, "[4].data");
+const Home = ({ initData }: HomeType) => {
+  const tredingMovies = get(initData, [0, "data"]);
+  const singleMovies = get(initData, [1, "data"]);
+  const airTodayMoves = get(initData, [2, "data"]);
+  const seriesMovies = get(initData, [3, "data"]);
+  const news = get(initData, [4, "data"]);
 
   const renderTrendingMovie = useMemo(() => {
     if (tredingMovies == undefined) return null;

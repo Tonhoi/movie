@@ -1,8 +1,11 @@
 import parse from "html-react-parser";
 
 import { ImageWithFallback } from "@/components";
+import { MovieDetail } from "@/types/movie";
 
-const Intro = (props: any) => {
+type IntroProps = "sub_docquyen" | "poster_url" | "quality" | "type" | "time" | "lang" | "category" | "content"
+
+const Intro = (props: Pick<MovieDetail, IntroProps>) => {
   const { sub_docquyen, poster_url, quality, type, time, lang, category, content } = props;
 
   return (
@@ -38,7 +41,7 @@ const Intro = (props: any) => {
             Thể loại:
           </span>
 
-          {category.map((el: any, idx: number) => (
+          {category.map((el, idx: number) => (
             <span
               key={idx}
               className="capitalize py-1 px-2 rounded-md inline-block font-normal md:font-light text-[10px] md:text-xs lg:text-sm bg-secondary mr-2"

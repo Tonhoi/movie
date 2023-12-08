@@ -1,8 +1,17 @@
 import { apis } from "@/configs";
 import News from "@/containers/News";
 import { useFetch as UseFetch } from "@/hooks";
+import { IPage, MovieProps, NewsProps, responseSchema } from "@/types/movie";
 
-const index = (props:any) => {
+type params = {
+  params: {
+    slug: string;
+  };
+};
+
+export type NewsType = { initData: NewsProps };
+
+const index = (props: NewsType) => {
   return <News {...props} />;
 };
 
@@ -10,7 +19,7 @@ export const getStaticPaths = async () => {
   try {
     const resNews = await UseFetch(apis["news"]);
 
-    const paths = resNews.data.map((el: any) => ({
+    const paths = resNews.data.map((el: MovieProps) => ({
       params: {
         slug: el.slug,
       },
@@ -28,7 +37,7 @@ export const getStaticPaths = async () => {
   }
 };
 
-export const getStaticProps = async ({ params }: any) => {
+export const getStaticProps = async ({ params }: params) => {
   try {
     const resTrendingMovie = await UseFetch(`tin-tuc/${params.slug}`);
 

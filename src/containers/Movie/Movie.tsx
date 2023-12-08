@@ -1,14 +1,17 @@
-import { AiringToday, Comments, Intro, WatchMovie } from "@/containers/Movie";
-import { get } from "lodash";
 import { useRouter } from "next/router";
+import { get } from "lodash";
 
-const Movie = ({ initData }: any) => {
+import { Loader } from "@/components";
+import { AiringToday, Comments, Intro, WatchMovie } from "@/containers/Movie";
+import { MovieType } from "@/pages/phim/[slug]";
+
+const Movie = ({ initData }: MovieType) => {
   const { isFallback } = useRouter();
-  const episodes = get(initData, "[0].episodes");
-  const movie = get(initData, "[0].movie");
-  const airingToday = get(initData, "[1].data");
+  const episodes = get(initData, [0, "episodes"]);
+  const movie = get(initData, [0, "movie"]);
+  const airingToday = get(initData, [1, "data"]);
 
-  if (isFallback) return <div>loading...</div>;
+  if (isFallback) return <Loader />;
 
   return (
     <div className="wide">
@@ -25,7 +28,7 @@ const Movie = ({ initData }: any) => {
         content={movie.content}
       />
 
-      <Comments />
+      <Comments movie={movie} />
       <AiringToday data={airingToday} />
     </div>
   );

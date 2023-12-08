@@ -1,41 +1,49 @@
 import { apis } from "@/configs";
 import Movie from "@/containers/Movie";
 import { useFetch as UseFetch } from "@/hooks";
+import { IPage, MovieDetail, MovieProps, responseSchema } from "@/types/movie";
 
-const index = (props: any) => {
+type params = {
+  params: {
+    slug: string;
+  };
+};
+
+export type MovieType = IPage<[responseSchema<MovieDetail>, responseSchema<MovieProps>]>
+
+const index = (props: MovieType) => {
   return <Movie {...props} />;
 };
 
 export const getStaticPaths = async () => {
   try {
-    const paths: any = [];
-    const resTrendingMovies: any = await UseFetch(apis["trending_movie"]);
-    const resSingleMovies: any = await UseFetch(apis["new-updated/single"], {
-        params: { limit: 10 },
+    const paths: Array<unknown> = [];
+    const resTrendingMovies = await UseFetch(apis["trending_movie"]);
+    const resSingleMovies = await UseFetch(apis["new-updated/single"], {
+      params: { limit: 10 },
     });
-    const resAirTodayMovies: any = await UseFetch(apis["air_today"], {
-        params: { limit: 10 },
+    const resAirTodayMovies = await UseFetch(apis["air_today"], {
+      params: { limit: 10 },
     });
-    const resSeriesMovies: any = await UseFetch(apis["new-updated/series"], {
-        params: { limit: 10 },
+    const resSeriesMovies = await UseFetch(apis["new-updated/series"], {
+      params: { limit: 10 },
     });
-    
-    resTrendingMovies.map((movie: any) => {
+
+    resTrendingMovies.map((movie: MovieProps) => {
       paths.push({ params: { slug: movie.slug } });
     });
 
-    resSingleMovies.map((movie: any) => {
+    resSingleMovies.map((movie: MovieProps) => {
       paths.push({ params: { slug: movie.slug } });
     });
 
-    resAirTodayMovies.map((movie: any) => {
+    resAirTodayMovies.map((movie: MovieProps) => {
       paths.push({ params: { slug: movie.slug } });
     });
 
-    resSeriesMovies.map((movie: any) => {
+    resSeriesMovies.map((movie: MovieProps) => {
       paths.push({ params: { slug: movie.slug } });
     });
-
 
     return {
       paths,
@@ -49,10 +57,12 @@ export const getStaticPaths = async () => {
   }
 };
 
-export const getStaticProps = async ({ params }: any) => {
+export const getStaticProps = async ({ params }: params) => {
   try {
     const resMovie = await UseFetch(`phim/${params.slug}`);
-    const resAirTodayMovie = await UseFetch(apis["air_today"], { params: { limit: 10 } })
+    const resAirTodayMovie = await UseFetch(apis["air_today"], {
+      params: { limit: 10 },
+    });
 
     return {
       props: {

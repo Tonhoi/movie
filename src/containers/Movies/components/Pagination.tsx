@@ -3,8 +3,9 @@ import RcPagination from "rc-pagination";
 import { useCallback } from "react";
 
 import { ChevronForwardIcon } from "@/assets/Icons";
+import { PaginationProps } from "@/types/movie";
 
-const Pagination = ({ pagination }: any) => {
+const Pagination = ({ pagination }: { pagination: PaginationProps }) => {
   const { query, push, pathname } = useRouter();
 
   const handlePagination = useCallback(

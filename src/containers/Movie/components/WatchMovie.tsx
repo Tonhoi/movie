@@ -6,9 +6,10 @@ import { useRouter } from "next/router";
 
 import { Skeleton } from "@/components";
 import { SERVERS } from "@/containers/Movie";
+import { MovieDetail } from "@/types/movie";
 
-const WatchMovie = ({ episodes, name, view }: any) => {
-  const episode = get(episodes, "[0]");
+const WatchMovie = ({ episodes, name, view }: Pick<MovieDetail, "episodes" | "name" | "view">) => {
+  const episode = get(episodes, [0]);
 
   const router = useRouter();
 
@@ -51,13 +52,13 @@ const WatchMovie = ({ episodes, name, view }: any) => {
         </button>
       );
     } else {
-      return episode.server_data.map((el: any, idx: number) => (
+      return episode.server_data.map((el, idx: number) => (
         <button
           key={idx}
           onClick={() => handleChangeEpisode(idx + 1)}
           className={twMerge(
             "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white border-[1px] text-[#b4b4b4] border-secondary transition-base rounded-md max-lg:font-bold text-xs lg:text-sm",
-            el.slug == value && "bg-secondary text-white"
+            idx + 1 === value && "bg-secondary text-white"
           )}
         >
           Tập {idx + 1}
@@ -95,7 +96,7 @@ const WatchMovie = ({ episodes, name, view }: any) => {
         <iframe
           width="100%"
           height="100%"
-          src={serverMemo}
+          src={serverMemo as string}
           allowFullScreen
           className="relative z-10 overflow-hidden"
         />
@@ -126,9 +127,6 @@ const WatchMovie = ({ episodes, name, view }: any) => {
           </div>
         </div>
 
-        {/* <div className="flex items-center gap-3 mt-3 flex-wrap px-3">
-          {renderEpisode}
-        </div> */}
         <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5 gap-3 mt-3 px-3">
           {renderEpisode}
         </div>

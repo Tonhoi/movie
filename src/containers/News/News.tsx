@@ -1,10 +1,13 @@
-import { TrendingNewsCard, ContentNews } from "@/containers/News";
 import { useRouter } from "next/router";
 
-const News = ({ initData }: any) => {
+import { Loader } from "@/components";
+import { TrendingNewsCard, ContentNews } from "@/containers/News";
+import { NewsType } from "@/pages/tin-tuc/[slug]";
+
+const News = ({ initData }: NewsType) => {
   const { isFallback } = useRouter();
 
-  if (isFallback) return <div>loading...</div>;
+  if (isFallback) return <Loader />;
 
   return (
     <div className="wide mt-10">

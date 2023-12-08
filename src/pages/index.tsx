@@ -1,8 +1,19 @@
 import Home from "@/containers/Home";
 import { useFetch as UseFetch } from "@/hooks";
 import { apis } from "@/configs";
+import { IPage, MovieProps, NewsProps, responseSchema } from "@/types/movie";
 
-export default function index(props: any) {
+export type HomeType = IPage<
+  [
+    responseSchema<MovieProps>,
+    responseSchema<MovieProps>,
+    responseSchema<MovieProps>,
+    responseSchema<MovieProps>,
+    responseSchema<NewsProps>
+  ]
+>;
+
+export default function index(props: HomeType) {
   return <Home {...props} />;
 }
 

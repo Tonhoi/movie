@@ -19,5 +19,4 @@ export interface ArrowProps {
   ["data-role"]: string;
   onClick: () => void;
   slideCount: number;
-  style: any;
 }
