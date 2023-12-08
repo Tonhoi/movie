@@ -39,7 +39,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
 
         <div className="flex items-center flex-wrap gap-1.5 overflow-hidden pt-2 max-h-14 sm:max-h-full">
           {sub_docquyen && (
-            <span className="capitalize py-0.5 px-2 bg-red-600 animate-bounce text-[10px] lg:text-xs rounded-sm max-lg:font-bold lg:font-medium">
+            <span className="capitalize py-0.5 px-2 bg-red-600 animate-bounce text-[10px] lg:text-xs rounded-sm font-medium">
               Sub độc quyền
             </span>
           )}
@@ -47,7 +47,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
           {category.map((category: Category, idx: number) => (
             <span
               key={idx}
-              className="capitalize py-0.5 px-2 border-[1px] lg:border-[1px] border-primary text-[10px] lg:text-xs rounded-sm text-[#b4b4b4] max-lg:font-bold lg:font-medium"
+              className="capitalize py-0.5 px-2 border-[1px] lg:border-[1px] border-primary text-[10px] lg:text-xs rounded-sm text-[#b4b4b4] font-medium"
             >
               {category.name}
             </span>

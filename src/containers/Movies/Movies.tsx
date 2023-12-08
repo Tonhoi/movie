@@ -7,6 +7,7 @@ import { VerticalMovieCard, HorizontalMovieCard } from "@/components/Cards";
 import { Heading, Filter, Pagination } from "@/containers/Movies";
 import { MovieProps } from "@/types/movie";
 import { queryKeys } from "@/configs";
+import { Loader } from "@/components";
 
 const Movies = () => {
   const { toggleOff, toggleOn, on: isLayoutColumn } = useToggle();
@@ -18,7 +19,7 @@ const Movies = () => {
     enabled: Object.values(query).some((value) => value !== undefined),
   });
 
-  if (!dataMovies) return <div>loading</div>;
+  if (!dataMovies) return <Loader />;
 
   return (
     <div className="wide text-white mt-8">
@@ -49,7 +50,7 @@ const Movies = () => {
         </p>
       )}
 
-      <Pagination pagination={dataMovies.pagination} />
+      {dataMovies.pagination.totalPages > 1 && <Pagination pagination={dataMovies.pagination} />}
     </div>
   );
 };

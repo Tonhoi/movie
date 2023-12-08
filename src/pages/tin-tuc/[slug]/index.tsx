@@ -39,11 +39,12 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: params) => {
   try {
-    const resTrendingMovie = await UseFetch(`tin-tuc/${params.slug}`);
+    const resNews = await UseFetch(`tin-tuc/${params.slug}`);
+    const resSimilarNews = await UseFetch(`tin-tuc-tuong-tu/${params.slug}`)
 
     return {
       props: {
-        initData: resTrendingMovie,
+        initData: [resNews, resSimilarNews],
         fallback: true,
         revalidate: 60,
       },

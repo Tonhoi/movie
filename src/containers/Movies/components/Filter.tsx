@@ -22,8 +22,6 @@ const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
     [query]
   );
 
-  console.log(query.year)
-
   return (
     <Fragment>
       <div className="flex-between flex-wrap gap-4">

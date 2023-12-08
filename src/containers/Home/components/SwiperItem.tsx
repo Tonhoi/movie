@@ -44,7 +44,7 @@ const SwiperCardItem = ({
           </div>
 
           <div className="flex items-center gap-3 my-5 flex-wrap">
-            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs bg-primary rounded-md border-2 border-solid border-primary">
+            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs bg-secondary rounded-md border-2 border-solid border-secondary">
               {lang}
             </span>
 
