@@ -4,10 +4,10 @@ import PlayCircleIcon from "@/assets/Icons/PlayCircleIcon";
 import { ImageWithFallback, Skeleton } from "@/components";
 import { MovieProps } from "@/types/movie";
 
-type PickMoveProps = "name" | "year" | "poster_url" | "time" | "slug";
+type PickMoveProps = "name" | "year" | "poster_url" | "time" | "slug" | "episode_current";
 
 const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
-  const { name, year, poster_url, time, slug } = props;
+  const { name, year, poster_url, time, slug, episode_current } = props;
 
   return (
     <article className="flex flex-col h-full text-white">
@@ -23,6 +23,8 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
 
           <Skeleton />
         </figure>
+
+        <div className="absolute bottom-1 left-1 z-10 py-1 px-2 bg-secondary text-[10px] md:text-xs rounded-sm shadow-lg font-medium md:font-light">{episode_current}</div>
 
         <span className="uppercase absolute bottom-1 left-1 py-[5px] px-[10px] bg-secondary rounded-sm text-[9px] lg:text-xs font-bold lg:font-medium">
           {time}
@@ -41,7 +43,7 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
         {name}
       </h3>
 
-      <span className="text-[#b4b4b4] text-xs max-xl:text-sm">
+      <span className="text-[#b4b4b4] text-xs max-xl:text-[10px]">
         {year}
       </span>
     </article>

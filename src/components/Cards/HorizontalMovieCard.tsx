@@ -15,7 +15,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
   }
 
   return (
-    <article className="group flex rounded-md overflow-hidden transition-base cursor-pointer text-white hover:bg-black bg-[#0000004d] shadow-lg" onClick={handleNavigation}>
+    <article className="group flex rounded-md transition-base cursor-pointer overflow-hidden text-white hover:bg-black bg-[#0000004d] shadow-lg" onClick={handleNavigation}>
       <figure className="relative overflow-hidden flex-shrink-0">
         <ImageWithFallback
           alt={name}

@@ -57,7 +57,7 @@ const WatchMovie = ({ episodes, name, view }: Pick<MovieDetail, "episodes" | "na
           key={idx}
           onClick={() => handleChangeEpisode(idx + 1)}
           className={twMerge(
-            "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white border-[1px] text-[#b4b4b4] border-secondary transition-base rounded-md max-lg:font-bold text-xs lg:text-sm",
+            "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white border-[1px] text-[#b4b4b4] border-secondary transition-base rounded-md max-lg:font-medium text-xs lg:text-sm",
             idx + 1 === value && "bg-secondary text-white"
           )}
         >

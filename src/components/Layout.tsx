@@ -30,7 +30,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <div className="bg-[#151414] min-h-[100vh] flex flex-col justify-between">
         <DynamicHeader />
 
-        <div className="flex-1">{children}</div>
+        <main className="flex-1">{children}</main>
 
         <DynamicFooter />
       </div>

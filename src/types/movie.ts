@@ -13,7 +13,6 @@ interface IPage<T extends unknown[]> {
   revalidate: number;
 }
 
-
 type responseSchema<T> = {
   pagination: Array<PaginationProps>;
   data: T[];
@@ -24,6 +23,8 @@ export type { IPage, responseSchema };
 export interface MovieProps {
   category: Array<Category>;
   content: string;
+  country: Array<Category>;
+  episode_current: string;
   id: string;
   lang: string;
   modified_time: string;

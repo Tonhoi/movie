@@ -28,18 +28,18 @@ const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
         <h2 className="lg:text-4xl font-extrabold">LỌC PHIM THEO NĂM</h2>
 
         <div className="flex items-center gap-2.5 lg:gap-4 ml-auto">
-          <ListIcon
+          <GridIcon
             onClick={toggleOff}
             className={twMerge(
-              "w-6 h-6 lg:w-8 lg:h-8 cursor-pointer hover:opacity-80 transition-base",
+              "w-4 h-4 lg:w-6 lg:h-6 cursor-pointer hover:opacity-80 transition-base",
               !isLayoutColumn && "text-primary"
             )}
           />
-          
-          <GridIcon
+
+          <ListIcon
             onClick={toggleOn}
             className={twMerge(
-              "w-4 h-4 lg:w-6 lg:h-6 cursor-pointer hover:opacity-80 transition-base",
+              "w-6 h-6 lg:w-8 lg:h-8 cursor-pointer hover:opacity-80 transition-base",
               isLayoutColumn && "text-primary"
             )}
           />

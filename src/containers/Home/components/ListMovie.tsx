@@ -24,6 +24,7 @@ const ListMovie = ({ data, title }: ListMovieProps) => {
               poster_url={el.poster_url}
               time={el.time}
               slug={el.slug}
+              episode_current={el.episode_current}
             />
           </div>
         ))}

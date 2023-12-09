@@ -4,9 +4,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { SwiperItem, ListMovie, SwiperConfig, News } from "@/containers/Home";
-import { MovieProps } from "@/types/movie";
 import { HomeType } from "@/pages";
+import { MovieProps } from "@/types/movie";
+import { SwiperItem, ListMovie, SwiperConfig, News } from "@/containers/Home";
 
 const Home = ({ initData }: HomeType) => {
   const tredingMovies = get(initData, [0, "data"]);

@@ -18,6 +18,7 @@ const AiringToday = ({ data }: { data: MovieProps[] }) => {
           slug={el.slug}
           time={el.time}
           year={el.year}
+          episode_current={el.episode_current}
         />
       ))}
     </div>

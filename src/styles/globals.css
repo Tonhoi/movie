@@ -80,28 +80,43 @@
 
 /* style for pagination */
 .rc-pagination-item {
-  @apply py-2 px-4 rounded-md border-[1px] border-secondary cursor-pointer hover:opacity-80 transition-base;
+  @apply flex-center w-7 h-7 md:h-[38px] md:w-[38px] rounded-md border-[1px] border-secondary cursor-pointer hover:opacity-80 transition-base text-[#b4b4b4];
 }
 
 .rc-pagination-item a {
-  @apply max-lg:text-xs
+  @apply max-lg:text-xs;
 }
 
 .rc-pagination-item-active {
-  @apply bg-secondary cursor-default hover:opacity-100
+  @apply bg-secondary cursor-default hover:opacity-100 text-white;
 }
 
-.rc-pagination-prev,.rc-pagination-next {
-  @apply text-white p-2 rounded-md border-[1px] border-secondary cursor-pointer hover:opacity-80 transition-base
+.rc-pagination-prev,
+.rc-pagination-next {
+  @apply text-white flex-center w-7 h-7 md:w-[38px] md:h-[38px] rounded-md border-[1px] border-secondary cursor-pointer hover:opacity-80 transition-base;
 }
 
+.rc-pagination-prev svg,
+.rc-pagination-next svg {
+  @apply max-md:w-3
+}
+
+.rc-pagination-jump-next,
+.rc-pagination-jump-prev {
+  @apply text-white;
+}
+
+.rc-pagination-jump-next svg,
+.rc-pagination-jump-prev svg {
+  @apply max-md:w-3
+}
 
 .rc-pagination-prev {
-  @apply rotate-180
+  @apply rotate-180;
 }
 
 .rc-pagination-disabled {
-  @apply opacity-25 hover:opacity-25 cursor-default
+  @apply opacity-25 hover:opacity-25 cursor-default;
 }
 
 /* config component dropdown on header of daisyui library */
