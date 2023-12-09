@@ -3,7 +3,7 @@ import axios from "axios";
 const httpRequest = axios.create({
   // baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   baseURL: "https://movies-api-amber-chi.vercel.app/api",
-  timeout: 10000,
+  // timeout: 10000,
   // method: "GET",
 });
 

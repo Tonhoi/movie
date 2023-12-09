@@ -16,6 +16,7 @@ const Search = () => {
     queryFn: () => UseFetch(`tim-kiem?keyword=${query?.keyword}&page=${query?.page || 1}`),
     enabled: query.keyword !== undefined,
   });
+  console.log("🚀 ~ file: Search.tsx:19 ~ Search ~ searchResult:", searchResult)
 
   const pagination = get(searchResult, ["pagination"]);
   const searchData = get(searchResult, ["data"]);
