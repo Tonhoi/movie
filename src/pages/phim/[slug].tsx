@@ -68,7 +68,6 @@ export const getStaticProps = async ({ params }: params) => {
       props: {
         initData: [resMovie, resAirTodayMovie],
         fallback: true,
-        revalidate: 24 * 60 * 60 * 1000,
       },
     };
   } catch (error) {
