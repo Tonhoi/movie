@@ -28,7 +28,6 @@ export const getStaticPaths = async () => {
     return {
       paths,
       fallback: true,
-      // revalidate: 24 * 60 * 60 * 1000,
     };
   } catch (error) {
     return {
@@ -47,7 +46,7 @@ export const getStaticProps = async ({ params }: params) => {
       props: {
         initData: [resNews, resSimilarNews],
         fallback: true,
-        revalidate: 60,
+        revalidate: 24 * 60 * 60 * 1000,
       },
     };
   } catch (error) {
