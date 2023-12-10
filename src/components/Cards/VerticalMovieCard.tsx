@@ -3,21 +3,15 @@ import Link from "next/link";
 import PlayCircleIcon from "@/assets/Icons/PlayCircleIcon";
 import { ImageWithFallback, Skeleton } from "@/components";
 import { MovieProps } from "@/types/movie";
-import { useRouter } from "next/router";
 
 type PickMoveProps = "name" | "year" | "poster_url" | "time" | "slug" | "episode_current";
 
 const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
   const { name, year, poster_url, time, slug, episode_current } = props;
-  const { push } = useRouter()
-
-  const handleNavigation = () => {
-    push(`/phim/${slug}`, undefined, { shallow: true })
-  }
 
   return (
     <article className="flex flex-col h-full text-white">
-      <div className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0" onClick={handleNavigation}>
+      <Link href={`/phim/${slug}`} className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0">
         <figure className="relative overflow-hidden h-full">
           <ImageWithFallback
             alt={name}
@@ -36,12 +30,11 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
           {time}
         </span>
 
-        <div className="absolute inset-0 z-[3] bg-[#000000b3] animate-fadeIn-have-group flex-center text-sm lg:text-lg xl:text-2xl font-extrabold"
-        >
+        <div className="absolute inset-0 z-[3] bg-[#000000b3] animate-fadeIn-have-group flex-center text-sm lg:text-lg xl:text-2xl font-extrabold">
           <PlayCircleIcon className="w-7 h-7 lg:w-10 lg:h-10 mr-1" />
           XEM NGAY
         </div>
-      </div>
+      </Link>
 
       <h3 className="text-sm lg:text:base xl:text-xl font-medium cursor-pointer hover:text-primary mt-4 line-clamp-1">
         {name}
