@@ -3,15 +3,21 @@ import Link from "next/link";
 import PlayCircleIcon from "@/assets/Icons/PlayCircleIcon";
 import { ImageWithFallback, Skeleton } from "@/components";
 import { MovieProps } from "@/types/movie";
+import { useRouter } from "next/router";
 
 type PickMoveProps = "name" | "year" | "poster_url" | "time" | "slug" | "episode_current";
 
 const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
   const { name, year, poster_url, time, slug, episode_current } = props;
+  const { push } = useRouter()
+
+  const handleNavigation = () => {
+    push(`/phim/${slug}`, undefined, { shallow: true })
+  }
 
   return (
     <article className="flex flex-col h-full text-white">
-      <Link href={`/phim/${slug}`} className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0">
+      <div className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0" onClick={handleNavigation}>
         <figure className="relative overflow-hidden h-full">
           <ImageWithFallback
             alt={name}
@@ -35,7 +41,7 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
           <PlayCircleIcon className="w-7 h-7 lg:w-10 lg:h-10 mr-1" />
           XEM NGAY
         </div>
-      </Link>
+      </div>
 
       <h3 className="text-sm lg:text:base xl:text-xl font-medium cursor-pointer hover:text-primary mt-4 line-clamp-1">
         {name}

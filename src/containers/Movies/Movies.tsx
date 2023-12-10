@@ -35,11 +35,11 @@ const Movies = () => {
       <div
         className={twMerge(
           "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mt-10 lg:mt-20 gap-x-6 gap-y-8",
-          !isLayoutColumn && "grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3"
+          isLayoutColumn && "grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3"
         )}
       >
         {dataMovies.data?.map((el: MovieProps, idx: number) => {
-          if (isLayoutColumn) return <VerticalMovieCard key={idx} poster_url={el.poster_url} name={el.name} time={el.time} year={el.year} slug={el.slug} episode_current={el.episode_current} />
+          if (!isLayoutColumn) return <VerticalMovieCard key={idx} poster_url={el.poster_url} name={el.name} time={el.time} year={el.year} slug={el.slug} episode_current={el.episode_current} />
           else return <HorizontalMovieCard key={idx} poster_url={el.poster_url} name={el.name} year={el.year} sub_docquyen={el.sub_docquyen} category={el.category} slug={el.slug} />
         })}
       </div>
