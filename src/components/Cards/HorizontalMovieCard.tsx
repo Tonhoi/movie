@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 
-
 import { ImageWithFallback, Skeleton } from "@/components";
 import { Category, MovieProps } from "@/types/movie";
 
