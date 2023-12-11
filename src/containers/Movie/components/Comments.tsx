@@ -1,5 +1,6 @@
-import { MovieDetail } from "@/types/movie";
 import { Fragment, memo, useEffect } from "react";
+
+import { MovieDetail } from "@/types/movie";
 
 interface CommentProps {
   movie: MovieDetail

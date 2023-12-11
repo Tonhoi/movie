@@ -1,4 +1,5 @@
 import parse from "html-react-parser";
+import { memo } from "react";
 
 import { ImageWithFallback } from "@/components";
 import { MovieDetail } from "@/types/movie";
@@ -65,4 +66,4 @@ const Intro = (props: Pick<MovieDetail, IntroProps>) => {
   );
 };
 
-export default Intro;
+export default memo(Intro);

@@ -5,11 +5,7 @@ import { MovieProps } from "@/types/movie";
 
 const AiringToday = ({ data }: { data: MovieProps[] }) => {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4 lg:max-w-[65%] mt-10">
-      <h2 className="col-span-2 sm:col-span-4 md:col-span-5 text-white text-sm lg:text-lg font-bold">
-        Hôm nay xem gì 🤔
-      </h2>
-
+    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-4 lg:max-w-[65%]">
       {data.map((el: MovieProps) => (
         <VerticalMovieCard
           key={el.id}

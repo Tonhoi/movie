@@ -4,4 +4,5 @@ export { default as Footer } from "./Footer";
 export { default as Layout } from "./Layout";
 export { default as Skeleton } from "./Skeleton";
 export { default as Loader } from "./Loader";
-export { default as RcPagination } from './Pagination'
+export { default as RcPagination } from "./Pagination";
+export { default as HeadLine } from "./HeadLine";

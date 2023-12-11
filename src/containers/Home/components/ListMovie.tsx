@@ -1,5 +1,5 @@
-import VerticalMovieCard from "@/components/Cards/VerticalMovieCard";
-import HeadLine from "./HeadLine";
+import { HeadLine } from "@/components";
+import { VerticalMovieCard } from "@/components/Cards";
 import { MovieProps } from "@/types/movie";
 
 interface ListMovieProps {
@@ -10,7 +10,7 @@ interface ListMovieProps {
 const ListMovie = ({ data, title }: ListMovieProps) => {
   return (
     <div className="wide mt-20">
-      <HeadLine title={title} isSeparate={false} />
+      <HeadLine title={title} isSeeMore={true} />
 
       <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto no-scrollbar lg:grid lg:grid-cols-5">
         {data?.map((el) => (

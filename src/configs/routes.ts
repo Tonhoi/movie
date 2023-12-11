@@ -1,7 +1,7 @@
 const routes = {
   home: "/",
-  category: "/the-loai/[category]",
-  country: "/quoc-gia/[country]",
+  category: "/the-loai/",
+  country: "/quoc-gia/",
   error: "/404",
   news: "/tin-tuc/",
 };

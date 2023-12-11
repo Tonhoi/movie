@@ -1,38 +1,23 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
 import { get } from "lodash";
-import { useLocalStorage } from "react-use";
 import { twMerge } from "tailwind-merge";
-import { useRouter } from "next/router";
+import { useLocalStorage } from "react-use";
+import { memo, useCallback, useMemo, useState } from "react";
 
 import { Skeleton } from "@/components";
-import { SERVERS } from "@/containers/Movie";
 import { MovieDetail } from "@/types/movie";
+import { SERVERS } from "@/containers/Movie";
 
-const WatchMovie = ({ episodes, name, view }: Pick<MovieDetail, "episodes" | "name" | "view">) => {
+type WatchMovieProps = Pick<MovieDetail, "episodes" | "name" | "view" | "trailer_url" | "status">
+
+const WatchMovie = ({ episodes, name, view, status, trailer_url }: WatchMovieProps) => {
   const episode = get(episodes, [0]);
+  const isVisibleTrailer = status === "trailer";
 
-  const router = useRouter();
-
-  const [value, setValue] = useLocalStorage("current_episode", 1);
+  const [currentEpisode, setCurrentEpisode] = useLocalStorage("current_episode", 1);
   const [server, setServer] = useState("");
 
-  useEffect(() => {
-    const handleRouteChange = () => {
-      // Reset Lại tập phim về 0 khi người dùng rời khỏi trang xem phim
-      setValue(1);
-    };
-
-    // Lắng nghe sự kiện khi route thay đổi
-    router.events.on("routeChangeStart", handleRouteChange);
-
-    // Cleanup sự kiện khi component bị unmount
-    return () => {
-      router.events.off("routeChangeStart", handleRouteChange);
-    };
-  }, [router]);
-
   const handleChangeEpisode = useCallback((idx: number) => {
-    setValue(idx);
+    setCurrentEpisode(idx);
   }, []);
 
   const handleChangeServer = useCallback((base_url: string) => {
@@ -42,37 +27,33 @@ const WatchMovie = ({ episodes, name, view }: Pick<MovieDetail, "episodes" | "na
   const renderEpisode = useMemo(() => {
     if (episode == undefined) return null;
 
-    if (episode.server_data.length <= 1) {
-      return (
-        <button
-          disabled
-          className="py-1.5 px-2 text-center bg-secondary transition-base rounded-sm font-light text-xs lg:text-sm"
-        >
-          Tập Full
-        </button>
-      );
-    } else {
-      return episode.server_data.map((el, idx: number) => (
-        <button
-          key={idx}
-          onClick={() => handleChangeEpisode(idx + 1)}
-          className={twMerge(
-            "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white border-[1px] text-[#b4b4b4] border-secondary transition-base rounded-md max-lg:font-medium text-xs lg:text-sm",
-            idx + 1 === value && "bg-secondary text-white"
-          )}
-        >
-          Tập {idx + 1}
-        </button>
-      ));
+    return episode.server_data.map((_el, idx: number) => (
+      <button
+        key={idx}
+        onClick={() => handleChangeEpisode(idx + 1)}
+        className={twMerge(
+          "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white border-[1px] text-[#b4b4b4] border-secondary transition-base rounded-md max-lg:font-medium text-xs lg:text-sm",
+          idx + 1 === currentEpisode && "bg-secondary text-white cursor-default"
+        )}
+      >
+        {isVisibleTrailer ? "Trailer" : episode.server_data.length <= 1 ? "Tập Full" : `Tập ${idx + 1}`}
+      </button>
+    ));
+  }, [episode, currentEpisode]);
+
+  const embed = useMemo(() => {
+    if (currentEpisode == undefined) return null;
+    if (!episode.server_data) return null;
+    if (isVisibleTrailer) {
+      const idVideoMatch = trailer_url.match(/(?:\?|&)v=([^&]+)/);
+
+      if (!idVideoMatch) return null;
+      return `https://www.youtube.com/embed/${idVideoMatch[1]}`;
     }
-  }, [episode, value]);
 
-  const serverMemo = useMemo(() => {
-    if (value == undefined) return null;
-
-    if (server !== "" && server !== undefined) return server + episode.server_data[value - 1]?.link_m3u8;
-    else return episode.server_data[value - 1]?.link_embed;
-  }, [server, value, episodes]);
+    if (server !== "" && server !== undefined) return server + episode.server_data[currentEpisode - 1].link_m3u8;
+    else return episode.server_data[currentEpisode - 1].link_embed;
+  }, [server, currentEpisode, episode]);
 
   const renderServer = useMemo(() => {
     return SERVERS.map((el, idx: number) => (
@@ -96,35 +77,33 @@ const WatchMovie = ({ episodes, name, view }: Pick<MovieDetail, "episodes" | "na
         <iframe
           width="100%"
           height="100%"
-          src={serverMemo as string}
+          src={embed as string}
           allowFullScreen
-          className="relative z-10 overflow-hidden"
+          className="relative z-10"
         />
 
         <Skeleton />
       </div>
 
       <div className="text-white mt-2 mb-5 lg:mb-10 lg:order-3">
-        <i className="block text-xs lg:text-sm mb-3 text-[#b3b3b3] text-center">
+        <i className="block text-xs lg:text-sm mb-3 text-[#b4b4b4] text-center">
           Vui lòng đổi server nếu không xem được
         </i>
 
         <h1 className="lg:text-xl font-bold">
-          {name} - tập {value}
+          {name} - {isVisibleTrailer ? "trailer" : `tập ${currentEpisode}`}
         </h1>
 
         <span className="text-xs lg:text-sm text-[#b4b4b4]">
           {view?.toLocaleString()} lượt xem
         </span>
 
-        <div className="my-4">{renderServer}</div>
+        {!isVisibleTrailer && <div className="my-4">{renderServer}</div>}
       </div>
 
       <div className="text-white border-[1px] border-[#334155] pb-3 overflow-y-auto rounded-md md:max-lg:max-h-80 lg:h-[500px]">
-        <div className="sticky top-0 z-10 bg-transparent backdrop-blur-md">
-          <div className="text-xs lg:text-sm py-2 px-3">
-            Tổng số: {episode.server_data.length} tập
-          </div>
+        <div className="sticky top-0 z-10 text-xs lg:text-sm py-2 px-3 bg-transparent backdrop-blur-md">
+          Tổng số: {episode.server_data.length} tập
         </div>
 
         <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5 gap-3 mt-3 px-3">
@@ -135,4 +114,4 @@ const WatchMovie = ({ episodes, name, view }: Pick<MovieDetail, "episodes" | "na
   );
 };
 
-export default WatchMovie;
+export default memo(WatchMovie);

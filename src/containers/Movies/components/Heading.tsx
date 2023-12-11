@@ -2,7 +2,7 @@ import { memo } from "react";
 import { twMerge } from "tailwind-merge";
 import { useRouter } from "next/router";
 
-import { NAV_ITEMS } from "@/constants";
+import { NAV_ITEMS } from "@/components/Header";
 
 const after ="after:content-[''] after:relative after:w-1/2 after:left-4 after:h-[3px] after:inline-block after:align-middle after:-mr-[50%] after:bg-[rgba(255,255,255,.08)]";
 

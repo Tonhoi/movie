@@ -8,3 +8,4 @@ export { default as Search } from "./components/Search";
 export { default as Logo } from "./components/Logo";
 export { default as Nav } from "./components/Nav";
 export { default as Overlay } from "./components/Overlay";
+export * from './constants'

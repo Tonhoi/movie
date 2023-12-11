@@ -4,6 +4,6 @@ const apis = {
   "air_today": "/hom-nay-xem-gi",
   "new-updated/series": "/moi-cap-nhat/phim-bo",
   "news": "/tin-tuc",
-  "similar_movie": ""
+  "similar_movie": "/phim-tuong-tu"
 };
 export default apis;

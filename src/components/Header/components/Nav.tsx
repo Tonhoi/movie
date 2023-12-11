@@ -3,9 +3,8 @@ import { useRouter } from "next/router";
 import { twMerge } from "tailwind-merge";
 import { MouseEvent, memo } from "react";
 
-import { NAV_ITEMS } from "@/constants";
+import { NAV_ITEMS } from "@/components/Header";
 import { NavProps, NavItemProps } from "@/types/header";
-import { routes } from "@/configs";
 
 const Nav = ({ containerClassName }: NavProps) => {
   return (
@@ -18,7 +17,8 @@ const Nav = ({ containerClassName }: NavProps) => {
 };
 
 const RenderNavItem = ({ title, child, href }: NavItemProps) => {
-  const { asPath } = useRouter();
+  const { asPath, pathname } = useRouter();
+  console.log("🚀 ~ file: Nav.tsx:21 ~ RenderNavItem ~ pathname:", asPath)
 
   const handleNavigation = (e: MouseEvent<HTMLAnchorElement>) => {
     if (child.length > 0) {
@@ -28,7 +28,7 @@ const RenderNavItem = ({ title, child, href }: NavItemProps) => {
 
   return (
     <li className="dropdown dropdown-end hover:text-primary transtion-base group w-full lg:w-auto lg:dropdown-hover">
-      <Link href={href} className="focus:!text-primary py-4 lg:py-2" onClick={handleNavigation} >
+      <Link href={href} className={twMerge("focus:!text-primary py-4 lg:py-2", asPath === href && "text-primary")} onClick={handleNavigation} >
         {title}
       </Link>
 
@@ -37,7 +37,9 @@ const RenderNavItem = ({ title, child, href }: NavItemProps) => {
           {child.map((el, idx: number) => (
             <li key={idx} className="hover:text-primary transtion-base text-text_color">
               <Link
-                href={el.href}
+                href={{
+                  pathname: el.href,
+                }}
                 className={twMerge(
                   "focus:!text-primary",
                   asPath.includes(el.href) && "text-primary"

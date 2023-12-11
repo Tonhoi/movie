@@ -1,3 +1,4 @@
+import { memo } from "react";
 import ReactSkeleton, { SkeletonTheme, SkeletonThemeProps } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -15,4 +16,4 @@ const Skeleton = (props: SkeletonProps) => {
   );
 };
 
-export default Skeleton;
+export default memo(Skeleton);
