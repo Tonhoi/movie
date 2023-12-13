@@ -1,7 +1,8 @@
 import { memo } from "react";
 
-import { VerticalMovieCard } from "@/components/Cards";
+import { getMovieObject } from "@/utils";
 import { MovieProps } from "@/types/movie";
+import { VerticalMovieCard } from "@/components/Cards";
 
 interface SimilarMovieProps {
   data: MovieProps[];
@@ -15,14 +16,7 @@ const SimilarMovie = ({ data }: SimilarMovieProps) => {
           key={el.id}
           className="snap-center w-[60%] sm:w-[35%] md:w-[25%] lg:w-full flex-shrink-0"
         >
-          <VerticalMovieCard
-            name={el.name}
-            year={el.year}
-            poster_url={el.poster_url}
-            time={el.time}
-            slug={el.slug}
-            episode_current={el.episode_current}
-          />
+          <VerticalMovieCard {...getMovieObject(el)} />
         </div>
       ))}
     </div>

@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import PlayCircleIcon from "@/assets/Icons/PlayCircleIcon";
-import { ImageWithFallback, Skeleton } from "@/components";
 import { MovieProps } from "@/types/movie";
+import { PlayCircleIcon } from "@/assets/Icons";
+import { ImageWithFallback, Skeleton } from "@/components";
 
 type PickMoveProps = "name" | "year" | "poster_url" | "time" | "slug" | "episode_current";
 

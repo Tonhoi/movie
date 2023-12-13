@@ -1,5 +1,6 @@
-import httpRequest from "@/utils/httpRequest";
 import { AxiosRequestConfig } from "axios";
+
+import { httpRequest } from "@/utils";
 
 const useFetch = async (url: string, param?: AxiosRequestConfig) => {
   try {

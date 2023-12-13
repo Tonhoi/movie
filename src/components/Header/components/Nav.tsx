@@ -17,8 +17,7 @@ const Nav = ({ containerClassName }: NavProps) => {
 };
 
 const RenderNavItem = ({ title, child, href }: NavItemProps) => {
-  const { asPath, pathname } = useRouter();
-  console.log("🚀 ~ file: Nav.tsx:21 ~ RenderNavItem ~ pathname:", asPath)
+  const { asPath } = useRouter();
 
   const handleNavigation = (e: MouseEvent<HTMLAnchorElement>) => {
     if (child.length > 0) {
@@ -37,9 +36,7 @@ const RenderNavItem = ({ title, child, href }: NavItemProps) => {
           {child.map((el, idx: number) => (
             <li key={idx} className="hover:text-primary transtion-base text-text_color">
               <Link
-                href={{
-                  pathname: el.href,
-                }}
+                href={{ pathname: el.href }}
                 className={twMerge(
                   "focus:!text-primary",
                   asPath.includes(el.href) && "text-primary"

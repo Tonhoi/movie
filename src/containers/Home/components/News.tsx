@@ -1,6 +1,6 @@
 import { HeadLine } from "@/components";
-import { NewsCard } from "@/components/Cards";
 import { NewsProps } from "@/types/movie";
+import { NewsCard } from "@/components/Cards";
 
 interface props {
   data: NewsProps[];

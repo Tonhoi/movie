@@ -1,9 +1,9 @@
-import { Fragment, memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 
 import { MovieDetail } from "@/types/movie";
 
 interface CommentProps {
-  movie: MovieDetail
+  movie: MovieDetail;
 }
 
 const Comments = ({ movie }: CommentProps) => {
@@ -25,10 +25,6 @@ const Comments = ({ movie }: CommentProps) => {
     };
   }, [movie]);
 
-  return (
-    <Fragment>
-      <div id="disqus_thread" className="lg:w-[65%] mt-16 text-white" />
-    </Fragment>
-  );
+  return <div id="disqus_thread" className="lg:w-[65%] mt-16 text-white" />;
 };
 export default memo(Comments);

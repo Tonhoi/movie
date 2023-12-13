@@ -21,6 +21,7 @@ const HeadLine = ({ title, isSeeMore = false, containerClassName }: HeadlineProp
         <Link
           href="/"
           className="py-1 px-3 bg-secondary text-[10px] lg:text-sm font-bold lg:font-medium hover:opacity-80 transition-base ml-auto rounded-sm"
+          prefetch={false}
         >
           XEM THÊM
         </Link>

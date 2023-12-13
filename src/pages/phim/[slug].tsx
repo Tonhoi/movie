@@ -19,15 +19,9 @@ export const getStaticPaths = async () => {
   try {
     const paths: Array<unknown> = [];
     const resTrendingMovies = await UseFetch(apis["trending_movie"]);
-    const resSingleMovies = await UseFetch(apis["new-updated/single"], {
-      params: { limit: 10 },
-    });
-    const resAirTodayMovies = await UseFetch(apis["air_today"], {
-      params: { limit: 10 },
-    });
-    const resSeriesMovies = await UseFetch(apis["new-updated/series"], {
-      params: { limit: 10 },
-    });
+    const resSingleMovies = await UseFetch(apis["new-updated/single"], { params: { limit: 10 } });
+    const resAirTodayMovies = await UseFetch(apis["air_today"], { params: { limit: 10 } });
+    const resSeriesMovies = await UseFetch(apis["new-updated/series"], { params: { limit: 10 } });
 
     resTrendingMovies.map((movie: MovieProps) => {
       paths.push({ params: { slug: movie.slug } });
@@ -60,9 +54,8 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }: params) => {
   try {
     const resMovie = await UseFetch(`phim/${params.slug}`);
-    const resAirTodayMovie = await UseFetch(apis["air_today"], { params: { limit: 10 } });
-    const resSimilarMovie = await UseFetch(apis['similar_movie'] + `/${params.slug}`)
-
+    const resAirTodayMovie = await UseFetch(apis["air_today"]);
+    const resSimilarMovie = await UseFetch(apis['similar_movie'] + params.slug)
 
     return {
       props: {

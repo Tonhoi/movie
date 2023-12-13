@@ -1,7 +1,7 @@
 import { Settings } from "react-slick";
 
-import ChevronForwardIcon from "@/assets/Icons/ChevronForwardIcon";
 import { ArrowProps } from "@/types/swiper";
+import { ChevronForwardIcon } from "@/assets/Icons";
 
 const NextArrow = ({ onClick }: Partial<ArrowProps>) => {
   return (
@@ -35,4 +35,4 @@ const settings: Settings = {
   prevArrow: <PrevArrow />,
 };
 
-export default settings
+export default settings;

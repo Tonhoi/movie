@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
     const resSingleMovie = await UseFetch(apis["new-updated/single"], { params: { limit: 10 } })
     const resAirTodayMovie = await UseFetch(apis["air_today"], { params: { limit: 10 } })
     const resSeriesMovie = await UseFetch(apis["new-updated/series"], { params: { limit: 10 } })
-    const resNews = await UseFetch(apis["news"])
+    const resNews = await UseFetch(apis["news"], { params: { limit: 6 } })
     
     return {
       props: {

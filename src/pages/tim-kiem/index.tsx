@@ -1,4 +1,3 @@
-// import Search from "@/containers/Search";
 import dynamic from "next/dynamic";
 
 const DynamicSearch = dynamic(() => import("@/containers/Search"), {

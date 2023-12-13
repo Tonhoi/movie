@@ -1,6 +1,6 @@
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { Fragment, ReactNode, useEffect } from "react";
-import dynamic from "next/dynamic";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import LoadingScreen from "@/components/LoadingScreen";
@@ -13,15 +13,14 @@ const DynamicFooter = dynamic(() => import("@/components/Footer"), {
 });
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  const router = useRouter();
-
+  const {asPath} = useRouter();
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  }, [router.asPath]);
+  }, [asPath]);
 
   return (
     <Fragment>
@@ -36,7 +35,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
       </div>
 
       <SpeedInsights />
-
     </Fragment>
   );
 };

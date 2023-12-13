@@ -1,11 +1,12 @@
 import { get } from "lodash";
 import { useRouter } from "next/router";
 import { useLocalStorage } from "react-use";
+import { Fragment, useEffect } from "react";
 
-import { HeadLine, Loader } from "@/components";
-import { AiringToday, Comments, Intro, SimilarMovie, WatchMovie } from "@/containers/Movie";
+import { getSeoObject } from "@/utils";
 import { MovieType } from "@/pages/phim/[slug]";
-import { useEffect } from "react";
+import { HeadLine, Loader, SEO } from "@/components";
+import { AiringToday, Comments, Intro, SimilarMovie, WatchMovie } from "@/containers/Movie";
 
 const Movie = ({ initData }: MovieType) => {
   const [_currentEpisode, setCurrentEpisode] = useLocalStorage("current_episode", 1);
@@ -13,6 +14,7 @@ const Movie = ({ initData }: MovieType) => {
   const router = useRouter();
   const episodes = get(initData, [0, "episodes"]);
   const movie = get(initData, [0, "movie"]);
+  const seoOnPage = get(initData, [0, "seoOnPage"])
   const airingToday = get(initData, [1, "data"]);
   const similarMovie = get(initData, [2, "data"]);
   
@@ -34,28 +36,33 @@ const Movie = ({ initData }: MovieType) => {
   if (router.isFallback) return <Loader />;
 
   return (
-    <div className="wide">
-      <WatchMovie episodes={episodes} name={movie.name} view={movie.view} status={movie.status}  trailer_url={movie.trailer_url} />
+    <Fragment>
+      {/* SEO */}
+      <SEO {...getSeoObject(seoOnPage)} />
 
-      <Intro
-        sub_docquyen={movie.sub_docquyen}
-        poster_url={movie.poster_url}
-        quality={movie.quality}
-        type={movie.type}
-        time={movie.time}
-        lang={movie.lang}
-        category={movie.category}
-        content={movie.content}
-      />
+      <div className="wide">
+        <WatchMovie episodes={episodes} name={movie.name} view={movie.view} status={movie.status} trailer_url={movie.trailer_url} />
 
-      <Comments movie={movie} />
+        <Intro
+          sub_docquyen={movie.sub_docquyen}
+          poster_url={movie.poster_url}
+          quality={movie.quality}
+          type={movie.type}
+          time={movie.time}
+          lang={movie.lang}
+          category={movie.category}
+          content={movie.content}
+        />
 
-      <HeadLine title="Có thể bạn quan tâm" />
-      <SimilarMovie data={similarMovie} />
+        <Comments movie={movie} />
 
-      <HeadLine title="Hôm nay xem gì 🤔" />
-      <AiringToday data={airingToday} />
-    </div>
+        <HeadLine title="Có thể bạn quan tâm" />
+        <SimilarMovie data={similarMovie} />
+
+        <HeadLine title="Hôm nay xem gì 🤔" />
+        <AiringToday data={airingToday} />
+      </div>
+    </Fragment>
   );
 };
 

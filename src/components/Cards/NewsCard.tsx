@@ -1,7 +1,8 @@
-import { ImageWithFallback } from "@/components";
-import { routes } from "@/configs";
 import { useRouter } from "next/router";
+
+import { routes } from "@/configs";
 import {NewsProps} from '@/types/movie'
+import { ImageWithFallback } from "@/components";
 
 const NewsCard = (props: Omit<NewsProps, "id">) => {
   const { poster_url, date, content, title, movie_type, slug } = props;
@@ -19,7 +20,7 @@ const NewsCard = (props: Omit<NewsProps, "id">) => {
       <ImageWithFallback
         alt=""
         src={poster_url}
-        width={400}
+        width={350}
         height={200}
         className="object-cover rounded-t-md w-full max-h-[230px]"
       />

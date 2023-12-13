@@ -1,10 +1,3 @@
-export interface PaginationProps {
-  totalItems: number;
-  totalItemsPerPage: number;
-  currentPage: number;
-  totalPages: number;
-}
-
 interface IPage<T extends unknown[]> {
   initData: T;
   fallback: {
@@ -16,9 +9,24 @@ interface IPage<T extends unknown[]> {
 type responseSchema<T> = {
   pagination: Array<PaginationProps>;
   data: T[];
+  seoOnPage: seoOnPageProps
 };
 
 export type { IPage, responseSchema };
+
+export interface PaginationProps {
+  totalItems: number;
+  totalItemsPerPage: number;
+  currentPage: number;
+  totalPages: number;
+}
+
+export interface seoOnPageProps {
+  seo_title?: string;
+  seo_description?: string;
+  og_image?: string;
+  og_url?: string;
+}
 
 export interface MovieProps {
   category: Array<Category>;

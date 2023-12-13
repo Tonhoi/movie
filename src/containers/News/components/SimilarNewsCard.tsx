@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { useRouter } from "next/router";
 
-import { ImageWithFallback } from "@/components";
-import { Time } from "@/containers/News";
 import { routes } from "@/configs";
+import { Time } from "@/containers/News";
 import { NewsProps } from "@/types/movie";
+import { ImageWithFallback } from "@/components";
 
 type SimilarNewsCardTypes = 'poster_url' | "content" | "slug" | "title"
 

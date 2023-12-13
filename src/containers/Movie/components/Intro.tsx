@@ -1,8 +1,8 @@
-import parse from "html-react-parser";
 import { memo } from "react";
+import parse from "html-react-parser";
 
-import { ImageWithFallback } from "@/components";
 import { MovieDetail } from "@/types/movie";
+import { ImageWithFallback } from "@/components";
 
 type IntroProps = "sub_docquyen" | "poster_url" | "quality" | "type" | "time" | "lang" | "category" | "content"
 
@@ -42,7 +42,7 @@ const Intro = (props: Pick<MovieDetail, IntroProps>) => {
             Thể loại:
           </span>
 
-          {category.map((el, idx: number) => (
+          {category?.map((el, idx: number) => (
             <span
               key={idx}
               className="capitalize py-1 px-2 rounded-md inline-block font-normal md:font-light text-[10px] md:text-xs lg:text-sm bg-secondary mr-2"
@@ -59,7 +59,7 @@ const Intro = (props: Pick<MovieDetail, IntroProps>) => {
         </div>
 
         <div className="max-md:text-xs md:max-lg:text-sm text-[#b4b4b4]">
-          {parse(content)}
+          {content === "" ? "Đang cập nhật...": parse(content)}
         </div>
       </div>
     </article>

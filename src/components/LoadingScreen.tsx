@@ -1,7 +1,7 @@
 import Image from "next/image";
+import { twMerge } from "tailwind-merge";
 import { useState, memo, useEffect } from "react";
 import { useIsFetching, useIsMutating } from "@tanstack/react-query";
-import { twMerge } from "tailwind-merge";
 
 const LoadingScreen = () => {
   const isFetching = useIsFetching();

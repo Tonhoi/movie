@@ -5,8 +5,8 @@ export interface NavProps {
 export interface NavItemProps {
   title: string;
   href: string;
-  child: Array<{
+  child: {
     title: string;
     href: string;
-  }>;
+  }[];
 }

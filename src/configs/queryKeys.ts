@@ -4,6 +4,7 @@ const queryKeys = {
   air_today_movie: "air_today_movie",
   series_movie: "series_movie",
   movies: "movies",
+  search: "tim-kiem",
 };
 
 export default queryKeys;

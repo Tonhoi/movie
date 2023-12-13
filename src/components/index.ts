@@ -6,3 +6,4 @@ export { default as Skeleton } from "./Skeleton";
 export { default as Loader } from "./Loader";
 export { default as RcPagination } from "./Pagination";
 export { default as HeadLine } from "./HeadLine";
+export { default as SEO } from './SEO'

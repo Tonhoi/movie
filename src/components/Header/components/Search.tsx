@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { useRouter } from "next/router";
-import { ChangeEvent, KeyboardEvent, memo, useState } from "react";
+import { ChangeEvent, KeyboardEvent, memo, useState, useCallback } from "react";
 
 interface SearchProps {
   inputClassName?: string;
@@ -8,25 +8,25 @@ interface SearchProps {
 
 const Search = ({ inputClassName }: SearchProps) => {
   const { push } = useRouter();
-
   const [inputValue, setInputValue] = useState<string>("");
-
+  
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+    setInputValue(e.target.value)
   };
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       push(`/tim-kiem?keyword=${inputValue}`, undefined, { shallow: true });
       setInputValue("");
     }
-  };
+  }, [inputValue]);
 
   return (
     <input
       type="text"
       id="myInput"
       placeholder="Tìm kiếm phim..."
+      autoComplete="off"
       onChange={handleChange}
       value={inputValue}
       onKeyDown={handleKeyDown}

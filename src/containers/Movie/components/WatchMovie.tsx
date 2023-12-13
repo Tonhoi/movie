@@ -5,7 +5,7 @@ import { memo, useCallback, useMemo, useState } from "react";
 
 import { Skeleton } from "@/components";
 import { MovieDetail } from "@/types/movie";
-import { SERVERS } from "@/containers/Movie";
+import { BASE_EMBED, SERVERS } from "@/containers/Movie";
 
 type WatchMovieProps = Pick<MovieDetail, "episodes" | "name" | "view" | "trailer_url" | "status">
 
@@ -48,7 +48,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url }: WatchMoviePro
       const idVideoMatch = trailer_url.match(/(?:\?|&)v=([^&]+)/);
 
       if (!idVideoMatch) return null;
-      return `https://www.youtube.com/embed/${idVideoMatch[1]}`;
+      return BASE_EMBED + idVideoMatch[1]
     }
 
     if (server !== "" && server !== undefined) return server + episode.server_data[currentEpisode - 1].link_m3u8;

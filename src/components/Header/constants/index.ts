@@ -248,11 +248,11 @@ export const NAV_ITEMS = [
         href: "/phim-le",
       },
       {
-        title: "Hoạt hình",
+        title: "Hoạt Hình",
         href: "/hoat-hinh",
       },
       {
-        title: "Subteam",
+        title: "Sub Độc Quyền",
         href: "/subteam",
       },
     ],

@@ -1,5 +1,6 @@
-import { memo, Fragment } from "react";
 import parse from "html-react-parser";
+import { memo, Fragment } from "react";
+
 import { Time } from "@/containers/News";
 
 interface ContentNewsProps {

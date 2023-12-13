@@ -14,3 +14,5 @@ export const SERVERS = [
     base_url: "https://www.hls-player.net/search?q=player3&video_links=",
   },
 ];
+
+export const BASE_EMBED = "https://www.youtube.com/embed/"

@@ -1,9 +1,9 @@
-import { useEffect, memo } from "react";
-import { useRouter } from "next/router";
 import { Portal } from "react-portal";
+import { useRouter } from "next/router";
+import { useEffect, memo } from "react";
 
-import { MenuIcon } from "@/assets/Icons";
 import { useToggle } from "@/hooks";
+import { MenuIcon } from "@/assets/Icons";
 import { HeaderOnMobile, Nav, Search, Logo, Overlay } from "@/components/Header";
 
 const Header = () => {

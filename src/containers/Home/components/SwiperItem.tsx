@@ -5,20 +5,7 @@ import parse from "html-react-parser";
 import { ImageWithFallback } from "@/components";
 import { SwiperCardItemProps } from "@/types/swiper";
 
-const SwiperCardItem = ({
-  name,
-  origin_name,
-  time,
-  lang,
-  quality,
-  description,
-  slug,
-  type,
-  status,
-  sub_docquyen,
-  poster_url,
-  thumb_url,
-}: SwiperCardItemProps) => {
+const SwiperCardItem = ({ name, origin_name, time, lang, quality, description, slug, type, status, sub_docquyen, poster_url, thumb_url }: SwiperCardItemProps) => {
   return (
     <div
       className="relative flex-center z-20 bg-center bg-cover bg-no-repeat h-[auto] min-h-[550px] py-8 lg:h-[700px]"
@@ -78,12 +65,12 @@ const SwiperCardItem = ({
             </div>
           )}
 
-            <Link
-              href={`/phim/${slug}`}
-              className="block mt-5 text-center hover:bg-[rgba(58,191,238,0.8)] rounded-xl border-2 border-solid border-primary py-1.5 text-xl font-medium max-w-[320px] transition-base w-full lg:py-3 lg:text-4xl"
-            >
-              XEM NGAY
-            </Link>
+          <Link
+            href={`/phim/${slug}`}
+            className="block mt-5 text-center hover:bg-[rgba(58,191,238,0.8)] rounded-xl border-2 border-solid border-primary py-1.5 text-xl font-medium max-w-[320px] transition-base w-full lg:py-3 lg:text-4xl"
+          >
+            XEM NGAY
+          </Link>
         </div>
 
         <div className="px-8 flex-shrink-0 w-full hidden lg:block lg:basis-[55%]  lg:max-w-[746px] lg:h-[600px]">
