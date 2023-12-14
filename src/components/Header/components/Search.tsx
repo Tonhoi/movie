@@ -24,7 +24,6 @@ const Search = ({ inputClassName }: SearchProps) => {
   return (
     <input
       type="text"
-      id="myInput"
       placeholder="Tìm kiếm phim..."
       autoComplete="off"
       onChange={handleChange}
