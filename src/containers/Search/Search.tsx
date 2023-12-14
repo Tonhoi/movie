@@ -20,7 +20,7 @@ const Search = ({ initData }: SearchType) => {
     if (searchData == undefined) return null;
 
     return searchData.map((el: MovieProps) => (
-      <VerticalMovieCard key={el.id} {...getMovieObject(el)} prefetch={false} />
+      <VerticalMovieCard key={el.id} {...getMovieObject(el)} />
     ));
   }, [searchResult]);
 

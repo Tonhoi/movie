@@ -6,16 +6,12 @@ import { ImageWithFallback, Skeleton } from "@/components";
 
 type PickMoveProps = "name" | "year" | "poster_url" | "time" | "slug" | "episode_current";
 
-interface VerticalMovieCardProps extends Pick<MovieProps, PickMoveProps> {
-  prefetch?:boolean
-}
-
-const VerticalMovieCard = (props: VerticalMovieCardProps) => {
-  const { name, year, poster_url, time, slug, episode_current, prefetch = true } = props;
+const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
+  const { name, year, poster_url, time, slug, episode_current } = props;
 
   return (
     <article className="flex flex-col h-full text-white">
-      <Link href={`/phim/${slug}`} className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0" prefetch={prefetch}>
+      <Link href={`/phim/${slug}`} className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0">
         <figure className="relative overflow-hidden h-full">
           <ImageWithFallback
             alt={name}
