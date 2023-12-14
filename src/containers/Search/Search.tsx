@@ -1,30 +1,20 @@
 import { get } from "lodash";
 import { useRouter } from "next/router";
 import { Fragment, useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
 
-import { queryKeys } from "@/configs";
 import { MovieProps } from "@/types/movie";
-import { useFetch as UseFetch } from "@/hooks";
+import { SearchType } from "@/pages/tim-kiem";
+import { RcPagination, SEO } from "@/components";
 import { VerticalMovieCard } from "@/components/Cards";
 import { getMovieObject, getSeoObject } from "@/utils";
-import { Loader, RcPagination, SEO } from "@/components";
 
-const Search = () => {
+const Search = ({ initData }: SearchType) => {
   const { query } = useRouter();
 
-  const { data: searchResult, isLoading } = useQuery({
-    queryKey: ["search", query.keyword, query.page],
-    queryFn: () =>
-      UseFetch(queryKeys.search, {
-        params: { keyword: query?.keyword, page: query?.page || 1 },
-      }),
-    enabled: query.keyword !== undefined,
-  });
-
+  const searchResult = get(initData, [0]);
   const pagination = get(searchResult, ["pagination"]);
   const searchData = get(searchResult, ["data"]);
-  const seoOnPage = get(searchResult, ["seoOnPage"])
+  const seoOnPage = get(searchResult, ["seoOnPage"]);
 
   const renderSearchResult = useMemo(() => {
     if (searchData == undefined) return null;
@@ -34,12 +24,10 @@ const Search = () => {
     ));
   }, [searchResult]);
 
-  if (isLoading) return <Loader />;
-
   return (
     <Fragment>
       <SEO {...getSeoObject(seoOnPage)} />
-      
+
       <div className="wide mt-10">
         <h1 className="text-white text-xl max-lg:font-medium max-lg:text-lg">
           Kết quả tìm kiếm:
@@ -74,10 +62,12 @@ const Search = () => {
             total={pagination.totalItems}
             pageSize={pagination.totalItemsPerPage}
             defaultCurrent={pagination.currentPage}
+            current={pagination.currentPage}
+            isShallow={false}
           />
         )}
       </div>
-  </Fragment>
+    </Fragment>
   );
 };
 

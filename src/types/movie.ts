@@ -7,7 +7,7 @@ interface IPage<T extends unknown[]> {
 }
 
 type responseSchema<T> = {
-  pagination: Array<PaginationProps>;
+  pagination: PaginationProps;
   data: T[];
   seoOnPage: seoOnPageProps
 };

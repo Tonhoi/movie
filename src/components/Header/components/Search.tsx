@@ -16,7 +16,7 @@ const Search = ({ inputClassName }: SearchProps) => {
 
   const handleKeyDown = useCallback((e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      push(`/tim-kiem?keyword=${inputValue}`, undefined, { shallow: true });
+      push(`/tim-kiem?keyword=${inputValue}`);
       setInputValue("");
     }
   }, [inputValue]);
