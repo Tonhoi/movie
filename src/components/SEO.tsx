@@ -12,7 +12,7 @@ type SEOProps = {
 };
 
 const SEO = (props: SEOProps) => {
-  const { seo_title, seo_description, defaultNextSeo, og_url, og_image = require("../../public/default_image.jpg") } = props;
+  const { seo_title, seo_description, defaultNextSeo, og_url, og_image } = props;
 
   return (
     <NextSeo
@@ -27,7 +27,7 @@ const SEO = (props: SEOProps) => {
         type: "website",
         images: [
           {
-            url: og_image,
+            url: og_image ?? require('@/assets/images/default_og_image.jpg').default.src,
             alt: seo_title,
             type: "image/jpeg",
           },
