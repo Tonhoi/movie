@@ -17,7 +17,7 @@ const ListMovie = ({ data, title }: ListMovieProps) => {
         {data?.map((el) => (
           <div
             key={el.id}
-            className="snap-center w-[60%] sm:w-[35%] md:w-[25%] lg:w-full flex-shrink-0"
+            className="snap-center w-[40%] sm:w-[25%] md:w-[20%] lg:w-full flex-shrink-0"
           >
             <VerticalMovieCard {...getMovieObject(el)} />
           </div>
