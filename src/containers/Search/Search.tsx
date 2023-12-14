@@ -5,8 +5,8 @@ import { Fragment, useMemo } from "react";
 import { MovieProps } from "@/types/movie";
 import { SearchType } from "@/pages/tim-kiem";
 import { RcPagination, SEO } from "@/components";
-import { VerticalMovieCard } from "@/components/Cards";
 import { getMovieObject, getSeoObject } from "@/utils";
+import { VerticalMovieCard } from "@/components/Cards";
 
 const Search = ({ initData }: SearchType) => {
   const { query } = useRouter();
@@ -20,7 +20,7 @@ const Search = ({ initData }: SearchType) => {
     if (searchData == undefined) return null;
 
     return searchData.map((el: MovieProps) => (
-      <VerticalMovieCard key={el.id} {...getMovieObject(el)} />
+      <VerticalMovieCard key={el.id} {...getMovieObject(el)} prefetch={false} />
     ));
   }, [searchResult]);
 

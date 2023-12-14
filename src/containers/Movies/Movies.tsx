@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import { useRouter } from "next/router";
 import { twMerge } from "tailwind-merge";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "next/navigation";
 
 import { queryKeys } from "@/configs";
 import { MovieProps } from "@/types/movie";
@@ -15,11 +14,9 @@ import { VerticalMovieCard, HorizontalMovieCard } from "@/components/Cards";
 const Movies = () => {
   const { toggleOff, toggleOn, on: isLayoutColumn } = useToggle(false);
   const { query, asPath } = useRouter();
-  const searchParams = useSearchParams()
-  const params = new URLSearchParams(searchParams)
   
   const { data: movies, isPending } = useQuery({
-    queryKey: [ queryKeys["movies"], params.toString() ],
+    queryKey: [ queryKeys["movies"], query.year, query.country, query.category, query.type, query.page ],
     queryFn: () => UseFetch(asPath),
     enabled: Object.values(query).some((value) => value !== undefined),
   });
