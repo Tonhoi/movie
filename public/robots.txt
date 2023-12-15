@@ -11,3 +11,6 @@ Host: https://flashmov.vercel.app/
 
 # Sitemaps
 Sitemap: https://flashmov.vercel.app/sitemap.xml
+Sitemap: https://flashmov.vercel.app//sitemap-films-series.xml
+Sitemap: https://flashmov.vercel.app//sitemap-films-single.xml
+Sitemap: https://flashmov.vercel.app//sitemap-news.xml

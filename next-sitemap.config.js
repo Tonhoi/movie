@@ -1,11 +1,6 @@
-// const SITE_URL = process.env.SITE_URL || "https://flashmov.vercel.app/";
-
+const SITE_URL = process.env.SITE_URL || "https://flashmov.vercel.app/";
 // add your private routes here
-const exclude = [
-  "./src/pages/quoc-gia/*",
-  "./src/pages/the-loai/*",
-  "./src/containers/Movies/*",
-];
+const exclude = ["/quoc-gia/*", "/the-loai/*", "/tin-tuc/*"];
 
 // Save crawling budget by not fetching SSG meta files
 const NEXT_SSG_FILES = [
@@ -18,15 +13,22 @@ const NEXT_SSG_FILES = [
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://flashmov.vercel.app/",
+  siteUrl: SITE_URL,
   generateRobotsTxt: true,
   exclude,
+  sitemapSize: 20000,
+  generateIndexSitemap: false,
   robotsTxtOptions: {
     policies: [
       {
         userAgent: "*",
         disallow: NEXT_SSG_FILES,
       },
+    ],
+    additionalSitemaps: [
+      SITE_URL + "/sitemap-films-series.xml",
+      SITE_URL + "/sitemap-films-single.xml",
+      SITE_URL + "/sitemap-news.xml",
     ],
   },
 };
