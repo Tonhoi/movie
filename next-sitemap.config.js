@@ -1,8 +1,7 @@
-const SITE_URL = process.env.SITE_URL || "https://flashmov.vercel.app/";
+// const SITE_URL = process.env.SITE_URL || "https://flashmov.vercel.app/";
 
 // add your private routes here
 const exclude = [
-  "./src/pages/phim/*",
   "./src/pages/quoc-gia/*",
   "./src/pages/the-loai/*",
   "./src/containers/Movies/*",
@@ -19,7 +18,7 @@ const NEXT_SSG_FILES = [
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: SITE_URL,
+  siteUrl: "https://flashmov.vercel.app/",
   generateRobotsTxt: true,
   exclude,
   robotsTxtOptions: {
