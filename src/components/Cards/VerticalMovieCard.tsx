@@ -10,17 +10,17 @@ type PickMoveProps = "name" | "year" | "poster_url" | "slug" | "episode_current"
 
 const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
   const { name, year, poster_url, slug, episode_current } = props;
-  const [ref, { width }] = useMeasure<HTMLElement>()
+  const [ref, { width, height }] = useMeasure<HTMLElement>()
 
   return (
-    <article className="flex flex-col h-full text-white">
-      <Link href={`/phim/${slug}`} className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0">
-        <figure ref={ref} className="relative overflow-hidden h-full max-h-[250px]">
+    <article className="flex flex-col text-white">
+      <Link href={`/phim/${slug}`} className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0 pt-[135%]">
+        <figure ref={ref} className="overflow-hidden h-full absolute -mt-[135%] w-full">
           <ImageWithFallback
             src={poster_url}
             alt={name}
             width={width}
-            height={250}
+            height={height}
             className="object-cover h-full w-full"
             unoptimized
           />

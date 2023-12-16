@@ -14,9 +14,16 @@ import { VerticalMovieCard, HorizontalMovieCard } from "@/components/Cards";
 const Movies = () => {
   const { toggleOff, toggleOn, on: isLayoutColumn } = useToggle(false);
   const { query, asPath } = useRouter();
-  
+
   const { data: movies, isPending } = useQuery({
-    queryKey: [ queryKeys["movies"], query.year, query.country, query.category, query.type, query.page ],
+    queryKey: [
+      queryKeys["movies"],
+      query.year,
+      query.country,
+      query.category,
+      query.type,
+      query.page,
+    ],
     queryFn: () => UseFetch(asPath),
     enabled: Object.values(query).some((value) => value !== undefined),
   });
@@ -34,21 +41,22 @@ const Movies = () => {
           isLayoutColumn={isLayoutColumn}
           toggleOff={toggleOff}
           toggleOn={toggleOn}
-          />
+        />
 
         {/* show list movie */}
         <div
           className={twMerge(
-            "grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 mt-10 lg:mt-20 gap-x-6 gap-y-8",
+            "grid grid-cols-2 mt-10 gap-x-6 gap-y-8",
+            "xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:mt-20",
             isLayoutColumn && "grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3"
-            )}
-            >
+          )}
+        >
           {movies.data?.map((el: MovieProps, idx: number) => {
             if (!isLayoutColumn) return <VerticalMovieCard key={idx} {...getMovieObject(el)} />
             else return <HorizontalMovieCard key={idx} sub_docquyen={el.sub_docquyen} category={el.category} {...getMovieObject(el)} />
           })}
         </div>
-
+        
         {movies.data?.length === 0 && (
           <p className="text-white text-xs lg:text-sm font-medium">
             Không tìm thấy phim phù hợp...
