@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useRouter } from "next/router";
 
 import { ImageWithFallback, Skeleton } from "@/components";
@@ -57,4 +58,4 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
   );
 };
 
-export default HorizontalMovieCard;
+export default memo(HorizontalMovieCard);

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useRouter } from "next/router";
 
 import { routes } from "@/configs";
@@ -43,4 +44,4 @@ const NewsCard = (props: Omit<NewsProps, "id">) => {
   );
 };
 
-export default NewsCard;
+export default memo(NewsCard);
