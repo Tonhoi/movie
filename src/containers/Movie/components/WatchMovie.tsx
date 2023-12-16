@@ -7,9 +7,9 @@ import { Skeleton } from "@/components";
 import { MovieDetail } from "@/types/movie";
 import { BASE_EMBED, SERVERS } from "@/containers/Movie";
 
-type WatchMovieProps = Pick<MovieDetail, "episodes" | "name" | "view" | "trailer_url" | "status">
+type WatchMovieProps = Pick<MovieDetail, "episodes" | "name" | "view" | "trailer_url" | "status" | "lang">
 
-const WatchMovie = ({ episodes, name, view, status, trailer_url }: WatchMovieProps) => {
+const WatchMovie = ({ episodes, name, view, status, trailer_url, lang }: WatchMovieProps) => {
   const episode = get(episodes, [0]);
   const isVisibleTrailer = status === "trailer";
 
@@ -32,7 +32,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url }: WatchMoviePro
         key={idx}
         onClick={() => handleChangeEpisode(idx + 1)}
         className={twMerge(
-          "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white border-[1px] text-[#b4b4b4] border-secondary transition-base rounded-md max-lg:font-medium text-xs lg:text-sm",
+          "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white border-[1px] text-gray_white border-secondary transition-base rounded-md max-lg:font-medium text-xs lg:text-sm",
           idx + 1 === currentEpisode && "bg-secondary text-white cursor-default"
         )}
       >
@@ -81,20 +81,21 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url }: WatchMoviePro
           allowFullScreen
           className="relative z-10"
         />
+        {/* <ReactPlayer url={embed as string} /> */}
 
         <Skeleton />
       </div>
 
       <div className="text-white mt-2 mb-5 lg:mb-10 lg:order-3">
-        <i className="block text-xs lg:text-sm mb-3 text-[#b4b4b4] text-center">
+        <i className="block text-xs lg:text-sm mb-3 text-gray_white text-center">
           Vui lòng đổi server nếu không xem được
         </i>
 
         <h1 className="lg:text-xl font-bold">
-          {name} - {isVisibleTrailer ? "trailer" : `tập ${currentEpisode}`}
+          {name} - {isVisibleTrailer ? "trailer" : `tập ${currentEpisode} (${lang})`}
         </h1>
 
-        <span className="text-xs lg:text-sm text-[#b4b4b4]">
+        <span className="text-xs lg:text-sm text-gray_white">
           {view?.toLocaleString()} lượt xem
         </span>
 

@@ -12,7 +12,7 @@ const index = (props: SearchType) => {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { query } = context;
   const { keyword, page } = query;
-  const resSearchResult = await UseFetch("tim-kiem", { params: { keyword, page: page || 1, limit: 15 } });
+  const resSearchResult = await UseFetch("tim-kiem", { params: { keyword, page: page || 1, limit: 18 } });
 
   return {
     props: {

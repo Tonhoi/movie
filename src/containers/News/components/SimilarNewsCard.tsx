@@ -26,7 +26,7 @@ const SimilarNewsCard = ({poster_url, slug, title}: Pick<NewsProps, SimilarNewsC
         />
       </figure>
 
-      <div className="w-full text-xs md:text-sm text-[#b4b4b4]">
+      <div className="w-full text-xs md:text-sm text-gray_white">
         <Time hiddenDivided />
         
         <span className="block !line-clamp-2 mt-1 text-[#e2e2e2] group-hover:text-primary transition-base">

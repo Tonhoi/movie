@@ -46,7 +46,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
           {category?.map((category: Category, idx: number) => (
             <span
               key={idx}
-              className="capitalize py-0.5 px-2 border-[1px] lg:border-[1px] border-primary text-[10px] lg:text-xs rounded-sm text-[#b4b4b4] font-medium"
+              className="capitalize py-0.5 px-2 border-[1px] lg:border-[1px] border-primary text-[10px] lg:text-xs rounded-sm text-gray_white font-medium"
             >
               {category.name}
             </span>

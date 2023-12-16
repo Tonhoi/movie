@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useMeasure } from "react-use";
 
 import { MovieProps } from "@/types/movie";
 import { PlayCircleIcon } from "@/assets/Icons";
@@ -8,17 +9,18 @@ type PickMoveProps = "name" | "year" | "poster_url" | "time" | "slug" | "episode
 
 const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
   const { name, year, poster_url, time, slug, episode_current } = props;
+  const [ref, { width, height }] = useMeasure<HTMLElement>()
 
   return (
     <article className="flex flex-col h-full text-white">
       <Link href={`/phim/${slug}`} className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0">
-        <figure className="relative overflow-hidden h-full">
+        <figure ref={ref} className="relative overflow-hidden max-h-[250px]">
           <ImageWithFallback
-            alt={name}
             src={poster_url}
+            alt={name}
+            width={width}
+            height={height}
             className="object-cover h-full w-full"
-            width={300}
-            height={380}
           />
 
           <Skeleton />
@@ -26,7 +28,7 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
 
         <div className="absolute bottom-1 left-1 z-10 py-1 px-2 bg-secondary text-[10px] md:text-xs rounded-sm shadow-lg font-medium md:font-light">{episode_current}</div>
 
-        <span className="uppercase absolute bottom-1 left-1 py-[5px] px-[10px] bg-secondary rounded-sm text-[9px] lg:text-xs font-bold lg:font-medium">
+        <span className="uppercase absolute bottom-1 left-1 py-[5px] px-2.5 bg-secondary rounded-sm text-[9px] lg:text-xs font-bold lg:font-medium">
           {time}
         </span>
 
@@ -40,7 +42,7 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
         {name}
       </h3>
 
-      <span className="text-[#b4b4b4] text-xs max-xl:text-[10px]">
+      <span className="text-gray_white text-xs max-xl:text-[10px]">
         {year}
       </span>
     </article>

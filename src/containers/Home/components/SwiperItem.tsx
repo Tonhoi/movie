@@ -1,11 +1,14 @@
 import { memo } from "react";
 import Link from "next/link";
 import parse from "html-react-parser";
+import { useMeasure } from "react-use";
 
 import { ImageWithFallback } from "@/components";
 import { SwiperCardItemProps } from "@/types/swiper";
 
 const SwiperCardItem = ({ name, origin_name, time, lang, quality, description, slug, type, status, sub_docquyen, poster_url, thumb_url }: SwiperCardItemProps) => {
+  const [ref, { width, height }] = useMeasure<HTMLElement>()
+
   return (
     <div
       className="relative flex-center z-20 bg-center bg-cover bg-no-repeat h-[auto] min-h-[550px] py-8 lg:h-[700px]"
@@ -73,15 +76,15 @@ const SwiperCardItem = ({ name, origin_name, time, lang, quality, description, s
           </Link>
         </div>
 
-        <div className="px-8 flex-shrink-0 w-full hidden lg:block lg:basis-[55%]  lg:max-w-[746px] lg:h-[600px]">
+        <figure ref={ref} className="px-8 flex-shrink-0 w-full hidden lg:block lg:basis-[55%] lg:max-w-[746px] lg:h-[600px]">
           <ImageWithFallback
             src={poster_url}
-            className="object-cover rounded-2xl w-full h-full"
             alt={name}
-            width={650}
-            height={600}
+            width={width}
+            height={height}
+            className="object-cover rounded-2xl w-full h-full"
           />
-        </div>
+        </figure>
       </article>
     </div>
   );

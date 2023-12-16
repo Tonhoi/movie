@@ -13,12 +13,9 @@ const ListMovie = ({ data, title }: ListMovieProps) => {
     <div className="wide mt-20">
       <HeadLine title={title} isSeeMore={true} />
 
-      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto no-scrollbar lg:grid lg:grid-cols-5">
+      <div className="scroll-snap-container lg:grid lg:grid-cols-6">
         {data?.map((el) => (
-          <div
-            key={el.id}
-            className="snap-center w-[40%] sm:w-[25%] md:w-[20%] lg:w-full flex-shrink-0"
-          >
+          <div key={el.id} className="scroll-snap-item">
             <VerticalMovieCard {...getMovieObject(el)} />
           </div>
         ))}

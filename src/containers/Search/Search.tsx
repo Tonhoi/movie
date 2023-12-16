@@ -37,7 +37,7 @@ const Search = ({ initData }: SearchType) => {
         <div className="h-[2px] my-7 bg-[#272727]" />
 
         {searchData?.length === 0 && (
-          <div className="text-[#b4b4b4]">
+          <div className="text-gray_white">
             <h2 className="lg:text-lg mb-5">
               Không có kết quả nào để hiển thị với
               <strong className="text-primary"> {query?.keyword}</strong>
@@ -53,7 +53,7 @@ const Search = ({ initData }: SearchType) => {
           </div>
         )}
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-6 gap-y-8">
+        <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-6 gap-y-8">
           {renderSearchResult}
         </div>
 

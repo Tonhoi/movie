@@ -61,6 +61,14 @@
   .news-content p {
     @apply !leading-[23px] text-[#ffffff99] text-xs md:text-sm;
   }
+
+  .scroll-snap-container {
+    @apply flex snap-x snap-mandatory gap-4 overflow-x-auto no-scrollbar;
+  }
+
+  .scroll-snap-item {
+    @apply snap-center w-2/5 xs:w-[30%] sm:w-1/4 md:w-1/5 lg:w-full flex-shrink-0;
+  }
 }
 
 @layer utilities {
@@ -80,7 +88,7 @@
 
 /* style for pagination */
 .rc-pagination-item {
-  @apply flex-center w-7 h-7 md:h-[38px] md:w-[38px] rounded-md border-[1px] border-secondary cursor-pointer hover:opacity-80 transition-base text-[#b4b4b4];
+  @apply flex-center w-7 h-7 md:h-[38px] md:w-[38px] rounded-md border-[1px] border-secondary cursor-pointer hover:opacity-80 transition-base text-gray_white;
 }
 
 .rc-pagination-item a {
@@ -98,7 +106,7 @@
 
 .rc-pagination-prev svg,
 .rc-pagination-next svg {
-  @apply max-md:w-3
+  @apply max-md:w-3;
 }
 
 .rc-pagination-jump-next,
@@ -108,7 +116,7 @@
 
 .rc-pagination-jump-next svg,
 .rc-pagination-jump-prev svg {
-  @apply max-md:w-3
+  @apply max-md:w-3;
 }
 
 .rc-pagination-prev {

@@ -37,7 +37,7 @@ const Heading = () => {
   return (
     <h1
       className={twMerge(
-        "capitalize text-2xl lg:text-5xl font-bold mb-20 overflow-hidden text-center",
+        "capitalize text-2xl lg:text-5xl font-bold mb-20 overflow-hidden text-center !leading-[1.3]",
         after,
         before
       )}

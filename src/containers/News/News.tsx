@@ -41,7 +41,7 @@ const News = ({ initData }: NewsType) => {
           </div>
 
           <div className="border-t-[1px] lg:border-t-0 lg:border-l-[1px] border-t-[#444444] lg:border-l-[#444444] py-3 px-0 lg:px-4">
-            <span className="block text-[#b4b4b4] mb-3 max-lg:text-sm">
+            <span className="block text-gray_white mb-3 max-lg:text-sm">
               Bài viết phổ biến
             </span>
 

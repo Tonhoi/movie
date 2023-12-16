@@ -26,7 +26,7 @@ const NewsCard = (props: Omit<NewsProps, "id">) => {
       />
 
       <div className="bg-[#0000004d] py-7 px-5 rounded-b-2xl overflow-hidden shadow-lg">
-        <div className="flex-between text-[#b4b4b4] mb-1">
+        <div className="flex-between text-gray_white mb-1">
           <p className="max-lg:text-xs">{date}</p>
           <p className="max-lg:text-xs">
             {movie_type === "series" ? "Phim bộ" : "Phim lẻ"}
@@ -37,7 +37,7 @@ const NewsCard = (props: Omit<NewsProps, "id">) => {
           {title}
         </h2>
 
-        <p className="line-clamp-3 text-[#b4b4b4] max-lg:text-xs">{content}</p>
+        <p className="line-clamp-3 text-gray_white max-lg:text-xs">{content}</p>
       </div>
     </article>
   );

@@ -1,5 +1,6 @@
 import { memo } from "react";
 import parse from "html-react-parser";
+import { useMeasure } from "react-use";
 
 import { MovieDetail } from "@/types/movie";
 import { ImageWithFallback } from "@/components";
@@ -8,37 +9,38 @@ type IntroProps = "sub_docquyen" | "poster_url" | "quality" | "type" | "time" | 
 
 const Intro = (props: Pick<MovieDetail, IntroProps>) => {
   const { sub_docquyen, poster_url, quality, type, time, lang, category, content } = props;
+  const [ref, {width, height}] = useMeasure<HTMLElement>()
 
   return (
     <article className="text-white mt-5 flex max-sm:flex-wrap gap-5 lg:w-[65%]">
-      <figure className="flex-shrink-0">
+      <figure ref={ref} className="flex-shrink-0 w-[150px] md:w-[170px] lg:w-[208px] lg:max-h-[300px]">
         <ImageWithFallback
           src={poster_url}
           alt=""
-          width={208}
-          height={312}
-          className="object-cover rounded-md w-[184px] sm:w-[208px] lg:max-h-[300px]"
+          width={width}
+          height={height}
+          className="object-cover rounded-md w-full h-full"
         />
       </figure>
 
       <div className="w-full">
         <div className="flex items-center gap-2 lg:gap-4 flex-wrap">
-          <span className="py-1 px-2 rounded-md font-normal md:font-light text-[10px] md:text-xs lg:text-sm border-[1px] border-solid border-secondary text-[#b4b4b4]">
+          <span className="py-1 px-2 rounded-md font-normal md:font-light text-[10px] md:text-xs lg:text-sm border-[1px] border-solid border-secondary text-gray_white">
             {type}
           </span>
-          <span className="py-1 px-2 rounded-md font-normal md:font-light text-[10px] md:text-xs lg:text-sm border-[1px] border-solid border-secondary text-[#b4b4b4]">
+          <span className="py-1 px-2 rounded-md font-normal md:font-light text-[10px] md:text-xs lg:text-sm border-[1px] border-solid border-secondary text-gray_white">
             {lang}
           </span>
-          <span className="py-1 px-2 rounded-md font-normal md:font-light text-[10px] md:text-xs lg:text-sm border-[1px] border-solid border-secondary text-[#b4b4b4]">
+          <span className="py-1 px-2 rounded-md font-normal md:font-light text-[10px] md:text-xs lg:text-sm border-[1px] border-solid border-secondary text-gray_white">
             {quality}
           </span>
-          <span className="py-1 px-2 rounded-md font-normal md:font-light text-[10px] md:text-xs lg:text-sm border-[1px] border-solid border-secondary text-[#b4b4b4]">
+          <span className="py-1 px-2 rounded-md font-normal md:font-light text-[10px] md:text-xs lg:text-sm border-[1px] border-solid border-secondary text-gray_white">
             {time}
           </span>
         </div>
 
         <div className="my-5">
-          <span className="text-[#b4b4b4] mr-5 md:mr-8 lg:mr-10 text-xs md:max-lg:text-sm">
+          <span className="text-gray_white mr-5 md:mr-8 lg:mr-10 text-xs md:max-lg:text-sm">
             Thể loại:
           </span>
 
@@ -58,7 +60,7 @@ const Intro = (props: Pick<MovieDetail, IntroProps>) => {
           )}
         </div>
 
-        <div className="max-md:text-xs md:max-lg:text-sm text-[#b4b4b4]">
+        <div className="max-md:text-xs md:max-lg:text-sm text-gray_white">
           {content === "" ? "Đang cập nhật...": parse(content)}
         </div>
       </div>

@@ -12,12 +12,12 @@ interface FilterProps {
 }
 
 const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
-  const {push,  query, asPath, pathname } = useRouter();
+  const { push, query, asPath, pathname } = useRouter();
 
   const handleFilterMovieWithYear = useCallback(
     (year: string) => {
       if (isNaN(+year)) push({ pathname: asPath.split("?")[0] }, undefined, { shallow: true });
-      else push({ pathname, query: { ...query, year } }, undefined, { shallow: true });
+      else push({ pathname, query: { ...query, year, page: 1 } }, undefined, { shallow: true });
     },
     [query]
   );
@@ -53,7 +53,7 @@ const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
               key={idx}
               onClick={() => handleFilterMovieWithYear(year)}
               className={twMerge(
-                "py-2 px-3 border-[1px] border-secondary rounded-md text-[#b4b4b4] text-center text-[10px] lg:text-sm cursor-pointer hover:bg-secondary hover:text-white transition-base",
+                "py-2 px-3 border-[1px] border-secondary rounded-md text-gray_white text-center text-[10px] lg:text-sm cursor-pointer hover:bg-secondary hover:text-white transition-base",
                 (query.year === year)
                   ? "bg-secondary animate-pulse text-white"
                   : query.year === undefined 

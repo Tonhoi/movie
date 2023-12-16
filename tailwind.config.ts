@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -8,7 +9,12 @@ const config: Config = {
         primary: "#3abff8",
         secondary: "#337a99",
         text_color: "#e2e8f0",
+        gray_white: "#b4b4b4",
       },
+    },
+    screens: {
+      xs: "480px",
+      ...defaultTheme.screens,
     },
   },
 
