@@ -22,6 +22,7 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
             width={width}
             height={250}
             className="object-cover h-full w-full"
+            unoptimized
           />
 
           <Skeleton  />

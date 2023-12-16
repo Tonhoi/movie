@@ -23,6 +23,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
           width={80}
           height={120}
           className="object-cover h-full"
+          unoptimized
         />
 
         <Skeleton />
