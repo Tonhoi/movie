@@ -5,11 +5,14 @@ import { IPage, MovieDetail, MovieProps, responseSchema } from "@/types/movie";
 
 type params = {
   params: {
+    episode: string;
     slug: string;
   };
 };
 
-export type MovieType = IPage<[responseSchema<MovieDetail>, responseSchema<MovieProps>]>
+export type MovieType = IPage<
+  [responseSchema<MovieDetail>, responseSchema<MovieProps>]
+>;
 
 const index = (props: MovieType) => {
   return <Movie {...props} />;
@@ -19,9 +22,15 @@ export const getStaticPaths = async () => {
   try {
     const paths: Array<unknown> = [];
     const resTrendingMovies = await UseFetch(apis["trending_movie"]);
-    const resSingleMovies = await UseFetch(apis["new-updated/single"], { params: { limit: 10 } });
-    const resAirTodayMovies = await UseFetch(apis["air_today"], { params: { limit: 10 } });
-    const resSeriesMovies = await UseFetch(apis["new-updated/series"], { params: { limit: 10 } });
+    const resSingleMovies = await UseFetch(apis["new-updated/single"], {
+      params: { limit: 10 },
+    });
+    const resAirTodayMovies = await UseFetch(apis["air_today"], {
+      params: { limit: 10 },
+    });
+    const resSeriesMovies = await UseFetch(apis["new-updated/series"], {
+      params: { limit: 10 },
+    });
 
     resTrendingMovies.map((movie: MovieProps) => {
       paths.push({ params: { slug: movie.slug } });
@@ -55,7 +64,34 @@ export const getStaticProps = async ({ params }: params) => {
   try {
     const resMovie = await UseFetch(`phim/${params.slug}`);
     const resAirTodayMovie = await UseFetch(apis["air_today"]);
-    const resSimilarMovie = await UseFetch(apis['similar_movie'] + params.slug)
+    const resSimilarMovie = await UseFetch(apis["similar_movie"] + params.slug);
+
+    let redirectDestination = null;
+
+    if (resMovie.movie.type === "single") {
+      const match = params.episode.match(/tap-full$/);
+      const currentEpisode = match ? match[0] : null;
+
+      if (!currentEpisode) {
+        redirectDestination = "/404";
+      }
+    } else {
+      const match = params.episode.match(/tap-(\d+)$/);
+      const currentEpisode = match ? match[1] : null;
+
+      if (!currentEpisode || parseInt(currentEpisode) > resMovie.episodes[0].server_data.length) {
+        redirectDestination = "/404";
+      }
+    }
+
+    if (redirectDestination) {
+      return {
+        redirect: {
+          destination: redirectDestination,
+          permanent: false,
+        },
+      };
+    }
 
     return {
       props: {

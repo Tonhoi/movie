@@ -6,15 +6,15 @@ import { MovieProps } from "@/types/movie";
 import { PlayCircleIcon } from "@/assets/Icons";
 import { ImageWithFallback, Skeleton } from "@/components";
 
-type PickMoveProps = "name" | "year" | "poster_url" | "slug" | "episode_current";
+type PickMoveProps = "name" | "year" | "poster_url" | "slug" | "episode_current" | "type";
 
 const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
-  const { name, year, poster_url, slug, episode_current } = props;
+  const { name, year, poster_url, slug, episode_current, type } = props;
   const [ref, { width, height }] = useMeasure<HTMLElement>()
 
   return (
     <article className="flex flex-col text-white">
-      <Link href={`/phim/${slug}`} className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0 pt-[135%]">
+      <Link href={`/phim/${slug}/tap-${type === "single" ? "full": "1"}`} className="relative cursor-pointer group flex-1 rounded-lg overflow-hidden flex-shrink-0 pt-[135%]">
         <figure ref={ref} className="overflow-hidden h-full absolute -mt-[135%] w-full">
           <ImageWithFallback
             src={poster_url}
@@ -22,7 +22,6 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
             width={width}
             height={height}
             className="object-cover h-full w-full"
-            unoptimized
           />
 
           <Skeleton  />

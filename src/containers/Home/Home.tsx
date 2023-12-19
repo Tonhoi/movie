@@ -29,7 +29,6 @@ const Home = ({ initData }: HomeType) => {
         description={el.content}
         status={el.status}
         sub_docquyen={el.sub_docquyen}
-        type={el.type}
         thumb_url={el.thumb_url}
         time={el.time}
         {...getMovieObject(el)}

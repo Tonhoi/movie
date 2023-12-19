@@ -1,10 +1,11 @@
 import type { AppProps } from "next/app";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import NextNProgress from "nextjs-progressbar";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Layout from "@/components/Layout";
 import "@/styles/globals.css";
+import { Fragment } from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,7 +18,7 @@ const queryClient = new QueryClient({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <Fragment>
       <NextNProgress />
       <QueryClientProvider client={queryClient}>
         <Layout>
@@ -25,6 +26,6 @@ export default function App({ Component, pageProps }: AppProps) {
           <ReactQueryDevtools initialIsOpen={false} />
         </Layout>
       </QueryClientProvider>
-    </>
+    </Fragment>
   );
 }

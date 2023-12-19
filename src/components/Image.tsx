@@ -13,11 +13,12 @@ const ImageWithFallback = (props: ImageWithFallbackProps) => {
   return (
     <Image
       alt={alt}
+      unoptimized
+      className={twMerge("relative z-[2]", className)}
       onError={({ currentTarget }) => {
         currentTarget.onerror = null;
         currentTarget.srcset = fallbackSrc?.src ?? imageError.src;
       }}
-      className={twMerge("relative z-[2]", className)}
       {...rest}
     />
   );

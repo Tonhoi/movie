@@ -11,7 +11,7 @@ const index = () => {
 
       <h3 className="text-xl md:text-3xl my-1 font-bold">Oops! Trang không tồn tại 😓</h3>
 
-      <Link href={routes.home} className="py-2.5 px-6 mt-4 rounded-full font-bold text-black bg-primary hover:opacity-80 transition-base">👉 Trang chủ</Link>
+      <Link href={routes.home} className="py-2.5 px-6 mt-4 rounded-full font-bold text-white bg-primary hover:opacity-80 transition-base">👉 Trang chủ</Link>
     </div>
   );
 };

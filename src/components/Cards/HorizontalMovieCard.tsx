@@ -4,14 +4,14 @@ import { useRouter } from "next/router";
 import { ImageWithFallback, Skeleton } from "@/components";
 import { Category, MovieProps } from "@/types/movie";
 
-type PickMoveProps = "name" | "year" | "poster_url" | "category" | "sub_docquyen" | "slug";
+type PickMoveProps = "name" | "year" | "poster_url" | "category" | "sub_docquyen" | "slug" | "type";
 
 const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
-  const { name, year, poster_url, category, sub_docquyen, slug } = props;
+  const { name, year, poster_url, category, sub_docquyen, slug, type } = props;
   const { push } = useRouter()
 
   const handleNavigation = () => {
-    push(`/phim/${slug}`, undefined, { shallow: true })
+    push(`/phim/${slug}/tap-${type === "single" ? "full": "1"}`, undefined, { shallow: true })
   }
 
   return (
@@ -23,7 +23,6 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
           width={80}
           height={120}
           className="object-cover h-full"
-          unoptimized
         />
 
         <Skeleton />

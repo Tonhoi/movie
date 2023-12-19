@@ -69,7 +69,7 @@ const SwiperCardItem = ({ name, origin_name, time, lang, quality, description, s
           )}
 
           <Link
-            href={`/phim/${slug}`}
+            href={`/phim/${slug}/tap-${type === "single" ? "full": "1"}`}
             className="block mt-5 text-center hover:bg-[rgba(58,191,238,0.8)] rounded-xl border-2 border-solid border-primary py-1.5 text-xl font-medium max-w-[320px] transition-base w-full lg:py-3 lg:text-4xl"
           >
             XEM NGAY

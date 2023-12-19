@@ -5,6 +5,7 @@ const getMovieObject = (data: MovieProps) => {
   const poster_url = data.poster_url;
   const slug = data.slug;
   const year = data.year;
+  const type = data.type;
   const episode_current = data.episode_current;
 
   return {
@@ -12,6 +13,7 @@ const getMovieObject = (data: MovieProps) => {
     poster_url,
     slug,
     year,
+    type,
     episode_current,
   };
 };
