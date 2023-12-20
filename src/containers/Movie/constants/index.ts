@@ -6,12 +6,12 @@ export const SERVERS = [
 
   {
     title: "Server 2",
-    base_url: "https://www.hls-player.net/search?q=player2&video_links=",
+    base_url: "https://anym3u8player.com/tv/video-player.php?url=",
   },
 
   {
     title: "Server 3",
-    base_url: "https://www.hls-player.net/search?q=player3&video_links=",
+    base_url: "https://playhls.com/?url=",
   },
 ];
 
