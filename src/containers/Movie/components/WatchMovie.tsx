@@ -84,15 +84,14 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, type }: W
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[65%,35%] gap-3">
       <div className="relative h-[300px] lg:h-[500px] overflow-hidden">
-        <object type="movie" data={embed as string} width="100%" height="100%">
-          <embed
-            key={embed}
-            width="100%"
-            height="100%"
-            src={embed as string}
-            className="relative z-10"
-          />
-        </object>
+        <iframe
+          key={embed}
+          width="100%"
+          height="100%"
+          src={embed as string}
+          allowFullScreen
+          className="relative z-10"
+        />
 
         <Skeleton />
       </div>
