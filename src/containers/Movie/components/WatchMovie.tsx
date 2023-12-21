@@ -17,10 +17,10 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, type }: W
   const [server, setServer] = useState("");
 
   const handleChangeEpisode = useCallback((idx: number) => {
-    if(query.episode === "tap-full") return null
+    if(query.episode === "tap-full" || `tap-${idx}` === query.episode) return null
 
     push({pathname, query: {...query, episode: `tap-${idx}`}}, undefined, { shallow: true })
-  }, []);
+  }, [query]);
 
   const handleChangeServer = useCallback((base_url: string) => {
     setServer(base_url);
@@ -52,7 +52,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, type }: W
       return BASE_EMBED + idVideoMatch[1]
     }
 
-    if(type === "series")
+    if(type !== "single")
     {
       const match = (query.episode as string).match(/tap-(\d+)$/);
       const getEpisodeOnParams = match ? match[1] : null;
@@ -64,7 +64,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, type }: W
     }else {
       return (server !== "") ? server + episode?.server_data[0]?.link_m3u8 : episode?.server_data[0]?.link_embed
     }
-  }, [server, query]);
+  }, [server, episode, query]);
 
   const renderServer = useMemo(() => {
     return SERVERS.map((el, idx: number) => (
@@ -112,7 +112,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, type }: W
         {!isVisibleTrailer && <div className="my-4">{renderServer}</div>}
       </div>
 
-      <div className="text-white border-[1px] border-[#334155] pb-3 overflow-y-auto rounded-md md:max-lg:max-h-80 lg:h-[500px]">
+      <div className="text-white border-[1px] border-[#334155] pb-3 overflow-y-auto rounded-md max-lg:max-h-80 lg:h-[500px]">
         <div className="sticky top-0 z-10 text-xs lg:text-sm py-2 px-3 bg-transparent backdrop-blur-md">
           Tổng số: {episode.server_data.length} tập
         </div>
