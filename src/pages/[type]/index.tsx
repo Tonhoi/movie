@@ -1,12 +1,12 @@
 import Movies from "@/containers/Movies";
 import dynamic from "next/dynamic";
 
-// const MovieType = dynamic(() => import("@/containers/MovieType"), {
-//   ssr: false,
-// });
+const DynamicMovies = dynamic(() => import("@/containers/Movies"), {
+  ssr: false,
+});
 
 const index = () => {
-  return <Movies />;
+  return <DynamicMovies />;
 };
 
 export default index;
