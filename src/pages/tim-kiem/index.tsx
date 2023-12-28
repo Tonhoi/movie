@@ -18,6 +18,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     props: {
       initData: [ resSearchResult ],
       fallback: true,
+      revalidate: 3600,
     },
   };
 }

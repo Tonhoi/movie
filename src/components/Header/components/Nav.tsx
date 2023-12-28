@@ -26,13 +26,13 @@ const RenderNavItem = ({ title, child, href }: NavItemProps) => {
   };
 
   return (
-    <li className="dropdown dropdown-end hover:text-primary transtion-base group w-full lg:w-auto lg:dropdown-hover">
+    <li className="dropdown dropdown-end hover:text-primary text-[#e2e8f0] transtion-base group w-full lg:w-auto lg:dropdown-hover">
       <Link href={href} className={twMerge("focus:!text-primary py-4 lg:py-2", asPath === href && "text-primary")} onClick={handleNavigation} >
         {title}
       </Link>
 
       {child.length > 0 && (
-        <ul className="dropdown-content rounded-md py-4 bg-[rgba(0,0,0,.98)] shadow-[0,5px,10px,0,rgba(0,0,0,2)] min-w-0 lg:min-w-[400px] grid grid-cols-2 lg:grid-cols-3 w-[calc(100%-32px)] lg:w-full">
+        <ul className="dropdown-content rounded-md py-4 bg-[#171616] shadow-[0,5px,10px,0,rgba(0,0,0,2)] min-w-0 lg:min-w-[400px] grid grid-cols-2 lg:grid-cols-3 w-[calc(100%-32px)] lg:w-full">
           {child.map((el, idx: number) => (
             <li key={idx} className="hover:text-primary transtion-base text-text_color">
               <Link

@@ -93,8 +93,20 @@ export const CATEGORIES_ITEMS = [
 
 export const COUNTRIES_ITEMS = [
   {
+    title: "Đài Loan",
+    href: routes.country + "dai-loan",
+  },
+  {
+    title: "Hồng Kông",
+    href: routes.country + "hong-kong",
+  },
+  {
     title: "Trung Quốc",
     href: routes.country + "trung-quoc",
+  },
+  {
+    title: "Âu Mỹ",
+    href: routes.country + "au-my",
   },
   {
     title: "Hàn Quốc",
@@ -109,128 +121,16 @@ export const COUNTRIES_ITEMS = [
     href: routes.country + "thai-lan",
   },
   {
-    title: "Âu Mỹ",
-    href: routes.country + "au-my",
-  },
-  {
-    title: "Đài Loan",
-    href: routes.country + "dai-loan",
-  },
-  {
-    title: "Hồng Kông",
-    href: routes.country + "hong-kong",
-  },
-  {
     title: "Ấn Độ",
     href: routes.country + "an-do",
-  },
-  {
-    title: "Anh",
-    href: routes.country + "anh",
-  },
-  {
-    title: "Pháp",
-    href: routes.country + "phap",
-  },
-  {
-    title: "Canada",
-    href: routes.country + "canada",
-  },
-  {
-    title: "Đức",
-    href: routes.country + "duc",
-  },
-  {
-    title: "Tây Ban Nha",
-    href: routes.country + "tay-ban-nha",
-  },
-  {
-    title: "Thổ Nhĩ Kỳ",
-    href: routes.country + "tho-nhi-ky",
-  },
-  {
-    title: "Hà Lan",
-    href: routes.country + "ha-lan",
-  },
-  {
-    title: "Indonesia",
-    href: routes.country + "indonesia",
-  },
-  {
-    title: "Nga",
-    href: routes.country + "nga",
-  },
-  {
-    title: "Mexico",
-    href: routes.country + "mexico",
-  },
-  {
-    title: "Ba Lan",
-    href: routes.country + "ba-lan",
-  },
-  {
-    title: "Úc",
-    href: routes.country + "uc",
-  },
-  {
-    title: "Thụy Điển",
-    href: routes.country + "thuy-dien",
-  },
-  {
-    title: "Malaysia",
-    href: routes.country + "malaysia",
-  },
-  {
-    title: "Brazil",
-    href: routes.country + "brazil",
   },
   {
     title: "Philippines",
     href: routes.country + "philippines",
   },
   {
-    title: "Bồ Đào Nha",
-    href: routes.country + "bo-dao-nha",
-  },
-  {
-    title: "Ý",
-    href: routes.country + "y",
-  },
-  {
-    title: "Đan Mạch",
-    href: routes.country + "dan-mach",
-  },
-  {
-    title: "UAE",
-    href: routes.country + "uae",
-  },
-  {
-    title: "Na Uy",
-    href: routes.country + "na-uy",
-  },
-  {
-    title: "Thụy Sĩ",
-    href: routes.country + "thuy-si",
-  },
-  {
-    title: "Châu Phi",
-    href: routes.country + "chau-phi",
-  },
-  {
-    title: "Nam Phi",
-    href: routes.country + "nam-phi",
-  },
-  {
-    title: "Ukraina",
-    href: routes.country + "ukraina",
-  },
-  {
-    title: "Ả Rập Xê Út",
-    href: routes.country + "a-rap-xe-ut",
-  },
-  {
-    title: "Quốc Gia Khác",
-    href: routes.country + "quoc-gia-khac",
+    title: "Indonesia",
+    href: routes.country + "indonesia",
   },
 ];
 
@@ -267,11 +167,6 @@ export const NAV_ITEMS = [
     title: "Quốc Gia",
     href: "",
     children: COUNTRIES_ITEMS,
-  },
-  {
-    title: "Tv Shows",
-    href: "/tv-shows",
-    children: [],
   },
   {
     title: "Sắp Chiếu",

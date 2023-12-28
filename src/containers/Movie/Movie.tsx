@@ -24,7 +24,7 @@ const Movie = ({ initData }: MovieType) => {
       <SEO {...getSeoObject(seoOnPage)} />
 
       <div className="wide">
-        <WatchMovie episodes={episodes} name={movie.name} view={movie.view} status={movie.status} trailer_url={movie.trailer_url} lang={movie.lang} type={movie.type} />
+        <WatchMovie episodes={episodes} name={movie.name} view={movie.view} status={movie.status} trailer_url={movie.trailer_url} lang={movie.lang} />
 
         <Intro
           sub_docquyen={movie.sub_docquyen}

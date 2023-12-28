@@ -65,13 +65,13 @@ export const getStaticProps = async ({ params }: params) => {
     const resMovie = await UseFetch(`phim/${params.slug}`);
     const resAirTodayMovie = await UseFetch(apis["air_today"]);
     const resSimilarMovie = await UseFetch(apis["similar_movie"] + params.slug);
-
+    
     let redirectDestination = null;
-
+    
     if (resMovie.movie.type === "single") {
       const match = params.episode.match(/tap-full$/);
       const currentEpisode = match ? match[0] : null;
-
+      
       if (!currentEpisode) {
         redirectDestination = "/404";
       }
@@ -79,7 +79,7 @@ export const getStaticProps = async ({ params }: params) => {
       const match = params.episode.match(/tap-(\d+)$/);
       const currentEpisode = match ? match[1] : null;
 
-      if (!currentEpisode || parseInt(currentEpisode) > resMovie.episodes[0].server_data.length) {
+      if (!currentEpisode || parseInt(currentEpisode) > resMovie.episodes.length) {
         redirectDestination = "/404";
       }
     }
@@ -97,6 +97,7 @@ export const getStaticProps = async ({ params }: params) => {
       props: {
         initData: [resMovie, resAirTodayMovie, resSimilarMovie],
         fallback: true,
+        revalidate: 3600,
       },
     };
   } catch (error) {

@@ -35,6 +35,7 @@ export const getStaticProps = async () => {
           resNews,
         ],
         fallback: true,
+        revalidate: 3600,
       },
     };
   } catch (error) {

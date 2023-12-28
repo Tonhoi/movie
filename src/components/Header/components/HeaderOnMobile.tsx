@@ -7,7 +7,7 @@ const HeaderOnMobile = ({ showNavMobile }: { showNavMobile: boolean }) => {
   return (
     <div
       className={twMerge(
-        "fixed inset-0 z-50 w-full max-w-[320px] bg-base-200 transition-base opacity-0 -translate-x-full overflow-y-auto",
+        "fixed inset-0 z-50 w-full max-w-[320px] bg-[#151414] transition-base opacity-0 -translate-x-full overflow-y-auto",
         showNavMobile && "opacity-100 translate-x-0"
       )}
     >

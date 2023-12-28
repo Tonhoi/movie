@@ -1,4 +1,3 @@
-import { get } from "lodash";
 import { useRouter } from "next/router";
 import { twMerge } from "tailwind-merge";
 import { memo, useCallback, useMemo, useState } from "react";
@@ -7,44 +6,42 @@ import { Skeleton } from "@/components";
 import { MovieDetail } from "@/types/movie";
 import { BASE_EMBED, SERVERS } from "@/containers/Movie";
 
-type WatchMovieProps = Pick<MovieDetail, "episodes" | "name" | "view" | "trailer_url" | "status" | "lang" | "type">
+type WatchMovieProps = Pick<MovieDetail, "episodes" | "name" | "view" | "trailer_url" | "status" | "lang">
 
-const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, type }: WatchMovieProps) => {
-  const episode = get(episodes, [0]);
+const WatchMovie = ({ episodes, name, view, status, trailer_url, lang }: WatchMovieProps) => {
   const isVisibleTrailer = status === "trailer";
   const { push, pathname, query } = useRouter()
 
-  const [server, setServer] = useState("");
+  const [server, setServer] = useState<number>(1);
 
-  const handleChangeEpisode = useCallback((idx: number) => {
-    if(query.episode === "tap-full" || `tap-${idx}` === query.episode) return null
+  const handleChangeEpisode = useCallback((slug:string) => {
+    if(query.episode === slug || isVisibleTrailer) return null
 
-    push({pathname, query: {...query, episode: `tap-${idx}`}}, undefined, { shallow: true })
+    push({pathname, query: {...query, episode: slug}}, undefined, { shallow: true })
   }, [query]);
 
-  const handleChangeServer = useCallback((base_url: string) => {
-    setServer(base_url);
-  }, []);
+  const handleChangeServer = useCallback((server: number) => {
+    setServer(server);
+  }, [server]);
 
   const renderEpisode = useMemo(() => {
-    if (episode == undefined) return null;
+    if (episodes == undefined) return null;
 
-    return episode.server_data.map((_el, idx: number) => (
+    return episodes.map((el, idx: number) => (
       <button
         key={idx}
-        onClick={() => handleChangeEpisode(idx + 1)}
+        onClick={() => handleChangeEpisode(el.slug)}
         className={twMerge(
           "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white border-[1px] text-gray_white border-secondary transition-base rounded-md max-lg:font-medium text-xs lg:text-sm",
-          (`tap-${idx + 1}` === query.episode || query.episode === "tap-full") && "bg-secondary text-white cursor-default"
+          (el.slug === query.episode || isVisibleTrailer) && "bg-secondary text-white cursor-default"
         )}
       >
-        {isVisibleTrailer ? "Trailer" : episode.server_data.length <= 1 ? "Tập Full" : `Tập ${idx + 1}`}
+        {isVisibleTrailer ? "Trailer" : el.slug.replace("tap-", "tập ")}
       </button>
     ));
-  }, [episode, query]);
+  }, [episodes, query]);
 
   const embed = useMemo(() => {
-    if (!episode.server_data) return null;
     if (isVisibleTrailer) {
       const idVideoMatch = trailer_url.match(/(?:\?|&)v=([^&]+)/);
 
@@ -52,28 +49,22 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, type }: W
       return BASE_EMBED + idVideoMatch[1]
     }
 
-    if(type !== "single")
-    {
-      const match = (query.episode as string).match(/tap-(\d+)$/);
-      const getEpisodeOnParams = match ? match[1] : null;
+    const match = (query.episode as string).match(/tap-(\d+)$/);
+    const getEpisodeOnParams = match ? match[1] : null;
 
-      if(!getEpisodeOnParams) return null
-      
-      const currentEpisode = parseInt(getEpisodeOnParams) - 1
-      return (server !== "") ? server + episode?.server_data[currentEpisode]?.link_m3u8 : episode?.server_data[currentEpisode]?.link_embed
-    }else {
-      return (server !== "") ? server + episode?.server_data[0]?.link_m3u8 : episode?.server_data[0]?.link_embed
-    }
-  }, [server, episode, query]);
+    const currentEpisode =!getEpisodeOnParams ? 0 : parseInt(getEpisodeOnParams) - 1
+
+    return (server === 1) ? episodes[currentEpisode]?.server_1 : episodes[currentEpisode]?.server_2
+  }, [server, episodes, query]);
 
   const renderServer = useMemo(() => {
     return SERVERS.map((el, idx: number) => (
       <button
         key={idx}
-        onClick={() => handleChangeServer(el.base_url)}
+        onClick={() => handleChangeServer(el.server)}
         className={twMerge(
           "py-1.5 px-4 rounded-md border-[1px] border-secondary mr-3 text-[10px] font-medium lg:text-sm lg:font-light cursor-pointer hover:bg-secondary transition-base",
-          server === el.base_url && "bg-secondary animate-pulse disabled cursor-default"
+          server === el.server && "bg-secondary animate-pulse disabled cursor-default"
         )}
       >
         {el.title}
@@ -114,7 +105,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, type }: W
 
       <div className="text-white border-[1px] border-[#334155] pb-3 overflow-y-auto rounded-md max-lg:max-h-80 lg:h-[500px]">
         <div className="sticky top-0 z-10 text-xs lg:text-sm py-2 px-3 bg-transparent backdrop-blur-md">
-          Tổng số: {episode.server_data.length} tập
+          Tổng số: {episodes.length} tập
         </div>
 
         <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5 gap-3 mt-3 px-3">

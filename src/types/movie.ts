@@ -9,7 +9,7 @@ interface IPage<T extends unknown[]> {
 type responseSchema<T> = {
   pagination: PaginationProps;
   data: T[];
-  seoOnPage: seoOnPageProps
+  seoOnPage: seoOnPageProps;
 };
 
 export type { IPage, responseSchema };
@@ -56,11 +56,11 @@ export interface Category {
 }
 
 export interface Episode {
-  name: string;
   slug: string;
-  filename: string;
-  link_embed: string;
   link_m3u8: string;
+  server_1: string;
+  server_2: string;
+  server_3: string;
 }
 
 export interface MovieDetail {
@@ -99,10 +99,7 @@ export interface MovieDetail {
   view: number;
   year: number;
 
-  episodes: {
-    server_name: string;
-    server_data: Episode[];
-  }[];
+  episodes: Episode[];
 }
 
 export interface NewsProps {
