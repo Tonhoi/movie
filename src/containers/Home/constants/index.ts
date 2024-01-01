@@ -1,4 +1,4 @@
 export const objectSeo = {
-    seo_title: "Dữ liệu phim vietsub miễn phí mới nhất. Cập nhật nhanh chóng, chất lượng cao và không quảng cáo",
-    seo_description: "Website cung cấp phim miễn phí nhanh chất lượng cao. Phim online VietSub, Thuyết minh, lồng tiếng chất lượng Full HD. Nguồn phim vietsub chất lượng cao cập nhật nhanh nhất",
+    seo_title: "Phimmoi | Xem phim mới | Phim hay | Phim chiếu rạp",
+    seo_description: "Phim online VietSub, Thuyết minh, lồng tiếng chất lượng cao với giao diện thân thiện, trực quan dễ sử dụng, hơn 100000+ bộ phim fullHD vietsub thuyết minh.",
 }

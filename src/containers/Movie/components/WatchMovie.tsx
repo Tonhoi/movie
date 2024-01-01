@@ -81,6 +81,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang }: WatchMo
           height="100%"
           src={embed as string}
           allowFullScreen
+          title={name}
           className="relative z-10"
         />
 

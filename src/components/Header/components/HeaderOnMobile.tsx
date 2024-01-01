@@ -12,7 +12,7 @@ const HeaderOnMobile = ({ showNavMobile }: { showNavMobile: boolean }) => {
       )}
     >
       <div className="py-5">
-        <Search inputClassName="max-w-[calc(100%-32px)] mb-5 ml-4" />
+        <Search inputClassName="max-w-[calc(100%-32px)] mb-5 ml-4 text-white" />
 
         <Nav />
       </div>
