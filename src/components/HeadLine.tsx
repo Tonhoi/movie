@@ -1,16 +1,33 @@
-import { memo } from "react";
-import Link from "next/link";
+import { memo, useCallback } from "react";
 import { twMerge } from "tailwind-merge";
+import { useRouter } from "next/router";
 
 interface HeadlineProps {
   title: string;
   isSeeMore?: boolean;
   containerClassName?: string;
+  href?: string;
 }
 
-const HeadLine = ({ title, isSeeMore = false, containerClassName }: HeadlineProps) => {
+const HeadLine = ({
+  title,
+  isSeeMore = false,
+  containerClassName,
+  href = "",
+}: HeadlineProps) => {
+  const { push } = useRouter();
+
+  const handleNavigate = useCallback(() => {
+    push(href, undefined, { shallow: true });
+  }, []);
+
   return (
-    <div className={twMerge("mt-10 text-white mb-5 flex-between flex-wrap gap-4", containerClassName)}>
+    <div
+      className={twMerge(
+        "mt-10 text-white mb-5 flex-between flex-wrap gap-4",
+        containerClassName
+      )}
+    >
       <h2 className="relative lg:text-2xl font-extrabold ml-4">
         {title}
 
@@ -18,13 +35,12 @@ const HeadLine = ({ title, isSeeMore = false, containerClassName }: HeadlineProp
       </h2>
 
       {isSeeMore && (
-        <Link
-          href="/"
+        <button
           className="py-1 px-3 bg-secondary text-[10px] lg:text-sm font-bold lg:font-medium hover:opacity-80 transition-base ml-auto rounded-sm"
-          prefetch={false}
+          onClick={handleNavigate}
         >
           XEM THÊM
-        </Link>
+        </button>
       )}
     </div>
   );

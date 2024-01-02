@@ -48,16 +48,16 @@ const Movies = () => {
           className={twMerge(
             "grid grid-cols-2 mt-10 gap-x-6 gap-y-8",
             "xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 lg:mt-20",
-            isLayoutColumn && "grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3"
+            isLayoutColumn && "grid-cols-1 xs:grid-cols-2 sm:!grid-cols-2 lg:!grid-cols-3"
           )}
         >
-          {movies.data?.map((el: MovieProps, idx: number) => {
+          {movies?.data?.map((el: MovieProps, idx: number) => {
             if (!isLayoutColumn) return <VerticalMovieCard key={idx} {...getMovieObject(el)} />
             else return <HorizontalMovieCard key={idx} sub_docquyen={el.sub_docquyen} category={el.category} {...getMovieObject(el)} />
           })}
         </div>
         
-        {movies.data?.length === 0 && (
+        {movies?.data?.length === 0 && (
           <p className="text-white text-xs lg:text-sm font-medium">
             Không tìm thấy phim phù hợp...
           </p>

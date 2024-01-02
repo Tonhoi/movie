@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { HomeType } from "@/pages";
 import { SEO } from "@/components";
+import { routes } from "@/configs";
 import { MovieProps } from "@/types/movie";
 import { getSeoObject, getMovieObject } from "@/utils";
 import { SwiperItem, ListMovie, SwiperConfig, News, objectSeo } from "@/containers/Home";
@@ -47,11 +48,11 @@ const Home = ({ initData }: HomeType) => {
       </Slider>
 
       {/* Danh sách phim */}
-      <ListMovie data={seriesMovies} title={"Phim bộ mới cập nhật"} />
+      <ListMovie data={seriesMovies} title="Phim bộ mới cập nhật" href="/phim-bo" />
 
-      <ListMovie data={singleMovies} title={"Phim lẻ mới cập nhật"} />
+      <ListMovie data={singleMovies} title="Phim lẻ mới cập nhật" href="/phim-le" />
 
-      <ListMovie data={airTodayMoves} title={"Hôm nay xem gì"} />
+      <ListMovie data={airTodayMoves} title="Hôm nay xem gì" isSeeMore={false} />
 
       <News data={news} />
     </Fragment>

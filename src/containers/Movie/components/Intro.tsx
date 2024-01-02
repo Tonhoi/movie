@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 import { useMeasure } from "react-use";
 
 import { MovieDetail } from "@/types/movie";
-import { ImageWithFallback } from "@/components";
+import { ImageWithFallback, Modal, Skeleton } from "@/components";
 
 type IntroProps = "sub_docquyen" | "poster_url" | "quality" | "type" | "time" | "lang" | "category" | "content"
 
@@ -13,14 +13,16 @@ const Intro = (props: Pick<MovieDetail, IntroProps>) => {
 
   return (
     <article className="text-white mt-5 flex max-sm:flex-wrap gap-5 lg:w-[65%]">
-      <figure ref={ref} className="flex-shrink-0 w-[150px] md:w-[170px] lg:w-[208px] lg:max-h-[300px]">
+      <figure ref={ref} className="relative flex-shrink-0 w-[150px] md:w-[170px] lg:w-[208px] lg:max-h-[300px] pt-[200px] lg:pt-[300px]">
         <ImageWithFallback
           src={poster_url}
           alt=""
           width={width}
           height={height}
-          className="object-cover rounded-md w-full h-full"
+          className="object-cover rounded-md w-full h-full absolute inset-0 z-10"
         />
+
+        <Skeleton />
       </figure>
 
       <div className="w-full">
@@ -60,9 +62,17 @@ const Intro = (props: Pick<MovieDetail, IntroProps>) => {
           )}
         </div>
 
-        <div className="max-md:text-xs md:max-lg:text-sm text-gray_white">
+        <div className="max-md:text-xs md:max-lg:text-sm text-gray_white line-clamp-4">
           {content === "" ? "Đang cập nhật...": parse(content)}
         </div>
+
+        <label htmlFor="modal" className="max-md:text-xs md:max-lg:text-sm text-gray-200 mt-2 hover:text-primary cursor-pointer transition-base underline">Đọc thêm +</label>
+
+        <Modal heading="Mô tả chi tiết">
+          <div className="max-md:text-xs md:max-lg:text-sm text-gray_white">
+            {content === "" ? "Đang cập nhật...": parse(content)}
+          </div>
+        </Modal>
       </div>
     </article>
   );

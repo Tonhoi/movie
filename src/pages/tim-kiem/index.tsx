@@ -10,17 +10,28 @@ const index = (props: SearchType) => {
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { query } = context;
-  const { keyword, page } = query;
-  const resSearchResult = await UseFetch("tim-kiem", { params: { keyword, page: page || 1, limit: 18 } });
+  try {
+    const { query } = context;
+    const { keyword, page } = query;
+    const resSearchResult = await UseFetch("tim-kiem", {
+      params: { keyword, page: page || 1, limit: 18 },
+    });
 
-  return {
-    props: {
-      initData: [ resSearchResult ],
-      fallback: true,
-      revalidate: 3600,
-    },
-  };
+    return {
+      props: {
+        initData: [resSearchResult],
+        fallback: true,
+        revalidate: 3600,
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+    };
+  }
 }
 
 export default index;

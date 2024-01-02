@@ -7,10 +7,10 @@ Disallow: /*_ssgManifest.js$
 Disallow: /*.js$
 
 # Host
-Host: https://flashmov.vercel.app/
+Host: https://flashmov.xyz
 
 # Sitemaps
-Sitemap: https://flashmov.vercel.app/sitemap.xml
-Sitemap: https://flashmov.vercel.app//sitemap-films-series.xml
-Sitemap: https://flashmov.vercel.app//sitemap-films-single.xml
-Sitemap: https://flashmov.vercel.app//sitemap-news.xml
+Sitemap: https://flashmov.xyz/sitemap.xml
+Sitemap: https://flashmov.xyz/sitemap-films-series.xml
+Sitemap: https://flashmov.xyz/sitemap-films-single.xml
+Sitemap: https://flashmov.xyz/sitemap-news.xml

@@ -1,7 +1,7 @@
 import { apis } from "@/configs";
-import News from "@/containers/News";
+import NewsDetail from "@/containers/News/components/NewsDetail";
 import { useFetch as UseFetch } from "@/hooks";
-import { IPage, MovieProps, NewsProps, responseSchema } from "@/types/movie";
+import { MovieProps, NewsProps } from "@/types/movie";
 
 type params = {
   params: {
@@ -12,7 +12,7 @@ type params = {
 export type NewsType = { initData: NewsProps };
 
 const index = (props: NewsType) => {
-  return <News {...props} />;
+  return <NewsDetail {...props} />;
 };
 
 export const getStaticPaths = async () => {
@@ -40,7 +40,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }: params) => {
   try {
     const resNews = await UseFetch(`tin-tuc/${params.slug}`);
-    const resSimilarNews = await UseFetch(`tin-tuc-tuong-tu/${params.slug}`)
+    const resSimilarNews = await UseFetch(`tin-tuc-tuong-tu/${params.slug}`);
 
     return {
       props: {

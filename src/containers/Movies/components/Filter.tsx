@@ -16,8 +16,8 @@ const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
 
   const handleFilterMovieWithYear = useCallback(
     (year: string) => {
-      if (isNaN(+year)) push({ pathname: asPath.split("?")[0] }, undefined, { shallow: true });
-      else push({ pathname, query: { ...query, year, page: 1 } }, undefined, { shallow: true });
+      if (isNaN(+year)) push({ pathname: asPath.split("?")[0] });
+      else push({ pathname, query: { ...query, year, page: 1 } });
     },
     [query]
   );

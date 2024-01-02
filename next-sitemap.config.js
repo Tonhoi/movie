@@ -1,4 +1,4 @@
-const SITE_URL = process.env.SITE_URL || "https://flashmov.vercel.app/";
+const SITE_URL = process.env.SITE_URL || "https://flashmov.xyz";
 // add your private routes here
 const exclude = ["/quoc-gia/*", "/the-loai/*", "/tin-tuc/*"];
 

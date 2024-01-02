@@ -27,7 +27,7 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
           <Skeleton  />
         </figure>
 
-        <div className="absolute bottom-1 left-1 z-10 py-1 px-2 bg-secondary text-[10px] md:text-xs rounded-sm shadow-lg font-medium md:font-light">{episode_current}</div>
+        <div className="absolute bottom-1 left-1 z-10 py-1 px-2 text-[10px] md:text-xs rounded-sm shadow-lg font-medium md:font-light bg-gradient-to-r from-secondary bg-[#337a99] to-primary">{episode_current}</div>
 
         <div className="absolute inset-0 z-[3] bg-[#000000b3] animate-fadeIn-have-group flex-center text-sm lg:text-lg xl:text-2xl font-extrabold">
           <PlayCircleIcon className="w-7 h-7 lg:w-10 lg:h-10 mr-1" />

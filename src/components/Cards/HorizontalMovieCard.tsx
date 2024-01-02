@@ -1,8 +1,8 @@
 import { memo } from "react";
 import { useRouter } from "next/router";
 
-import { ImageWithFallback, Skeleton } from "@/components";
 import { Category, MovieProps } from "@/types/movie";
+import { ImageWithFallback, Skeleton } from "@/components";
 
 type PickMoveProps = "name" | "year" | "poster_url" | "category" | "sub_docquyen" | "slug" | "type";
 
@@ -15,7 +15,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
   }
 
   return (
-    <article className="group flex rounded-md transition-base cursor-pointer overflow-hidden text-white hover:bg-black bg-[#0000004d] shadow-lg" onClick={handleNavigation}>
+    <article className="group flex rounded-md transition-base cursor-pointer overflow-hidden text-white hover:bg-black bg-[#0000004d] shadow-lg min-h-[120px]" onClick={handleNavigation}>
       <figure className="relative overflow-hidden flex-shrink-0">
         <ImageWithFallback
           alt={name}
@@ -29,7 +29,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
       </figure>
 
       <div className="py-4 pl-4 pr-10 lg:pr-12 relative w-full">
-        <h3 className="line-clamp-2 group-hover:text-primary transition-base max-lg:text-xs font-bold">
+        <h3 className="line-clamp-1 group-hover:text-primary transition-base max-lg:text-xs font-bold">
           {name}
         </h3>
 
@@ -37,7 +37,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
           {year}
         </span>
 
-        <div className="flex items-center flex-wrap gap-1.5 overflow-hidden pt-2 max-h-14 sm:max-h-full">
+        <div className="flex items-center flex-wrap gap-1.5 overflow-hidden pt-2 max-h-8">
           {sub_docquyen && (
             <span className="capitalize py-0.5 px-2 bg-red-600 animate-bounce text-[10px] lg:text-xs rounded-sm font-medium">
               Sub độc quyền
@@ -47,7 +47,7 @@ const HorizontalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
           {category?.map((category: Category, idx: number) => (
             <span
               key={idx}
-              className="capitalize py-0.5 px-2 border-[1px] lg:border-[1px] border-primary text-[10px] lg:text-xs rounded-sm text-gray_white font-medium"
+              className="flex-shrink-0 capitalize py-0.5 px-2 border-[1px] lg:border-[1px] border-primary text-[10px] lg:text-xs rounded-sm text-gray_white font-medium"
             >
               {category.name}
             </span>

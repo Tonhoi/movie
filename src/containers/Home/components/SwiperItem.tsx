@@ -20,7 +20,7 @@ const SwiperCardItem = ({ name, origin_name, time, lang, quality, description, s
 
       <article className="flex wide px-0">
         <div className="text-white px-8 basis-full sm:basis-[80%] lg:basis-[45%]">
-          <h2 className="text-3xl mb-5 font-extrabold !leading-[1.25] lg:mb-0 lg:text-6xl xl:text-7xl uppercase line-clamp-2">
+          <h2 className="text-3xl mb-2 font-extrabold !leading-[1.25] lg:mb-0 lg:text-6xl xl:text-7xl uppercase line-clamp-2">
             {name}
           </h2>
 
@@ -34,19 +34,19 @@ const SwiperCardItem = ({ name, origin_name, time, lang, quality, description, s
           </div>
 
           <div className="flex items-center gap-3 my-5 flex-wrap">
-            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs bg-secondary rounded-md border-2 border-solid border-secondary">
+            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs bg-secondary rounded-md border-[1px] md:border-2 border-solid border-secondary">
               {lang}
             </span>
 
-            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-2 border-primary">
+            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-[1px] md:border-2 border-primary">
               {quality}
             </span>
 
-            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-2 border-primary">
+            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-[1px] md:border-2 border-primary">
               {status}
             </span>
 
-            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-2 border-primary">
+            <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-[1px] md:border-2 border-primary">
               {type === "series" ? "Phim Bộ" : "Phim Lẻ"}
             </span>
 
@@ -54,7 +54,7 @@ const SwiperCardItem = ({ name, origin_name, time, lang, quality, description, s
               <span className="indicator-item badge badge-secondary bg-[#e20e01] border-none font-bold text-[10px] lg:text-sm">
                 HOT
               </span>
-              <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-2 border-primary">
+              <span className="px-3 py-[2px] lg:py-0 max-lg:text-xs rounded-md border-[1px] md:border-2 border-primary">
                 Sub Độc Quyền
               </span>
             </div>

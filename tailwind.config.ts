@@ -7,7 +7,8 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#3abff8",
-        secondary: "#337a99",
+        // secondary: "#337a99",
+        secondary: "#285E76",
         text_color: "#e2e8f0",
         gray_white: "#b4b4b4",
       },
