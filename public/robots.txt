@@ -7,10 +7,10 @@ Disallow: /*_ssgManifest.js$
 Disallow: /*.js$
 
 # Host
-Host: https://flashmov.xyz
+Host: https://www.flashmov.xyz/
 
 # Sitemaps
-Sitemap: https://flashmov.xyz/sitemap.xml
-Sitemap: https://flashmov.xyz/sitemap-films-series.xml
-Sitemap: https://flashmov.xyz/sitemap-films-single.xml
-Sitemap: https://flashmov.xyz/sitemap-news.xml
+Sitemap: https://www.flashmov.xyz/sitemap.xml
+Sitemap: https://www.flashmov.xyz//sitemap-films-series.xml
+Sitemap: https://www.flashmov.xyz//sitemap-films-single.xml
+Sitemap: https://www.flashmov.xyz//sitemap-news.xml

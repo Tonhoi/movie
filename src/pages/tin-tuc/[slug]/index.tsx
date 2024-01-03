@@ -45,7 +45,7 @@ export const getStaticProps = async ({ params }: params) => {
     return {
       props: {
         initData: [resNews, resSimilarNews],
-        revalidate: 3600,
+        revalidate: 300,
         fallback: true,
       },
     };
