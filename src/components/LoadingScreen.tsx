@@ -31,13 +31,17 @@ const LoadingScreen = () => {
         <Image
           src={require("@/assets/images/logo.png")}
           className="w-10 h-10 object-cover rounded-lg"
-          alt=""
+          alt="logo"
         />
         <span className="text-xl text-black font-bold tracking-wider">
           FLASHMOV
         </span>
       </div>
-      <span className="loading loading-spinner text-info z-50" />
+      <div className="flex items-center gap-3" style={{ animationDuration: "0.5s" }}>
+        <div className="w-4 h-4 bg-primary rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
+        <div className="w-4 h-4 bg-primary rounded-full animate-bounce" style={{ animationDelay: "0.3s" }} />
+        <div className="w-4 h-4 bg-primary rounded-full animate-bounce" style={{ animationDelay: "0.6s" }} />
+      </div>
     </div>
   );
 };

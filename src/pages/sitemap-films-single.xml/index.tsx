@@ -9,7 +9,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const fields = urls.data.map((data: any) => {
     return {
-      loc: `${domain}/phim/${data.slug}`,
+      loc: `${domain}/phim/${data.slug}/tap-full`,
       lastmod: new Date().toISOString(),
       priority: "0.7",
       changefreq: "daily",
