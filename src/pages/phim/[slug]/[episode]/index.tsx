@@ -97,7 +97,7 @@ export const getStaticProps = async ({ params }: params) => {
       props: {
         initData: [resMovie, resAirTodayMovie, resSimilarMovie],
       },
-      revalidate: 300,
+      revalidate: 180,
     };
   } catch (error) {
     return {

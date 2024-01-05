@@ -17,7 +17,7 @@ export const getStaticProps = async () => {
       props: {
         initData: [resNews],
       },
-      revalidate: 300,
+      revalidate: 180,
     };
   } catch (error) {
     return {
