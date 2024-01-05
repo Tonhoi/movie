@@ -3,13 +3,13 @@ const SITE_URL = process.env.SITE_URL || "https://www.flashmov.xyz/";
 const exclude = ["/quoc-gia/*", "/the-loai/*", "/tin-tuc/*"];
 
 // Save crawling budget by not fetching SSG meta files
-const NEXT_SSG_FILES = [
-  "/*.json$",
-  "/*_buildManifest.js$",
-  "/*_middlewareManifest.js$",
-  "/*_ssgManifest.js$",
-  "/*.js$",
-];
+// const NEXT_SSG_FILES = [
+//   "/*.json$",
+//   "/*_buildManifest.js$",
+//   "/*_middlewareManifest.js$",
+//   "/*_ssgManifest.js$",
+//   "/*.js$",
+// ];
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
@@ -22,7 +22,6 @@ module.exports = {
     policies: [
       {
         userAgent: "*",
-        disallow: NEXT_SSG_FILES,
       },
     ],
     additionalSitemaps: [
