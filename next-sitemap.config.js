@@ -18,6 +18,7 @@ module.exports = {
   exclude,
   sitemapSize: 20000,
   generateIndexSitemap: false,
+  sitemapBaseFileName:"sitemap_index",
   robotsTxtOptions: {
     policies: [
       {
@@ -25,9 +26,9 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      SITE_URL + "/sitemap-films-series.xml",
-      SITE_URL + "/sitemap-films-single.xml",
-      SITE_URL + "/sitemap-news.xml",
+      SITE_URL + "sitemap-films-series.xml",
+      SITE_URL + "sitemap-films-single.xml",
+      SITE_URL + "sitemap-news.xml",
     ],
   },
 };
