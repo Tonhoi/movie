@@ -2,10 +2,10 @@
 User-agent: *
 
 # Host
-Host: https://www.flashmov.xyz/
+Host: https://flashmov.xyz/
 
 # Sitemaps
-Sitemap: https://www.flashmov.xyz/sitemap_index.xml
-Sitemap: https://www.flashmov.xyz/sitemap-films-series.xml
-Sitemap: https://www.flashmov.xyz/sitemap-films-single.xml
-Sitemap: https://www.flashmov.xyz/sitemap-news.xml
+Sitemap: https://flashmov.xyz/sitemap_index.xml
+Sitemap: https://flashmov.xyz/sitemap-films-series.xml
+Sitemap: https://flashmov.xyz/sitemap-films-single.xml
+Sitemap: https://flashmov.xyz/sitemap-news.xml
