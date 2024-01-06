@@ -32,7 +32,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang }: WatchMo
         key={idx}
         onClick={() => handleChangeEpisode(el.slug)}
         className={twMerge(
-          "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white border-[1px] text-gray_white border-secondary transition-base rounded-md max-lg:font-medium text-xs lg:text-sm",
+          "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white text-gray_white bg-[#303030] transition-base rounded-md max-lg:font-medium text-xs lg:text-sm",
           (el.slug === query.episode || isVisibleTrailer) && "bg-secondary text-white cursor-default"
         )}
       >
@@ -63,7 +63,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang }: WatchMo
         key={idx}
         onClick={() => handleChangeServer(el.server)}
         className={twMerge(
-          "py-1.5 px-4 rounded-md border-[1px] border-secondary mr-3 text-[10px] font-medium lg:text-sm lg:font-light cursor-pointer hover:bg-secondary transition-base",
+          "py-1.5 px-4 rounded-md bg-[#303030] mr-3 text-[10px] font-medium lg:text-sm lg:font-light cursor-pointer hover:bg-secondary transition-base",
           server === el.server && "bg-secondary animate-pulse disabled cursor-default"
         )}
       >
