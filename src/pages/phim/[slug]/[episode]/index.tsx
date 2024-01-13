@@ -34,10 +34,6 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: params) => {
   try {
-    // const resMovie = await UseFetch(`phim/${params.slug}/${params.episode}`);
-    // const resAirTodayMovie = await UseFetch(apis["air_today"]);
-    // const resSimilarMovie = await UseFetch(apis["similar_movie"] + params.slug);
-
     const [resMovie, resAirTodayMovie, resSimilarMovie] = await Promise.all([
       UseFetch(`phim/${params.slug}/${params.episode}`),
       UseFetch(apis["air_today"]),

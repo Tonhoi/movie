@@ -25,8 +25,6 @@ const Comments = ({ movie }: CommentProps) => {
     };
   }, [movie]);
 
-  return (
-    <div id="disqus_thread" className="lg:w-[65%] mt-16 text-white" />
-  );
+  return <div id="disqus_thread" className="lg:w-[65%] mt-16 text-white" />;
 };
 export default memo(Comments);

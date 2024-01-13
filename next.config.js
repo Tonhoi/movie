@@ -16,7 +16,6 @@ const nextConfig = {
       },
     ],
   },
-  compress: true,
 
   webpack: (config, { isServer }) => {
     if (!isServer) {

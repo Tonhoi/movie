@@ -1,11 +1,17 @@
 import { get } from "lodash";
-import { useRouter } from "next/router";
 import { Fragment } from "react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 
 import { getSeoObject } from "@/utils";
 import { HeadLine, Loader, SEO } from "@/components";
 import { MovieType } from "@/pages/phim/[slug]/[episode]";
-import { AiringToday, Comments, Intro, SimilarMovie, WatchMovie } from "@/containers/Movie";
+import { AiringToday, Intro, SimilarMovie, WatchMovie } from "@/containers/Movie";
+
+const DisqusLoader = dynamic(() => import('@/containers/Movie/components/Comments'), {
+  loading: () => <p>Loading Disqus...</p>,
+  ssr: false, // Không render Disqus khi SSR
+});
 
 const Movie = ({ initData }: MovieType) => {
   const router = useRouter();
@@ -38,7 +44,7 @@ const Movie = ({ initData }: MovieType) => {
           content={movie.content}
         />
 
-        <Comments movie={movie} />
+        <DisqusLoader movie={movie} />
 
         <HeadLine title="Có thể bạn quan tâm" />
         <SimilarMovie data={similarMovie} />
