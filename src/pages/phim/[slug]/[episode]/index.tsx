@@ -20,36 +20,8 @@ const index = (props: MovieType) => {
 
 export const getStaticPaths = async () => {
   try {
-    const paths: Array<unknown> = [];
-    const resTrendingMovies = await UseFetch(apis["trending_movie"]);
-    const resSingleMovies = await UseFetch(apis["new-updated/single"], {
-      params: { limit: 10 },
-    });
-    const resAirTodayMovies = await UseFetch(apis["air_today"], {
-      params: { limit: 10 },
-    });
-    const resSeriesMovies = await UseFetch(apis["new-updated/series"], {
-      params: { limit: 10 },
-    });
-
-    resTrendingMovies.map((movie: MovieProps) => {
-      paths.push({ params: { slug: movie.slug } });
-    });
-
-    resSingleMovies.map((movie: MovieProps) => {
-      paths.push({ params: { slug: movie.slug } });
-    });
-
-    resAirTodayMovies.map((movie: MovieProps) => {
-      paths.push({ params: { slug: movie.slug } });
-    });
-
-    resSeriesMovies.map((movie: MovieProps) => {
-      paths.push({ params: { slug: movie.slug } });
-    });
-
     return {
-      paths,
+      paths: [],
       fallback: true,
     };
   } catch (error) {
@@ -62,7 +34,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: params) => {
   try {
-    const resMovie = await UseFetch(`phim/${params.slug}`);
+    const resMovie = await UseFetch(`phim/${params.slug}/${params.episode}`);
     const resAirTodayMovie = await UseFetch(apis["air_today"]);
     const resSimilarMovie = await UseFetch(apis["similar_movie"] + params.slug);
     

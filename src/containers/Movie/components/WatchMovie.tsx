@@ -1,42 +1,49 @@
 import { useRouter } from "next/router";
 import { twMerge } from "tailwind-merge";
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 
 import { Skeleton } from "@/components";
 import { MovieDetail } from "@/types/movie";
-import { BASE_EMBED, SERVERS } from "@/containers/Movie";
+import { BASE_EMBED } from "@/containers/Movie";
 
 type WatchMovieProps = Pick<MovieDetail, "episodes" | "name" | "view" | "trailer_url" | "status" | "lang">
 
-const WatchMovie = ({ episodes, name, view, status, trailer_url, lang }: WatchMovieProps) => {
+const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, episodeCurrent }: WatchMovieProps & any) => {
   const isVisibleTrailer = status === "trailer";
   const { push, pathname, query } = useRouter()
+  
+  const [sources, setSources] = useState({
+    server_name: episodeCurrent.sources[0]?.server_name,
+    link_embed: episodeCurrent.sources[0]?.link_embed
+  });
 
-  const [server, setServer] = useState<number>(1);
+  useEffect(() => {
+    setSources(episodeCurrent.sources[0])
+  }, [episodeCurrent])
 
-  const handleChangeEpisode = useCallback((slug:string) => {
+  const handleChangeEpisode = useCallback((slug: string) => {
     if(query.episode === slug || isVisibleTrailer) return null
 
-    push({pathname, query: {...query, episode: slug}}, undefined, { shallow: true })
+    push({pathname, query: {...query, episode: slug}}, undefined)
   }, [query]);
 
-  const handleChangeServer = useCallback((server: number) => {
-    setServer(server);
-  }, [server]);
+  const handleChangeServer = useCallback((sources: { server_name: string; link_embed: string }) => {
+    setSources(sources);
+  }, [sources]);
 
   const renderEpisode = useMemo(() => {
     if (episodes == undefined) return null;
 
-    return episodes.map((el, idx: number) => (
+    return episodes.map((item: any, idx: number) => (
       <button
         key={idx}
-        onClick={() => handleChangeEpisode(el.slug)}
+        onClick={() => handleChangeEpisode(item.slug)}
         className={twMerge(
           "py-1.5 px-2 text-center cursor-pointer hover:bg-secondary hover:text-white text-gray_white bg-[#303030] transition-base rounded-md max-lg:font-medium text-xs lg:text-sm",
-          (el.slug === query.episode || isVisibleTrailer) && "bg-secondary text-white cursor-default"
+          (item.slug === query.episode || isVisibleTrailer) && "bg-secondary text-white cursor-default"
         )}
       >
-        {isVisibleTrailer ? "Trailer" : el.slug.replace("tap-", "tập ")}
+        {isVisibleTrailer ? "Trailer" : item.slug.replace("tap-", "tập ")}
       </button>
     ));
   }, [episodes, query]);
@@ -49,28 +56,23 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang }: WatchMo
       return BASE_EMBED + idVideoMatch[1]
     }
 
-    const match = (query.episode as string).match(/tap-(\d+)$/);
-    const getEpisodeOnParams = match ? match[1] : null;
-
-    const currentEpisode =!getEpisodeOnParams ? 0 : parseInt(getEpisodeOnParams) - 1
-
-    return (server === 1) ? episodes[currentEpisode]?.server_1 : episodes[currentEpisode]?.server_2
-  }, [server, episodes, query]);
+    return sources.link_embed
+  }, [sources, episodes, query, episodeCurrent]);
 
   const renderServer = useMemo(() => {
-    return SERVERS.map((el, idx: number) => (
+    return episodeCurrent.sources?.map((item: any, idx: number) => (
       <button
         key={idx}
-        onClick={() => handleChangeServer(el.server)}
+        onClick={() => handleChangeServer({server_name: item.server_name, link_embed:item.link_embed})}
         className={twMerge(
           "py-1.5 px-4 rounded-md bg-[#303030] mr-3 text-[10px] font-medium lg:text-sm lg:font-light cursor-pointer hover:bg-secondary transition-base",
-          server === el.server && "bg-secondary animate-pulse disabled cursor-default"
+          sources.server_name === item.server_name && "bg-secondary animate-pulse disabled cursor-default"
         )}
       >
-        {el.title}
+        {item.server_name}
       </button>
     ));
-  }, [server]);
+  }, [sources]);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[65%,35%] gap-3">
@@ -79,7 +81,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang }: WatchMo
           key={embed}
           width="100%"
           height="100%"
-          src={embed as string}
+          src={embed}
           allowFullScreen
           title={name}
           className="relative z-10"

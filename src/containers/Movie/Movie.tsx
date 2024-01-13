@@ -11,6 +11,7 @@ const Movie = ({ initData }: MovieType) => {
   const router = useRouter();
   
   const episodes = get(initData, [0, "episodes"]);
+  const episodeCurrent= get(initData, [0, "episodeCurrent"]);
   const movie = get(initData, [0, "movie"]);
   const seoOnPage = get(initData, [0, "seoOnPage"]);
   const airingToday = get(initData, [1, "data"]);
@@ -24,7 +25,7 @@ const Movie = ({ initData }: MovieType) => {
       <SEO {...getSeoObject(seoOnPage)} />
 
       <div className="wide">
-        <WatchMovie episodes={episodes} name={movie.name} view={movie.view} status={movie.status} trailer_url={movie.trailer_url} lang={movie.lang} />
+        <WatchMovie episodes={episodes} name={movie.name} view={movie.view} status={movie.status} trailer_url={movie.trailer_url} lang={movie.lang} episodeCurrent={episodeCurrent} />
 
         <Intro
           sub_docquyen={movie.sub_docquyen}
