@@ -62,14 +62,14 @@ const Intro = (props: Pick<MovieDetail, IntroProps>) => {
           )}
         </div>
 
-        <div className="max-md:text-xs md:max-lg:text-sm text-gray_white line-clamp-4">
+        <div className="max-md:text-xs md:text-sm text-gray_white line-clamp-4">
           {content === "" ? "Đang cập nhật...": parse(content)}
         </div>
 
-        <label htmlFor="modal" className="max-md:text-xs md:max-lg:text-sm text-gray-200 mt-2 hover:text-primary cursor-pointer transition-base underline">Đọc thêm +</label>
+        <label htmlFor="modal" className="max-md:text-xs md:text-sm text-gray-200 mt-2 hover:text-primary cursor-pointer transition-base underline">Đọc thêm +</label>
 
         <Modal heading="Mô tả chi tiết">
-          <div className="max-md:text-xs md:max-lg:text-sm text-gray_white">
+          <div className="max-md:text-xs md:text-sm text-gray_white">
             {content === "" ? "Đang cập nhật...": parse(content)}
           </div>
         </Modal>

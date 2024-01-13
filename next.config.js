@@ -16,6 +16,15 @@ const nextConfig = {
       },
     ],
   },
+
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // Loại bỏ các đoạn mã không cần thiết ở môi trường production
+      config.optimization.minimize = true;
+    }
+
+    return config;
+  },
 };
 
 module.exports = nextConfig;
