@@ -16,11 +16,12 @@ const nextConfig = {
       },
     ],
   },
+  compress: true,
 
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      // Loại bỏ các đoạn mã không cần thiết ở môi trường production
       config.optimization.minimize = true;
+      config.resolve.fallback = {...config.resolve.fallback, fs: false, module: false };
     }
 
     return config;
