@@ -34,16 +34,22 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: params) => {
   try {
-    const resMovie = await UseFetch(`phim/${params.slug}/${params.episode}`);
-    const resAirTodayMovie = await UseFetch(apis["air_today"]);
-    const resSimilarMovie = await UseFetch(apis["similar_movie"] + params.slug);
-    
+    // const resMovie = await UseFetch(`phim/${params.slug}/${params.episode}`);
+    // const resAirTodayMovie = await UseFetch(apis["air_today"]);
+    // const resSimilarMovie = await UseFetch(apis["similar_movie"] + params.slug);
+
+    const [resMovie, resAirTodayMovie, resSimilarMovie] = await Promise.all([
+      UseFetch(`phim/${params.slug}/${params.episode}`),
+      UseFetch(apis["air_today"]),
+      UseFetch(apis["similar_movie"] + params.slug),
+    ]);
+
     let redirectDestination = null;
-    
+
     if (resMovie.movie.type === "single") {
       const match = params.episode.match(/tap-full$/);
       const currentEpisode = match ? match[0] : null;
-      
+
       if (!currentEpisode) {
         redirectDestination = "/404";
       }
@@ -51,7 +57,10 @@ export const getStaticProps = async ({ params }: params) => {
       const match = params.episode.match(/tap-(\d+)$/);
       const currentEpisode = match ? match[1] : null;
 
-      if (!currentEpisode || parseInt(currentEpisode) > resMovie.episodes.length) {
+      if (
+        !currentEpisode ||
+        parseInt(currentEpisode) > resMovie.episodes.length
+      ) {
         redirectDestination = "/404";
       }
     }

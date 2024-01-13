@@ -18,7 +18,11 @@ const config: Config = {
       ...defaultTheme.screens,
     },
   },
-
+  daisyui: {
+    themes: false,
+    darkTheme: "light",
+    base: false,
+  },
   plugins: [require("daisyui")],
 };
 export default config;
