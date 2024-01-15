@@ -6,13 +6,13 @@ import { baseURL } from "@/utils/constants";
 type SEOProps = {
   seo_title?: string;
   seo_description?: string;
-  og_image?: string;
+  seo_image?: string;
   og_url?: string;
   defaultNextSeo?: NextSeoProps;
 };
 
 const SEO = (props: SEOProps) => {
-  const { seo_title, seo_description, defaultNextSeo, og_url, og_image } =
+  const { seo_title, seo_description, defaultNextSeo, og_url, seo_image } =
     props;
 
   return (
@@ -29,7 +29,7 @@ const SEO = (props: SEOProps) => {
         images: [
           {
             url:
-              og_image ??
+              seo_image ??
               require("@/assets/images/default_og_image.jpg").default.src,
             alt: seo_title,
             type: "image/jpeg",
