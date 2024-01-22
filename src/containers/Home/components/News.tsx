@@ -1,7 +1,7 @@
+import { apis } from "@/configs";
 import { HeadLine } from "@/components";
 import { NewsProps } from "@/types/movie";
 import { NewsCard } from "@/components/Cards";
-import { apis } from "@/configs";
 
 interface props {
   data: NewsProps[];

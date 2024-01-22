@@ -55,14 +55,6 @@ export interface Category {
   slug: string;
 }
 
-export interface Episode {
-  slug: string;
-  link_m3u8: string;
-  server_1: string;
-  server_2: string;
-  server_3: string;
-}
-
 export interface MovieDetail {
   actor: string[];
   category: {
@@ -99,7 +91,10 @@ export interface MovieDetail {
   view: number;
   year: number;
 
-  episodes: Episode[];
+  episodes: {
+    name: string;
+    slug: string;
+  }[];
 }
 
 export interface NewsProps {

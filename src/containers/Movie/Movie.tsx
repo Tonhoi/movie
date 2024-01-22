@@ -16,10 +16,10 @@ const DisqusLoader = dynamic(() => import('@/containers/Movie/components/Comment
 const Movie = ({ initData }: MovieType) => {
   const router = useRouter();
   
-  const episodes = get(initData, [0, "episodes"]);
-  const episodeCurrent= get(initData, [0, "episodeCurrent"]);
   const movie = get(initData, [0, "movie"]);
+  const episodes = get(initData, [0, "episodes"]);
   const seoOnPage = get(initData, [0, "seoOnPage"]);
+  const episodeCurrent= get(initData, [0, "episodeCurrent"]);
   const airingToday = get(initData, [1, "data"]);
   const similarMovie = get(initData, [2, "data"]);
   
@@ -42,6 +42,7 @@ const Movie = ({ initData }: MovieType) => {
           lang={movie.lang}
           category={movie.category}
           content={movie.content}
+          name={movie.name}
         />
 
         <DisqusLoader movie={movie} />

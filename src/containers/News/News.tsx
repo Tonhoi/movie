@@ -21,7 +21,7 @@ const News = ({ initData }: NewsType) => {
         />
 
         <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {news.map((el: any, idx: number) => (
+          {news.map((el, idx: number) => (
             <NewsCard
               key={idx}
               poster_url={el.poster_url}

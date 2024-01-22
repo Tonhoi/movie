@@ -1,6 +1,7 @@
-import { Fragment, memo, useCallback } from "react";
 import { useRouter } from "next/router";
 import { twMerge } from "tailwind-merge";
+import { isEmpty, isEqual } from "lodash"
+import { Fragment, memo, useCallback } from "react";
 
 import { GridIcon, ListIcon } from "@/assets/Icons";
 import { years } from "@/containers/Movies/constants";
@@ -54,9 +55,9 @@ const Filter = ({ toggleOff, toggleOn, isLayoutColumn }: FilterProps) => {
               onClick={() => handleFilterMovieWithYear(year)}
               className={twMerge(
                 "py-2 px-3 border-[1px] border-secondary rounded-md text-gray_white text-center text-[10px] lg:text-sm cursor-pointer hover:bg-secondary hover:text-white transition-base",
-                (query.year === year)
+                (isEqual(query.year, year))
                   ? "bg-secondary animate-pulse text-white"
-                  : query.year === undefined 
+                  : isEmpty(query.year)
                   ? "first:bg-secondary first:animate-pulse first:text-white"
                   : ""
               )}

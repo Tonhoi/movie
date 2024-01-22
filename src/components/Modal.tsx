@@ -2,21 +2,11 @@ import { Fragment } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { ModalProps } from "@/types/Modal";
-import CloseIcon from "@/assets/Icons/CloseIcon";
 
-const Modal = ({
-  children,
-  heading,
-  headingClassName,
-  modalBoxClassName,
-  btnCancelClassName,
-  button_action,
-  onClick,
-  contentClassName,
-}: ModalProps) => {
+const Modal = ({ children, heading, headingClassName, modalBoxClassName, onClick, contentClassName }: ModalProps) => {
   return (
     <Fragment>
-      <input type="checkbox" id={"modal"} className="modal-toggle" />
+      <input type="checkbox" id="modal" className="modal-toggle" />
       <div className="modal" onClick={onClick}>
         <div
           className={twMerge(
@@ -37,7 +27,7 @@ const Modal = ({
 
         </div>
 
-        <label className="modal-backdrop" htmlFor={"modal"} />
+        <label className="modal-backdrop" htmlFor="modal" />
       </div>
     </Fragment>
   );

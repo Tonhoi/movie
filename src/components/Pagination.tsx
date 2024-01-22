@@ -1,5 +1,5 @@
-import { twMerge } from "tailwind-merge";
 import { useRouter } from "next/router";
+import { twMerge } from "tailwind-merge";
 import { memo, useCallback } from "react";
 import RcPagination, { PaginationProps as RcPaginationProps } from "rc-pagination";
 

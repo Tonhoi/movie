@@ -8,7 +8,7 @@ const useFetch = async (url: string, param?: AxiosRequestConfig) => {
 
     return response.data;
   } catch (error) {
-    return error;
+    return Promise.reject(error);
   }
 };
 

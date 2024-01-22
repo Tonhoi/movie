@@ -1,6 +1,6 @@
+import { apis } from "@/configs";
 import Home from "@/containers/Home";
 import { useFetch as UseFetch } from "@/hooks";
-import { apis } from "@/configs";
 import { IPage, MovieProps, NewsProps, responseSchema } from "@/types/movie";
 
 export type HomeType = IPage<
@@ -24,7 +24,7 @@ export const getStaticProps = async () => {
     const resAirTodayMovie = await UseFetch(apis["air_today"], { params: { limit: 12 } })
     const resSeriesMovie = await UseFetch(apis["new-updated/series"], { params: { limit: 12 } })
     const resNews = await UseFetch(apis["news"], { params: { limit: 6 } })
-    
+
     return {
       props: {
         initData: [

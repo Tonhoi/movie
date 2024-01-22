@@ -5,18 +5,18 @@ import { useMeasure } from "react-use";
 import { MovieDetail } from "@/types/movie";
 import { ImageWithFallback, Modal, Skeleton } from "@/components";
 
-type IntroProps = "sub_docquyen" | "poster_url" | "quality" | "type" | "time" | "lang" | "category" | "content"
+type IntroProps = "sub_docquyen" | "poster_url" | "quality" | "type" | "time" | "lang" | "category" | "content" | "name"
 
 const Intro = (props: Pick<MovieDetail, IntroProps>) => {
-  const { sub_docquyen, poster_url, quality, type, time, lang, category, content } = props;
-  const [ref, {width, height}] = useMeasure<HTMLElement>()
+  const { sub_docquyen, poster_url, quality, type, time, lang, category, content, name } = props;
+  const [ref, { width, height }] = useMeasure<HTMLElement>()
 
   return (
     <article className="text-white mt-5 flex max-sm:flex-wrap gap-5 lg:w-[65%]">
       <figure ref={ref} className="relative flex-shrink-0 w-[150px] md:w-[170px] lg:w-[208px] lg:max-h-[300px] pt-[200px] lg:pt-[300px]">
         <ImageWithFallback
           src={poster_url}
-          alt=""
+          alt={name}
           width={width}
           height={height}
           className="object-cover rounded-md w-full h-full absolute inset-0 z-10"

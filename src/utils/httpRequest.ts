@@ -2,10 +2,7 @@ import axios from "axios";
 import { baseURL } from "@/utils";
 
 const httpRequest = axios.create({
-  // baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   baseURL,
-  // timeout: 10000,
-  // method: "GET",
 });
 
 httpRequest.interceptors.request.use(

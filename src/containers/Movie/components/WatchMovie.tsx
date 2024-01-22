@@ -6,9 +6,18 @@ import { Skeleton } from "@/components";
 import { MovieDetail } from "@/types/movie";
 import { BASE_EMBED } from "@/containers/Movie";
 
-type WatchMovieProps = Pick<MovieDetail, "episodes" | "name" | "view" | "trailer_url" | "status" | "lang">
+type WatchMovieProps = Pick<MovieDetail, "episodes" | "name" | "view" | "trailer_url" | "status" | "lang"> & {
+  episodeCurrent: {
+    link_m3u8: string;
+    slug: string;
+    sources: {
+      link_embed: string;
+      server_name: string;
+    }[]
+  }
+}
 
-const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, episodeCurrent }: WatchMovieProps & any) => {
+const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, episodeCurrent }: WatchMovieProps) => {
   const isVisibleTrailer = status === "trailer";
   const { push, pathname, query } = useRouter()
   
@@ -81,7 +90,7 @@ const WatchMovie = ({ episodes, name, view, status, trailer_url, lang, episodeCu
           key={embed}
           width="100%"
           height="100%"
-          src={embed}
+          src={embed as string}
           allowFullScreen
           title={name}
           className="relative z-10"

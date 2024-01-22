@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { HomeType } from "@/pages";
 import { SEO } from "@/components";
-import { routes } from "@/configs";
 import { MovieProps } from "@/types/movie";
 import { getSeoObject, getMovieObject } from "@/utils";
 import { SwiperItem, ListMovie, SwiperConfig, News, objectSeo } from "@/containers/Home";

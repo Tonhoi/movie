@@ -1,7 +1,7 @@
 import { apis } from "@/configs";
-import NewsDetail from "@/containers/News/components/NewsDetail";
 import { useFetch as UseFetch } from "@/hooks";
 import { MovieProps, NewsProps } from "@/types/movie";
+import NewsDetail from "@/containers/News/components/NewsDetail";
 
 type params = {
   params: {
@@ -17,7 +17,7 @@ const index = (props: NewsType) => {
 
 export const getStaticPaths = async () => {
   try {
-    const resNews = await UseFetch(apis["news"]);
+    const resNews = await UseFetch(apis["news"], { params: { limit: 6 } });
 
     const paths = resNews.data.map((el: MovieProps) => ({
       params: {
@@ -39,8 +39,10 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: params) => {
   try {
-    const resNews = await UseFetch(`tin-tuc/${params.slug}`);
-    const resSimilarNews = await UseFetch(`tin-tuc-tuong-tu/${params.slug}`);
+    const [resNews, resSimilarNews] = await Promise.all([
+      UseFetch(`tin-tuc/${params.slug}`),
+      UseFetch(`tin-tuc-tuong-tu/${params.slug}`)
+    ])
 
     return {
       props: {

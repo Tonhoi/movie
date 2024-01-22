@@ -1,6 +1,7 @@
+import { GetServerSidePropsContext } from "next";
+
 import Search from "@/containers/Search";
 import { useFetch as UseFetch } from "@/hooks";
-import { GetServerSidePropsContext } from "next";
 import { IPage, MovieProps, responseSchema } from "@/types/movie";
 
 export type SearchType = IPage<[responseSchema<MovieProps>]>;

@@ -12,9 +12,9 @@ const Search = ({ initData }: SearchType) => {
   const { query } = useRouter();
 
   const searchResult = get(initData, [0]);
-  const pagination = get(searchResult, ["pagination"]);
   const searchData = get(searchResult, ["data"]);
   const seoOnPage = get(searchResult, ["seoOnPage"]);
+  const pagination = get(searchResult, ["pagination"]);
 
   const renderSearchResult = useMemo(() => {
     if (searchData == undefined) return null;
@@ -31,7 +31,7 @@ const Search = ({ initData }: SearchType) => {
       <div className="wide mt-10">
         <h1 className="text-white text-xl max-lg:font-medium max-lg:text-lg">
           Kết quả tìm kiếm:
-          <strong className="text-primary"> {query?.keyword}</strong>
+          <strong className="text-primary">{query?.keyword}</strong>
         </h1>
 
         <div className="h-[2px] my-7 bg-[#272727]" />

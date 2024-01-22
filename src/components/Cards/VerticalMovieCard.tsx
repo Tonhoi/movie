@@ -1,6 +1,7 @@
-import { memo } from "react";
 import Link from "next/link";
 import { useMeasure } from "react-use";
+import { useRouter } from "next/router";
+import { memo, useCallback } from "react";
 
 import { MovieProps } from "@/types/movie";
 import { PlayCircleIcon } from "@/assets/Icons";
@@ -11,6 +12,11 @@ type PickMoveProps = "name" | "year" | "poster_url" | "slug" | "episode_current"
 const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
   const { name, year, poster_url, slug, episode_current, type } = props;
   const [ref, { width, height }] = useMeasure<HTMLElement>()
+  const { push } = useRouter()
+
+  const handleNavigate = useCallback(() => {
+    push(`/phim/${slug}/tap-${type === "single" ? "full": "1"}`, undefined, { shallow: true })
+  }, [])
 
   return (
     <article className="flex flex-col text-white">
@@ -35,7 +41,7 @@ const VerticalMovieCard = (props: Pick<MovieProps, PickMoveProps>) => {
         </div>
       </Link>
 
-      <h3 className="text-sm lg:text:base xl:text-xl font-medium cursor-pointer hover:text-primary mt-4 line-clamp-1">
+      <h3 className="text-sm lg:text:base xl:text-xl font-medium cursor-pointer hover:text-primary mt-4 line-clamp-1" onClick={handleNavigate}>
         {name}
       </h3>
 
