@@ -30,7 +30,7 @@ const SEO = (props: SEOProps) => {
           {
             url:
               seo_image ??
-              require("@/assets/images/default_og_image.jpg").default.src,
+              require("@/assets/images/default_og_image.webp").default.src,
             alt: seo_title,
             type: "image/jpeg",
           },

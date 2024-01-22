@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import Image, { ImageProps, ImageLoaderProps } from "next/image";
 
-import imageError from "@/assets/images/no_poster_available.jpg";
+import imageError from "@/assets/images/no_poster_available.webp";
 
 interface ImageWithFallbackProps extends ImageProps {
   fallbackSrc?: ImageLoaderProps;
